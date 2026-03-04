@@ -1,0 +1,41 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# S5 — Slowloris on Port Area
+# Subtler than volumetric — tests LLM nuance detection.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+scenario_id: S5
+name: "Slowloris on Port Area"
+description: >
+  Slow-rate HTTP attack on port area. Subtler than volumetric attacks —
+  tests LLM's ability to detect low-and-slow patterns.
+
+target_zone: port_area
+target_zone_name: Mumbai Port
+security_level: 3
+severity: MEDIUM
+
+timing:
+  total_duration_sec: 180
+  warmup_sec: 30
+  cooldown_sec: 15
+
+phases:
+  - attack_type: slowloris
+    start_offset_sec: 0
+    duration_sec: 135
+    intensity: 0.6
+    events_per_second: 5
+
+ground_truth:
+  attack_type: "DDoS/Slowloris"
+  severity: MEDIUM
+  target_zone: port_area
+  expected_detection: true
+
+mitre_ttps: ["T0883", "T0813"]
+
+evaluation:
+  expected_outcome: ddos
+  expected_attack_subtype: slowloris
+  min_confidence: 60
+  notes: "Low-and-slow attack — harder for LLMs to detect. Lower confidence threshold."

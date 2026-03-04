@@ -1,0 +1,56 @@
+{
+  "run_id": "C4_llama-3.1-70b_r1_3bebf9",
+  "scenario_id": "C4",
+  "model_id": "llama-3.1-70b",
+  "run_index": 1,
+  "start_time": "2026-02-24T15:35:43.033460+00:00",
+  "end_time": "2026-02-24T15:36:03.127161+00:00",
+  "duration_sec": 20.09,
+  "events_injected": 2970,
+  "attack_detected": true,
+  "detected_type": "APT/Full-Assault",
+  "detected_severity": "CRITICAL",
+  "confidence": 89.6,
+  "mitre_ttps_detected": [
+    "T0804",
+    "T0883",
+    "T0882",
+    "T0875",
+    "T0834",
+    "T0869"
+  ],
+  "ground_truth": {
+    "attack_type": "APT/Full-Assault",
+    "severity": "CRITICAL",
+    "target_zone": "reliance_hospital",
+    "expected_detection": true,
+    "sub_attacks": [
+      "syn_flood",
+      "slowloris",
+      "botnet",
+      "data_exfiltration"
+    ]
+  },
+  "correct_detection": true,
+  "correct_classification": true,
+  "ttp_coverage": 0.0,
+  "agent_output": {
+    "attack_detected": true,
+    "attack_type": "APT/Full-Assault",
+    "severity": "CRITICAL",
+    "confidence": 89.6,
+    "mitre_ttps": [
+      "T0804",
+      "T0883",
+      "T0882",
+      "T0875",
+      "T0834",
+      "T0869"
+    ],
+    "ddos_results": {},
+    "malware_results": {},
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

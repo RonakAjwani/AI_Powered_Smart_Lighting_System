@@ -1,0 +1,56 @@
+{
+  "run_id": "C1_llama-3.1-8b_r1_ccc4d7",
+  "scenario_id": "C1",
+  "model_id": "llama-3.1-8b",
+  "run_index": 1,
+  "start_time": "2026-02-24T15:27:00.858600+00:00",
+  "end_time": "2026-02-24T15:27:25.973420+00:00",
+  "duration_sec": 25.11,
+  "events_injected": 1985,
+  "attack_detected": true,
+  "detected_type": "Coordinated/Multi-Zone",
+  "detected_severity": "CRITICAL",
+  "confidence": 79.4,
+  "mitre_ttps_detected": [
+    "T0882",
+    "T0875",
+    "T0869",
+    "T0834",
+    "T0813"
+  ],
+  "ground_truth": {
+    "attack_type": "Coordinated/Multi-Zone",
+    "severity": "CRITICAL",
+    "target_zone": "reliance_hospital",
+    "secondary_zones": [
+      "airport"
+    ],
+    "expected_detection": true,
+    "sub_attacks": [
+      "botnet",
+      "firmware_tamper",
+      "data_exfiltration"
+    ]
+  },
+  "correct_detection": true,
+  "correct_classification": true,
+  "ttp_coverage": 0.0,
+  "agent_output": {
+    "attack_detected": true,
+    "attack_type": "Coordinated/Multi-Zone",
+    "severity": "CRITICAL",
+    "confidence": 79.4,
+    "mitre_ttps": [
+      "T0882",
+      "T0875",
+      "T0869",
+      "T0834",
+      "T0813"
+    ],
+    "ddos_results": {},
+    "malware_results": {},
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

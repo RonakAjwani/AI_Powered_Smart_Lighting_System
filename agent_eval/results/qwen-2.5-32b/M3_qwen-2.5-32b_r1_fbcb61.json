@@ -1,0 +1,36 @@
+{
+  "run_id": "M3_qwen-2.5-32b_r1_fbcb61",
+  "scenario_id": "M3",
+  "model_id": "qwen-2.5-32b",
+  "run_index": 1,
+  "start_time": "2026-02-24T15:44:45.378115+00:00",
+  "end_time": "2026-02-24T15:45:05.460044+00:00",
+  "duration_sec": 20.08,
+  "events_injected": 550,
+  "attack_detected": false,
+  "detected_type": "none",
+  "detected_severity": "none",
+  "confidence": 39.96180356889794,
+  "mitre_ttps_detected": [],
+  "ground_truth": {
+    "attack_type": "Malware/Firmware Tampering",
+    "severity": "CRITICAL",
+    "target_zone": "airport",
+    "expected_detection": true
+  },
+  "correct_detection": false,
+  "correct_classification": false,
+  "ttp_coverage": 1.0,
+  "agent_output": {
+    "attack_detected": false,
+    "attack_type": "none",
+    "severity": "none",
+    "confidence": 39.96180356889794,
+    "mitre_ttps": [],
+    "ddos_results": {},
+    "malware_results": {},
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

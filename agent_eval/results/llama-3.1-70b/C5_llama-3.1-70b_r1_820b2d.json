@@ -1,0 +1,53 @@
+{
+  "run_id": "C5_llama-3.1-70b_r1_820b2d",
+  "scenario_id": "C5",
+  "model_id": "llama-3.1-70b",
+  "run_index": 1,
+  "start_time": "2026-02-24T15:36:03.132439+00:00",
+  "end_time": "2026-02-24T15:36:33.268133+00:00",
+  "duration_sec": 30.14,
+  "events_injected": 6600,
+  "attack_detected": true,
+  "detected_type": "APT/City-Wide",
+  "detected_severity": "CRITICAL",
+  "confidence": 71.9,
+  "mitre_ttps_detected": [],
+  "ground_truth": {
+    "attack_type": "APT/City-Wide",
+    "severity": "CRITICAL",
+    "target_zone": "bkc_commercial",
+    "secondary_zones": [
+      "reliance_hospital",
+      "airport",
+      "port_area",
+      "school_complex",
+      "residential",
+      "highway_corridor"
+    ],
+    "expected_detection": true,
+    "sub_attacks": [
+      "http_flood",
+      "ransomware",
+      "firmware_tamper",
+      "botnet",
+      "syn_flood",
+      "dns_amplification",
+      "data_exfiltration"
+    ]
+  },
+  "correct_detection": true,
+  "correct_classification": true,
+  "ttp_coverage": 1.0,
+  "agent_output": {
+    "attack_detected": true,
+    "attack_type": "APT/City-Wide",
+    "severity": "CRITICAL",
+    "confidence": 71.9,
+    "mitre_ttps": [],
+    "ddos_results": {},
+    "malware_results": {},
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

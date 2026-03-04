@@ -1,0 +1,42 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# M3 — Firmware Tampering on Airport
+# Critical infrastructure (SL-4) firmware integrity attacks.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+scenario_id: M3
+name: "Firmware Tampering on Airport"
+description: >
+  Firmware integrity attacks on airport smart poles.
+  Critical infrastructure (SL-4) targeting pole firmware
+  to insert persistent backdoors.
+
+target_zone: airport
+target_zone_name: CSM International Airport
+security_level: 4
+severity: CRITICAL
+
+timing:
+  total_duration_sec: 120
+  warmup_sec: 20
+  cooldown_sec: 10
+
+phases:
+  - attack_type: firmware_tamper
+    start_offset_sec: 0
+    duration_sec: 90
+    intensity: 0.8
+    target_devices: all
+    events_per_second: 5
+
+ground_truth:
+  attack_type: "Malware/Firmware Tampering"
+  severity: CRITICAL
+  target_zone: airport
+  expected_detection: true
+
+mitre_ttps: ["T0883", "T0875"]
+
+evaluation:
+  expected_outcome: malware
+  expected_malware_type: firmware
+  min_confidence: 70

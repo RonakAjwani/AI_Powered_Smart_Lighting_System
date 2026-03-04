@@ -1,0 +1,49 @@
+{
+  "run_id": "S4_mistral-7b_r1_ed08db",
+  "scenario_id": "S4",
+  "model_id": "mistral-7b",
+  "run_index": 1,
+  "start_time": "2026-02-24T16:10:46.423077+00:00",
+  "end_time": "2026-02-24T16:11:01.498452+00:00",
+  "duration_sec": 15.08,
+  "events_injected": 3400,
+  "attack_detected": true,
+  "detected_type": "DDoS/UDP Flood",
+  "detected_severity": "CRITICAL",
+  "confidence": 75.7,
+  "mitre_ttps_detected": [
+    "T0883",
+    "T0813"
+  ],
+  "ground_truth": {
+    "attack_type": "DDoS/UDP Flood",
+    "severity": "CRITICAL",
+    "target_zone": "airport",
+    "expected_detection": true
+  },
+  "correct_detection": true,
+  "correct_classification": true,
+  "ttp_coverage": 0.0,
+  "agent_output": {
+    "attack_detected": true,
+    "attack_type": "DDoS/UDP Flood",
+    "severity": "CRITICAL",
+    "confidence": 75.7,
+    "mitre_ttps": [
+      "T0883",
+      "T0813"
+    ],
+    "ddos_results": {
+      "attack_detected": true,
+      "attack_type": "udp_flood",
+      "mitre_ttps": [
+        "T0883",
+        "T0813"
+      ]
+    },
+    "malware_results": {},
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

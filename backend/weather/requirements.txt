@@ -1,0 +1,17 @@
+fastapi
+uvicorn[standard]
+langchain
+langchain-groq
+langgraph
+requests
+python-dotenv
+python-dateutil
+kafka-python
+orjson
+asyncio
+structlog
+pytest
+pytest-asyncio
+langchain-core
+pandas
+prometheus-fastapi-instrumentator

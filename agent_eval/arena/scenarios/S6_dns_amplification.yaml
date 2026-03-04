@@ -1,0 +1,40 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# S6 — DNS Amplification on School Complex
+# DNS amplification exploiting open resolvers near school zone.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+scenario_id: S6
+name: "DNS Amplification on School Complex"
+description: >
+  DNS amplification attack exploiting open resolvers near school zone.
+  IIT Bombay School Complex with SL-2 security.
+
+target_zone: school_complex
+target_zone_name: IIT Bombay School Complex
+security_level: 2
+severity: HIGH
+
+timing:
+  total_duration_sec: 120
+  warmup_sec: 20
+  cooldown_sec: 10
+
+phases:
+  - attack_type: dns_amplification
+    start_offset_sec: 0
+    duration_sec: 90
+    intensity: 0.7
+    events_per_second: 20
+
+ground_truth:
+  attack_type: "DDoS/DNS Amplification"
+  severity: HIGH
+  target_zone: school_complex
+  expected_detection: true
+
+mitre_ttps: ["T0883", "T0813"]
+
+evaluation:
+  expected_outcome: ddos
+  expected_attack_subtype: dns_amplification
+  min_confidence: 70

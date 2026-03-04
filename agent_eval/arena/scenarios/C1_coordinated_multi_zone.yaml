@@ -1,0 +1,65 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# C1 — Coordinated Multi-Zone Attack: Hospital + Airport
+# Simultaneous botnet on hospital and firmware tampering on airport.
+# Tests SOC pipeline's ability to handle parallel incidents across zones.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+scenario_id: C1
+name: "Coordinated Attack: Hospital Botnet + Airport Firmware Tamper"
+description: >
+  Simultaneous multi-zone attack: Mirai-style botnet recruitment on hospital
+  IoT devices while firmware tampering targets airport runway controllers.
+  Designed to overwhelm SOC analysts and test multi-zone detection correlation.
+  Based on CERT-In advisory on coordinated smart-city attacks (2025).
+
+target_zone: reliance_hospital
+target_zone_name: Reliance Hospital
+security_level: 4
+severity: CRITICAL
+
+timing:
+  total_duration_sec: 200
+  warmup_sec: 25
+  cooldown_sec: 15
+
+phases:
+  # Phase 1: Botnet scanning on hospital
+  - attack_type: botnet
+    start_offset_sec: 0
+    duration_sec: 100
+    intensity: 0.7
+    target_devices: all
+    events_per_second: 8
+    zone_override: reliance_hospital
+
+  # Phase 2: Firmware tampering on airport (starts 30s after botnet)
+  - attack_type: firmware_tamper
+    start_offset_sec: 30
+    duration_sec: 110
+    intensity: 0.8
+    events_per_second: 6
+    zone_override: airport
+
+  # Phase 3: Data exfiltration on hospital (after botnet establishes C2)
+  - attack_type: data_exfiltration
+    start_offset_sec: 80
+    duration_sec: 80
+    intensity: 0.6
+    events_per_second: 5
+    zone_override: reliance_hospital
+
+ground_truth:
+  attack_type: "Coordinated/Multi-Zone"
+  severity: CRITICAL
+  target_zone: reliance_hospital
+  secondary_zones: ["airport"]
+  expected_detection: true
+  sub_attacks: ["botnet", "firmware_tamper", "data_exfiltration"]
+
+mitre_ttps: ["T0882", "T0875", "T0869", "T0834", "T0813"]
+
+evaluation:
+  expected_outcome: malware
+  expected_attack_subtype: coordinated
+  min_confidence: 60
+  notes: "Multi-zone coordinated attack. Full credit if both zones flagged."

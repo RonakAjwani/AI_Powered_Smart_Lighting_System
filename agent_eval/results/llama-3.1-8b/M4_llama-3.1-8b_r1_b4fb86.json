@@ -1,0 +1,36 @@
+{
+  "run_id": "M4_llama-3.1-8b_r1_b4fb86",
+  "scenario_id": "M4",
+  "model_id": "llama-3.1-8b",
+  "run_index": 1,
+  "start_time": "2026-02-24T15:30:01.781175+00:00",
+  "end_time": "2026-02-24T15:30:31.871583+00:00",
+  "duration_sec": 30.09,
+  "events_injected": 555,
+  "attack_detected": false,
+  "detected_type": "none",
+  "detected_severity": "none",
+  "confidence": 32.22602719384706,
+  "mitre_ttps_detected": [],
+  "ground_truth": {
+    "attack_type": "Malware/Data Exfiltration",
+    "severity": "HIGH",
+    "target_zone": "bkc_commercial",
+    "expected_detection": true
+  },
+  "correct_detection": false,
+  "correct_classification": false,
+  "ttp_coverage": 1.0,
+  "agent_output": {
+    "attack_detected": false,
+    "attack_type": "none",
+    "severity": "none",
+    "confidence": 32.22602719384706,
+    "mitre_ttps": [],
+    "ddos_results": {},
+    "malware_results": {},
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

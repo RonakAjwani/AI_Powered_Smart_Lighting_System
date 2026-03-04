@@ -1,0 +1,40 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# S4 — UDP Flood on Airport
+# Critical transport infrastructure (SL-4).
+# ═══════════════════════════════════════════════════════════════════════════════
+
+scenario_id: S4
+name: "UDP Flood on Airport"
+description: >
+  Volumetric UDP flood on airport zone.
+  Critical transport infrastructure (SL-4).
+
+target_zone: airport
+target_zone_name: CSM International Airport
+security_level: 4
+severity: CRITICAL
+
+timing:
+  total_duration_sec: 120
+  warmup_sec: 15
+  cooldown_sec: 10
+
+phases:
+  - attack_type: udp_flood
+    start_offset_sec: 0
+    duration_sec: 95
+    intensity: 0.85
+    events_per_second: 35
+
+ground_truth:
+  attack_type: "DDoS/UDP Flood"
+  severity: CRITICAL
+  target_zone: airport
+  expected_detection: true
+
+mitre_ttps: ["T0883", "T0813"]
+
+evaluation:
+  expected_outcome: ddos
+  expected_attack_subtype: udp_flood
+  min_confidence: 75

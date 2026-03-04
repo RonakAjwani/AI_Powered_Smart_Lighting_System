@@ -1,0 +1,15 @@
+# Arena Controller & Evaluator Container
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY agents/cybersecurity/requirements.txt ./requirements.txt
+COPY arena/requirements.arena.txt ./requirements.arena.txt
+RUN pip install --no-cache-dir -r requirements.txt -r requirements.arena.txt
+
+COPY agents/cybersecurity/src/ ./src/
+COPY arena/ ./arena/
+
+ENV PYTHONPATH=/app/src:/app
+
+CMD ["python", "-m", "arena.controller"]

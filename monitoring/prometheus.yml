@@ -1,0 +1,57 @@
+global:
+  scrape_interval: 15s # How frequently to scrape targets by default.
+  evaluation_interval: 15s # How frequently to evaluate rules.
+
+scrape_configs:
+  # Prometheus self-monitoring
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Cybersecurity Agent monitoring (on port 8000)
+  - job_name: 'cybersecurity-agent'
+    static_configs:
+      # Use the service name defined in docker-compose.yml
+      - targets: ['cybersecurity-agent:8000']
+    metrics_path: '/metrics' # Standard path for FastAPI Prometheus metrics
+    scrape_interval: 30s
+    scrape_timeout: 10s
+
+  # Weather Intelligence Agent monitoring (on port 8001)
+  - job_name: 'weather-agent'
+    static_configs:
+      - targets: ['weather-agent:8001']
+    metrics_path: '/metrics'
+    scrape_interval: 30s
+    scrape_timeout: 10s
+
+  # Power Grid Management Agent monitoring (on port 8002)
+  - job_name: 'power-agent'
+    static_configs:
+      - targets: ['power-agent:8002']
+    metrics_path: '/metrics'
+    scrape_interval: 30s # Corrected 'scrap_interval' to 'scrape_interval'
+    scrape_timeout: 10s
+  
+  - job_name: 'coordinator-agent'
+    scrape_interval: 10s
+    static_configs:
+      - targets: ['coordinator-agent:8004']
+
+  # Note: Kafka, Redis, Postgres monitoring might need specific exporters
+  # configured separately if you want detailed metrics from them.
+  # The simple targets below likely won't work without exporters.
+  # - job_name: 'kafka'
+  #   static_configs:
+  #     - targets: ['kafka:9092']
+  #   scrape_interval: 30s
+
+  # - job_name: 'redis'
+  #   static_configs:
+  #     - targets: ['redis:6379']
+  #   scrape_interval: 30s
+
+  # - job_name: 'postgres'
+  #   static_configs:
+  #     - targets: ['postgres:5432']
+  #   scrape_interval: 30s

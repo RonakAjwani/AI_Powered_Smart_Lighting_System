@@ -1,0 +1,69 @@
+{
+  "run_id": "C5_qwen-2.5-32b_r1_04cd0f",
+  "scenario_id": "C5",
+  "model_id": "qwen-2.5-32b",
+  "run_index": 1,
+  "start_time": "2026-02-24T15:43:35.056226+00:00",
+  "end_time": "2026-02-24T15:44:05.202613+00:00",
+  "duration_sec": 30.15,
+  "events_injected": 6600,
+  "attack_detected": true,
+  "detected_type": "APT/City-Wide",
+  "detected_severity": "CRITICAL",
+  "confidence": 67.9,
+  "mitre_ttps_detected": [
+    "T0883",
+    "T0882",
+    "T0834",
+    "T0875",
+    "T0804",
+    "T0813",
+    "T0869"
+  ],
+  "ground_truth": {
+    "attack_type": "APT/City-Wide",
+    "severity": "CRITICAL",
+    "target_zone": "bkc_commercial",
+    "secondary_zones": [
+      "reliance_hospital",
+      "airport",
+      "port_area",
+      "school_complex",
+      "residential",
+      "highway_corridor"
+    ],
+    "expected_detection": true,
+    "sub_attacks": [
+      "http_flood",
+      "ransomware",
+      "firmware_tamper",
+      "botnet",
+      "syn_flood",
+      "dns_amplification",
+      "data_exfiltration"
+    ]
+  },
+  "correct_detection": true,
+  "correct_classification": true,
+  "ttp_coverage": 0.0,
+  "agent_output": {
+    "attack_detected": true,
+    "attack_type": "APT/City-Wide",
+    "severity": "CRITICAL",
+    "confidence": 67.9,
+    "mitre_ttps": [
+      "T0883",
+      "T0882",
+      "T0834",
+      "T0875",
+      "T0804",
+      "T0813",
+      "T0869"
+    ],
+    "ddos_results": {},
+    "malware_results": {},
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

@@ -1,0 +1,96 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# C5 — City-Wide Grid Attack: All 7 Zones Under Siege
+# Simultaneous attacks across all zones. Maximum stress test.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+scenario_id: C5
+name: "City-Wide Grid Attack: All Zones Under Siege"
+description: >
+  Worst-case scenario: coordinated APT-style attack targeting all 7 Mumbai
+  smart grid zones simultaneously. Each zone faces a different attack type.
+  Tests the SOC pipeline's scalability and prioritization under total chaos.
+  Inspired by real-world multi-sector cyber attacks (Ukraine 2015, India 2023).
+
+target_zone: bkc_commercial
+target_zone_name: BKC Commercial
+security_level: 2
+severity: CRITICAL
+
+timing:
+  total_duration_sec: 250
+  warmup_sec: 30
+  cooldown_sec: 20
+
+phases:
+  # Zone 1: BKC Commercial — HTTP flood DDoS
+  - attack_type: http_flood
+    start_offset_sec: 0
+    duration_sec: 120
+    intensity: 0.8
+    events_per_second: 15
+    zone_override: bkc_commercial
+
+  # Zone 2: Hospital — Ransomware
+  - attack_type: ransomware
+    start_offset_sec: 10
+    duration_sec: 130
+    intensity: 0.9
+    events_per_second: 7
+    zone_override: reliance_hospital
+
+  # Zone 3: Airport — Firmware tampering
+  - attack_type: firmware_tamper
+    start_offset_sec: 20
+    duration_sec: 100
+    intensity: 0.8
+    events_per_second: 5
+    zone_override: airport
+
+  # Zone 4: Port — Botnet
+  - attack_type: botnet
+    start_offset_sec: 15
+    duration_sec: 110
+    intensity: 0.7
+    target_devices: all
+    events_per_second: 8
+    zone_override: port_area
+
+  # Zone 5: School — SYN flood
+  - attack_type: syn_flood
+    start_offset_sec: 25
+    duration_sec: 90
+    intensity: 0.6
+    events_per_second: 10
+    zone_override: school_complex
+
+  # Zone 6: Residential — DNS amplification
+  - attack_type: dns_amplification
+    start_offset_sec: 30
+    duration_sec: 80
+    intensity: 0.7
+    events_per_second: 12
+    zone_override: residential
+
+  # Zone 7: Highway — Data exfiltration
+  - attack_type: data_exfiltration
+    start_offset_sec: 40
+    duration_sec: 100
+    intensity: 0.65
+    events_per_second: 5
+    zone_override: highway_corridor
+
+ground_truth:
+  attack_type: "APT/City-Wide"
+  severity: CRITICAL
+  target_zone: bkc_commercial
+  secondary_zones: ["reliance_hospital", "airport", "port_area", "school_complex", "residential", "highway_corridor"]
+  expected_detection: true
+  sub_attacks: ["http_flood", "ransomware", "firmware_tamper", "botnet", "syn_flood", "dns_amplification", "data_exfiltration"]
+
+mitre_ttps: ["T0883", "T0882", "T0834", "T0875", "T0804", "T0813", "T0869"]
+
+evaluation:
+  expected_outcome: mixed
+  expected_attack_subtype: city_wide
+  min_confidence: 45
+  notes: "All 7 zones attacked simultaneously. Partial credit for each zone detected."

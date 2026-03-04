@@ -1,0 +1,9 @@
+redis
+kafka-python
+langchain-cerebras
+langchain-groq
+langchain-mistralai
+jinja2
+pyyaml
+aiohttp
+websockets

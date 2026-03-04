@@ -1,0 +1,53 @@
+{
+  "run_id": "M2_llama-3.1-70b_r1_8c15eb",
+  "scenario_id": "M2",
+  "model_id": "llama-3.1-70b",
+  "run_index": 1,
+  "start_time": "2026-02-24T15:36:53.351318+00:00",
+  "end_time": "2026-02-24T15:37:13.445761+00:00",
+  "duration_sec": 20.09,
+  "events_injected": 1060,
+  "attack_detected": true,
+  "detected_type": "Malware/Ransomware",
+  "detected_severity": "CRITICAL",
+  "confidence": 90.6,
+  "mitre_ttps_detected": [
+    "T0883",
+    "T0875",
+    "T0834"
+  ],
+  "ground_truth": {
+    "attack_type": "Malware/Ransomware",
+    "severity": "CRITICAL",
+    "target_zone": "reliance_hospital",
+    "expected_detection": true,
+    "malware_family": "WannaCry-variant"
+  },
+  "correct_detection": true,
+  "correct_classification": true,
+  "ttp_coverage": 0.0,
+  "agent_output": {
+    "attack_detected": true,
+    "attack_type": "Malware/Ransomware",
+    "severity": "CRITICAL",
+    "confidence": 90.6,
+    "mitre_ttps": [
+      "T0883",
+      "T0875",
+      "T0834"
+    ],
+    "ddos_results": {},
+    "malware_results": {
+      "malware_detected": true,
+      "malware_type": "ransomware",
+      "mitre_ttps": [
+        "T0883",
+        "T0875",
+        "T0834"
+      ]
+    },
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

@@ -1,0 +1,54 @@
+{
+  "run_id": "C2_qwen-2.5-32b_r1_8e8b8f",
+  "scenario_id": "C2",
+  "model_id": "qwen-2.5-32b",
+  "run_index": 1,
+  "start_time": "2026-02-24T15:42:29.709460+00:00",
+  "end_time": "2026-02-24T15:42:49.781710+00:00",
+  "duration_sec": 20.07,
+  "events_injected": 4240,
+  "attack_detected": true,
+  "detected_type": "Unknown",
+  "detected_severity": "MEDIUM",
+  "confidence": 67.0,
+  "mitre_ttps_detected": [
+    "T0883",
+    "T0804",
+    "T0882",
+    "T0834"
+  ],
+  "ground_truth": {
+    "attack_type": "Coordinated/Dual-Strike",
+    "severity": "CRITICAL",
+    "target_zone": "bkc_commercial",
+    "secondary_zones": [
+      "port_area"
+    ],
+    "expected_detection": true,
+    "sub_attacks": [
+      "http_flood",
+      "syn_flood",
+      "ransomware"
+    ]
+  },
+  "correct_detection": true,
+  "correct_classification": false,
+  "ttp_coverage": 0.0,
+  "agent_output": {
+    "attack_detected": true,
+    "attack_type": "Unknown",
+    "severity": "MEDIUM",
+    "confidence": 67.0,
+    "mitre_ttps": [
+      "T0883",
+      "T0804",
+      "T0882",
+      "T0834"
+    ],
+    "ddos_results": {},
+    "malware_results": {},
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

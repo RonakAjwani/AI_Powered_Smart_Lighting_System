@@ -1,0 +1,36 @@
+{
+  "run_id": "S3_mistral-7b_r1_e91efd",
+  "scenario_id": "S3",
+  "model_id": "mistral-7b",
+  "run_index": 1,
+  "start_time": "2026-02-24T16:10:31.335629+00:00",
+  "end_time": "2026-02-24T16:10:46.422007+00:00",
+  "duration_sec": 15.09,
+  "events_injected": 3875,
+  "attack_detected": false,
+  "detected_type": "none",
+  "detected_severity": "none",
+  "confidence": 16.92083052630537,
+  "mitre_ttps_detected": [],
+  "ground_truth": {
+    "attack_type": "DDoS/SYN Flood",
+    "severity": "CRITICAL",
+    "target_zone": "reliance_hospital",
+    "expected_detection": true
+  },
+  "correct_detection": false,
+  "correct_classification": false,
+  "ttp_coverage": 1.0,
+  "agent_output": {
+    "attack_detected": false,
+    "attack_type": "none",
+    "severity": "none",
+    "confidence": 16.92083052630537,
+    "mitre_ttps": [],
+    "ddos_results": {},
+    "malware_results": {},
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

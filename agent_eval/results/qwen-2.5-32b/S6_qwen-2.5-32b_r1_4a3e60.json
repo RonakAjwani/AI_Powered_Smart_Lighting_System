@@ -1,0 +1,46 @@
+{
+  "run_id": "S6_qwen-2.5-32b_r1_4a3e60",
+  "scenario_id": "S6",
+  "model_id": "qwen-2.5-32b",
+  "run_index": 1,
+  "start_time": "2026-02-24T15:48:56.274651+00:00",
+  "end_time": "2026-02-24T15:49:16.369951+00:00",
+  "duration_sec": 20.1,
+  "events_injected": 1900,
+  "attack_detected": true,
+  "detected_type": "Unknown",
+  "detected_severity": "MEDIUM",
+  "confidence": 76.3,
+  "mitre_ttps_detected": [
+    "T0883",
+    "T0813"
+  ],
+  "ground_truth": {
+    "attack_type": "DDoS/DNS Amplification",
+    "severity": "HIGH",
+    "target_zone": "school_complex",
+    "expected_detection": true
+  },
+  "correct_detection": true,
+  "correct_classification": false,
+  "ttp_coverage": 0.0,
+  "agent_output": {
+    "attack_detected": true,
+    "attack_type": "Unknown",
+    "severity": "MEDIUM",
+    "confidence": 76.3,
+    "mitre_ttps": [],
+    "ddos_results": {
+      "attack_detected": true,
+      "attack_type": "dns_amplification",
+      "mitre_ttps": [
+        "T0883",
+        "T0813"
+      ]
+    },
+    "malware_results": {},
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

@@ -1,0 +1,49 @@
+{
+  "run_id": "S5_qwen-2.5-32b_r1_4a6af9",
+  "scenario_id": "S5",
+  "model_id": "qwen-2.5-32b",
+  "run_index": 1,
+  "start_time": "2026-02-24T15:48:26.142489+00:00",
+  "end_time": "2026-02-24T15:48:56.273064+00:00",
+  "duration_sec": 30.13,
+  "events_injected": 825,
+  "attack_detected": true,
+  "detected_type": "DDoS/Slowloris",
+  "detected_severity": "MEDIUM",
+  "confidence": 66.0,
+  "mitre_ttps_detected": [
+    "T0883",
+    "T0813"
+  ],
+  "ground_truth": {
+    "attack_type": "DDoS/Slowloris",
+    "severity": "MEDIUM",
+    "target_zone": "port_area",
+    "expected_detection": true
+  },
+  "correct_detection": true,
+  "correct_classification": true,
+  "ttp_coverage": 0.0,
+  "agent_output": {
+    "attack_detected": true,
+    "attack_type": "DDoS/Slowloris",
+    "severity": "MEDIUM",
+    "confidence": 66.0,
+    "mitre_ttps": [
+      "T0883",
+      "T0813"
+    ],
+    "ddos_results": {
+      "attack_detected": true,
+      "attack_type": "slowloris",
+      "mitre_ttps": [
+        "T0883",
+        "T0813"
+      ]
+    },
+    "malware_results": {},
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

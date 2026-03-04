@@ -1,0 +1,43 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# M1 — Mirai-Like Botnet on Highway Corridor
+# Based on CERT-In 2025 Indian smart city botnet threats.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+scenario_id: M1
+name: "Mirai-Like Botnet on Highway Corridor"
+description: >
+  IoT botnet recruitment via default credentials.
+  Based on CERT-In 2025 Indian smart city botnet threats.
+  Targets all highway smart poles for botnet enrollment.
+
+target_zone: highway_corridor
+target_zone_name: Western Express Highway
+security_level: 2
+severity: HIGH
+
+timing:
+  total_duration_sec: 180
+  warmup_sec: 20
+  cooldown_sec: 15
+
+phases:
+  - attack_type: botnet
+    start_offset_sec: 0
+    duration_sec: 145
+    intensity: 0.7
+    target_devices: all
+    events_per_second: 8
+
+ground_truth:
+  attack_type: "Malware/Botnet"
+  severity: HIGH
+  target_zone: highway_corridor
+  expected_detection: true
+  malware_family: Mirai
+
+mitre_ttps: ["T0882", "T0875", "T0869", "T0813"]
+
+evaluation:
+  expected_outcome: malware
+  expected_malware_type: botnet
+  min_confidence: 70

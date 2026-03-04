@@ -1,0 +1,68 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# C4 — Multi-Attack Single Zone: Full Assault on Hospital
+# Multiple simultaneous attack types targeting the critical hospital zone.
+# Tests depth of detection on a single high-value target.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+scenario_id: C4
+name: "Full Assault on Hospital Zone"
+description: >
+  All-out attack on the critical hospital zone with 4 simultaneous attack
+  vectors: DDoS (SYN flood + Slowloris), botnet recruitment, and data
+  exfiltration. Tests detection depth and prioritization under extreme load.
+  Simulates a targeted APT against critical healthcare infrastructure.
+
+target_zone: reliance_hospital
+target_zone_name: Reliance Hospital
+security_level: 4
+severity: CRITICAL
+
+timing:
+  total_duration_sec: 200
+  warmup_sec: 20
+  cooldown_sec: 15
+
+phases:
+  # Phase 1: SYN flood (distraction)
+  - attack_type: syn_flood
+    start_offset_sec: 0
+    duration_sec: 80
+    intensity: 0.7
+    events_per_second: 12
+
+  # Phase 2: Slowloris (stealth DDoS)
+  - attack_type: slowloris
+    start_offset_sec: 10
+    duration_sec: 100
+    intensity: 0.6
+    events_per_second: 5
+
+  # Phase 3: Botnet enrollment (main objective)
+  - attack_type: botnet
+    start_offset_sec: 30
+    duration_sec: 120
+    intensity: 0.8
+    target_devices: all
+    events_per_second: 8
+
+  # Phase 4: Data exfiltration (final stage)
+  - attack_type: data_exfiltration
+    start_offset_sec: 90
+    duration_sec: 75
+    intensity: 0.7
+    events_per_second: 6
+
+ground_truth:
+  attack_type: "APT/Full-Assault"
+  severity: CRITICAL
+  target_zone: reliance_hospital
+  expected_detection: true
+  sub_attacks: ["syn_flood", "slowloris", "botnet", "data_exfiltration"]
+
+mitre_ttps: ["T0804", "T0883", "T0882", "T0875", "T0834", "T0869"]
+
+evaluation:
+  expected_outcome: mixed
+  expected_attack_subtype: full_assault
+  min_confidence: 55
+  notes: "4 simultaneous attack types on one zone. Extra credit for identifying all vectors."

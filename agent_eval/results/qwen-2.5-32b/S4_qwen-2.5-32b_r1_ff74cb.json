@@ -1,0 +1,49 @@
+{
+  "run_id": "S4_qwen-2.5-32b_r1_ff74cb",
+  "scenario_id": "S4",
+  "model_id": "qwen-2.5-32b",
+  "run_index": 1,
+  "start_time": "2026-02-24T15:48:10.985081+00:00",
+  "end_time": "2026-02-24T15:48:26.139546+00:00",
+  "duration_sec": 15.15,
+  "events_injected": 3400,
+  "attack_detected": true,
+  "detected_type": "DDoS/UDP Flood",
+  "detected_severity": "CRITICAL",
+  "confidence": 70.7,
+  "mitre_ttps_detected": [
+    "T0883",
+    "T0813"
+  ],
+  "ground_truth": {
+    "attack_type": "DDoS/UDP Flood",
+    "severity": "CRITICAL",
+    "target_zone": "airport",
+    "expected_detection": true
+  },
+  "correct_detection": true,
+  "correct_classification": true,
+  "ttp_coverage": 0.0,
+  "agent_output": {
+    "attack_detected": true,
+    "attack_type": "DDoS/UDP Flood",
+    "severity": "CRITICAL",
+    "confidence": 70.7,
+    "mitre_ttps": [
+      "T0883",
+      "T0813"
+    ],
+    "ddos_results": {
+      "attack_detected": true,
+      "attack_type": "udp_flood",
+      "mitre_ttps": [
+        "T0883",
+        "T0813"
+      ]
+    },
+    "malware_results": {},
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

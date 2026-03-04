@@ -1,0 +1,49 @@
+{
+  "run_id": "S5_mixtral-8x7b_r1_54363a",
+  "scenario_id": "S5",
+  "model_id": "mixtral-8x7b",
+  "run_index": 1,
+  "start_time": "2026-02-24T15:55:58.009457+00:00",
+  "end_time": "2026-02-24T15:56:28.157697+00:00",
+  "duration_sec": 30.15,
+  "events_injected": 825,
+  "attack_detected": true,
+  "detected_type": "DDoS/Slowloris",
+  "detected_severity": "MEDIUM",
+  "confidence": 84.7,
+  "mitre_ttps_detected": [
+    "T0883",
+    "T0813"
+  ],
+  "ground_truth": {
+    "attack_type": "DDoS/Slowloris",
+    "severity": "MEDIUM",
+    "target_zone": "port_area",
+    "expected_detection": true
+  },
+  "correct_detection": true,
+  "correct_classification": true,
+  "ttp_coverage": 0.0,
+  "agent_output": {
+    "attack_detected": true,
+    "attack_type": "DDoS/Slowloris",
+    "severity": "MEDIUM",
+    "confidence": 84.7,
+    "mitre_ttps": [
+      "T0883",
+      "T0813"
+    ],
+    "ddos_results": {
+      "attack_detected": true,
+      "attack_type": "slowloris",
+      "mitre_ttps": [
+        "T0883",
+        "T0813"
+      ]
+    },
+    "malware_results": {},
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

@@ -1,0 +1,24 @@
+# SOC Agent Pipeline Container — runs live_pipeline.py
+# Consumes from Kafka, processes via SOCPipeline, publishes results
+FROM python:3.11-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y curl procps && rm -rf /var/lib/apt/lists/*
+
+COPY agents/cybersecurity/requirements.txt ./requirements.txt
+COPY arena/requirements.arena.txt ./requirements.arena.txt
+RUN pip install --no-cache-dir -r requirements.txt -r requirements.arena.txt
+
+COPY agents/cybersecurity/src/ ./src/
+COPY arena/ ./arena/
+
+ENV PYTHONPATH=/app/src:/app
+
+# Healthcheck: verify the live pipeline process is running
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD pgrep -f "arena.live_pipeline" > /dev/null || exit 1
+
+# Run the live pipeline (Kafka consumer → SOCPipeline → Redis/Kafka results)
+CMD ["python", "-m", "arena.live_pipeline"]
+

@@ -1,0 +1,49 @@
+{
+  "run_id": "M3_llama-3.1-8b_r1_bf1549",
+  "scenario_id": "M3",
+  "model_id": "llama-3.1-8b",
+  "run_index": 1,
+  "start_time": "2026-02-24T15:29:41.698547+00:00",
+  "end_time": "2026-02-24T15:30:01.780059+00:00",
+  "duration_sec": 20.08,
+  "events_injected": 550,
+  "attack_detected": true,
+  "detected_type": "Malware/Firmware Tampering",
+  "detected_severity": "CRITICAL",
+  "confidence": 93.9,
+  "mitre_ttps_detected": [
+    "T0883",
+    "T0875"
+  ],
+  "ground_truth": {
+    "attack_type": "Malware/Firmware Tampering",
+    "severity": "CRITICAL",
+    "target_zone": "airport",
+    "expected_detection": true
+  },
+  "correct_detection": true,
+  "correct_classification": true,
+  "ttp_coverage": 0.0,
+  "agent_output": {
+    "attack_detected": true,
+    "attack_type": "Malware/Firmware Tampering",
+    "severity": "CRITICAL",
+    "confidence": 93.9,
+    "mitre_ttps": [
+      "T0883",
+      "T0875"
+    ],
+    "ddos_results": {},
+    "malware_results": {
+      "malware_detected": true,
+      "malware_type": "firmware_tampering",
+      "mitre_ttps": [
+        "T0883",
+        "T0875"
+      ]
+    },
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

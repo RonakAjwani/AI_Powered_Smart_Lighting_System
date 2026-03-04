@@ -1,0 +1,53 @@
+{
+  "run_id": "S7_llama-3.1-70b_r1_95ae45",
+  "scenario_id": "S7",
+  "model_id": "llama-3.1-70b",
+  "run_index": 1,
+  "start_time": "2026-02-24T15:41:44.445520+00:00",
+  "end_time": "2026-02-24T15:42:04.603286+00:00",
+  "duration_sec": 20.16,
+  "events_injected": 3650,
+  "attack_detected": true,
+  "detected_type": "DDoS/Multi-Vector",
+  "detected_severity": "HIGH",
+  "confidence": 90.9,
+  "mitre_ttps_detected": [
+    "T0883",
+    "T0804",
+    "T0813"
+  ],
+  "ground_truth": {
+    "attack_type": "DDoS/Multi-Vector",
+    "severity": "HIGH",
+    "target_zone": "highway_corridor",
+    "expected_detection": true,
+    "sub_attacks": [
+      "http_flood",
+      "syn_flood",
+      "udp_flood"
+    ]
+  },
+  "correct_detection": true,
+  "correct_classification": true,
+  "ttp_coverage": 0.0,
+  "agent_output": {
+    "attack_detected": true,
+    "attack_type": "DDoS/Multi-Vector",
+    "severity": "HIGH",
+    "confidence": 90.9,
+    "mitre_ttps": [],
+    "ddos_results": {
+      "attack_detected": true,
+      "attack_type": "multi-vector",
+      "mitre_ttps": [
+        "T0883",
+        "T0804",
+        "T0813"
+      ]
+    },
+    "malware_results": {},
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

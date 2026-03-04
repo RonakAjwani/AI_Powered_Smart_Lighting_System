@@ -1,0 +1,46 @@
+{
+  "run_id": "S5_llama-3.1-70b_r1_a36708",
+  "scenario_id": "S5",
+  "model_id": "llama-3.1-70b",
+  "run_index": 1,
+  "start_time": "2026-02-24T15:40:54.167681+00:00",
+  "end_time": "2026-02-24T15:41:24.331187+00:00",
+  "duration_sec": 30.16,
+  "events_injected": 825,
+  "attack_detected": true,
+  "detected_type": "Unknown",
+  "detected_severity": "MEDIUM",
+  "confidence": 88.3,
+  "mitre_ttps_detected": [
+    "T0883",
+    "T0813"
+  ],
+  "ground_truth": {
+    "attack_type": "DDoS/Slowloris",
+    "severity": "MEDIUM",
+    "target_zone": "port_area",
+    "expected_detection": true
+  },
+  "correct_detection": true,
+  "correct_classification": false,
+  "ttp_coverage": 0.0,
+  "agent_output": {
+    "attack_detected": true,
+    "attack_type": "Unknown",
+    "severity": "MEDIUM",
+    "confidence": 88.3,
+    "mitre_ttps": [],
+    "ddos_results": {
+      "attack_detected": true,
+      "attack_type": "slowloris",
+      "mitre_ttps": [
+        "T0883",
+        "T0813"
+      ]
+    },
+    "malware_results": {},
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

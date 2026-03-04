@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+langchain
+langchain-groq
+langgraph
+kafka-python
+python-dotenv
+pydantic
+pydantic-settings
+prometheus-fastapi-instrumentator

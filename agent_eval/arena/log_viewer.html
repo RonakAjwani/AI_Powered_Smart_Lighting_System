@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arena Log Viewer — Smart Lighting Grid</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            /* Light theme — Wireshark + Battery Report inspired */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f5;
+            --bg-tertiary: #e8e8e8;
+            --bg-hover: #d6e4f0;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --text-muted: #808080;
+            --border: #c8c8c8;
+            --border-light: #e0e0e0;
+
+            /* Wireshark protocol-row backgrounds (pastel fills, dark text) */
+            --row-http: #e7f0fd;
+            /* light blue */
+            --row-https: #daf1f8;
+            /* light teal */
+            --row-mqtt: #e4f7d5;
+            /* light green */
+            --row-coap: #fff3d6;
+            /* light gold */
+            --row-sensor: #f0e6ff;
+            /* light lavender */
+            --row-device: #e0f4fc;
+            /* light cyan */
+            --row-alert: #fde7ea;
+            /* light red */
+
+            /* Text colors for protocol rows */
+            --color-http: #1c5aa6;
+            --color-https: #0e7490;
+            --color-mqtt: #3b7d1c;
+            --color-coap: #92660c;
+            --color-sensor: #6a3da8;
+            --color-device: #0c6990;
+            --color-alert: #b91c30;
+
+            /* Status */
+            --status-ok: #2e7d32;
+            --status-warn: #e65100;
+            --status-error: #c62828;
+            --status-info: #1565c0;
+
+            /* Accent */
+            --accent: #0063b1;
+            --accent-light: #cfe2f3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* ── Header / Toolbar ── */
+        .toolbar {
+            background: linear-gradient(180deg, #f8f9fa 0%, #eceff1 100%);
+            border-bottom: 1px solid var(--border);
+            padding: 6px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .toolbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--accent);
+            white-space: nowrap;
+        }
+
+        .toolbar-logo svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .toolbar-divider {
+            width: 1px;
+            height: 22px;
+            background: var(--border);
+        }
+
+        .filter-bar {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .filter-input {
+            flex: 1;
+            max-width: 500px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: 5px 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--text-primary);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .filter-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(0, 99, 177, 0.15);
+        }
+
+        .filter-input::placeholder {
+            color: #aaa;
+        }
+
+        .filter-btn {
+            padding: 5px 12px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            color: var(--text-secondary);
+            font-size: 11px;
+            font-weight: 500;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            cursor: pointer;
+            transition: all 0.15s;
+            white-space: nowrap;
+        }
+
+        .filter-btn:hover {
+            background: var(--bg-hover);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .filter-btn.active {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        .toolbar-stats {
+            display: flex;
+            gap: 14px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .stat-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+        }
+
+        .stat-dot.live {
+            background: var(--status-ok);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        .connection-status {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 11px;
+            font-weight: 500;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .connection-status.connected {
+            color: var(--status-ok);
+        }
+
+        .connection-status.disconnected {
+            color: var(--status-error);
+        }
+
+        /* ── Main Content Area ── */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* ── Packet List (top panel) ── */
+        .packet-list-container {
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 200px;
+        }
+
+        .packet-header {
+            display: grid;
+            grid-template-columns: 60px 100px 145px 145px 75px 95px 70px 1fr;
+            background: linear-gradient(180deg, #f0f0f0 0%, #e2e2e2 100%);
+            border-bottom: 1px solid var(--border);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            flex-shrink: 0;
+        }
+
+        .packet-header>div {
+            padding: 6px 8px;
+            border-right: 1px solid var(--border-light);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .packet-header>div:last-child {
+            border-right: none;
+        }
+
+        .packet-header>div:hover {
+            background: #d8d8d8;
+        }
+
+        .packet-list {
+            flex: 1;
+            overflow-y: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11.5px;
+            background: var(--bg-primary);
+        }
+
+        .packet-row {
+            display: grid;
+            grid-template-columns: 60px 100px 145px 145px 75px 95px 70px 1fr;
+            border-bottom: 1px solid var(--border-light);
+            cursor: pointer;
+            transition: background 0.08s;
+            color: var(--text-primary);
+        }
+
+        .packet-row:hover {
+            background: var(--bg-hover) !important;
+        }
+
+        .packet-row.selected {
+            background: var(--accent-light) !important;
+            outline: 1px solid var(--accent);
+        }
+
+        .packet-row>div {
+            padding: 3px 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.9;
+        }
+
+        /* Wireshark-style protocol row coloring (full-row background tint) */
+        .packet-row[data-protocol="HTTP"] {
+            background: var(--row-http);
+            color: var(--color-http);
+        }
+
+        .packet-row[data-protocol="HTTPS"] {
+            background: var(--row-https);
+            color: var(--color-https);
+        }
+
+        .packet-row[data-protocol="MQTT"] {
+            background: var(--row-mqtt);
+            color: var(--color-mqtt);
+        }
+
+        .packet-row[data-protocol="CoAP"] {
+            background: var(--row-coap);
+            color: var(--color-coap);
+        }
+
+        .packet-row[data-type="sensor"] {
+            background: var(--row-sensor);
+            color: var(--color-sensor);
+        }
+
+        .packet-row[data-type="device"] {
+            background: var(--row-device);
+            color: var(--color-device);
+        }
+
+        .packet-row[data-type="alert"] {
+            background: var(--row-alert);
+            color: var(--color-alert);
+        }
+
+        /* Status code badges */
+        .status-badge {
+            display: inline-block;
+            padding: 0px 5px;
+            border-radius: 3px;
+            font-size: 10.5px;
+            font-weight: 600;
+        }
+
+        .status-2xx {
+            background: #d4edda;
+            color: var(--status-ok);
+        }
+
+        .status-3xx {
+            background: #cce5ff;
+            color: var(--status-info);
+        }
+
+        .status-4xx {
+            background: #fff3cd;
+            color: var(--status-warn);
+        }
+
+        .status-5xx {
+            background: #f8d7da;
+            color: var(--status-error);
+        }
+
+        /* ── Resizer ── */
+        .resizer {
+            height: 4px;
+            background: var(--border);
+            cursor: ns-resize;
+            flex-shrink: 0;
+            transition: background 0.2s;
+        }
+
+        .resizer:hover,
+        .resizer.active {
+            background: var(--accent);
+        }
+
+        /* ── Detail Panel (bottom panel) ── */
+        .detail-panel {
+            height: 260px;
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border);
+            display: flex;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .detail-tree {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px 14px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+        }
+
+        .detail-hex {
+            width: 400px;
+            overflow-y: auto;
+            padding: 10px 14px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            background: #fafafa;
+            border-left: 1px solid var(--border-light);
+            color: var(--text-muted);
+        }
+
+        /* Tree view */
+        .tree-section {
+            margin-bottom: 2px;
+        }
+
+        .tree-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 3px 0;
+            cursor: pointer;
+            user-select: none;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .tree-header:hover {
+            color: var(--text-primary);
+            background: #f0f4fa;
+        }
+
+        .tree-arrow {
+            width: 10px;
+            font-size: 8px;
+            text-align: center;
+            transition: transform 0.15s;
+        }
+
+        .tree-arrow.open {
+            transform: rotate(90deg);
+        }
+
+        .tree-content {
+            padding-left: 20px;
+            overflow: hidden;
+        }
+
+        .tree-content.collapsed {
+            display: none;
+        }
+
+        .tree-field {
+            padding: 1.5px 0;
+            display: flex;
+            gap: 8px;
+        }
+
+        .tree-key {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .tree-value {
+            color: var(--text-primary);
+        }
+
+        .tree-value.string {
+            color: var(--color-mqtt);
+        }
+
+        .tree-value.number {
+            color: var(--color-coap);
+        }
+
+        .tree-value.boolean {
+            color: var(--color-sensor);
+        }
+
+        /* Hex view */
+        .hex-line {
+            display: flex;
+            gap: 12px;
+            line-height: 1.6;
+        }
+
+        .hex-offset {
+            color: var(--accent);
+            min-width: 60px;
+            font-weight: 500;
+        }
+
+        .hex-bytes {
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+        }
+
+        .hex-ascii {
+            color: var(--text-primary);
+        }
+
+        /* ── Status Bar ── */
+        .status-bar {
+            background: linear-gradient(180deg, #eceff1 0%, #e0e3e6 100%);
+            border-top: 1px solid var(--border);
+            padding: 3px 16px;
+            display: flex;
+            justify-content: space-between;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--text-muted);
+            flex-shrink: 0;
+        }
+
+        .status-bar-left,
+        .status-bar-right {
+            display: flex;
+            gap: 24px;
+        }
+
+        /* ── Zone badges ── */
+        .zone-badge {
+            display: inline-block;
+            padding: 0px 5px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            border: 1px solid;
+        }
+
+        .zone-bkc {
+            background: #dbeafe;
+            color: #1e40af;
+            border-color: #93c5fd;
+        }
+
+        .zone-hospital {
+            background: #fce7f3;
+            color: #9d174d;
+            border-color: #f9a8d4;
+        }
+
+        .zone-airport {
+            background: #e0f2fe;
+            color: #0c4a6e;
+            border-color: #7dd3fc;
+        }
+
+        .zone-port {
+            background: #fef3c7;
+            color: #78350f;
+            border-color: #fcd34d;
+        }
+
+        .zone-school {
+            background: #dcfce7;
+            color: #14532d;
+            border-color: #86efac;
+        }
+
+        .zone-residential {
+            background: #f3e8ff;
+            color: #581c87;
+            border-color: #c4b5fd;
+        }
+
+        .zone-highway {
+            background: #e0f2fe;
+            color: #075985;
+            border-color: #67e8f9;
+        }
+
+        /* ── Scrollbar ── */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f4f4f4;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #c0c0c0;
+            border-radius: 5px;
+            border: 2px solid #f4f4f4;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a0a0a0;
+        }
+
+        /* ── No data state ── */
+        .no-data {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: var(--text-muted);
+            gap: 8px;
+        }
+
+        .no-data-icon {
+            font-size: 32px;
+            opacity: 0.4;
+        }
+
+        /* ── Zone Sidebar (Wireshark-style interface list) ── */
+        .zone-sidebar {
+            width: 220px;
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            overflow-y: auto;
+        }
+
+        .zone-sidebar-header {
+            padding: 10px 12px 6px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .zone-sidebar-header .zone-count {
+            font-weight: 400;
+        }
+
+        .zone-item {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border-light);
+            cursor: pointer;
+            transition: background 0.12s;
+            position: relative;
+        }
+
+        .zone-item:hover {
+            background: var(--bg-hover);
+        }
+
+        .zone-item.active {
+            background: var(--accent-light);
+            border-left: 3px solid var(--accent);
+        }
+
+        .zone-item-name {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .zone-item-name .zone-evt-count {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 500;
+            color: var(--text-muted);
+            background: var(--bg-tertiary);
+            padding: 1px 6px;
+            border-radius: 8px;
+        }
+
+        .zone-item-meta {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 3px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .zone-sparkline {
+            height: 16px;
+            margin-top: 4px;
+            display: flex;
+            align-items: flex-end;
+            gap: 1px;
+        }
+
+        .zone-sparkline .bar {
+            width: 3px;
+            background: var(--accent);
+            border-radius: 1px 1px 0 0;
+            opacity: 0.5;
+            transition: height 0.3s;
+        }
+
+        .zone-item.active .zone-sparkline .bar {
+            opacity: 0.9;
+        }
+
+        .zone-item.alert-zone .zone-item-name {
+            color: var(--status-error);
+        }
+
+        .zone-item.alert-zone .zone-sparkline .bar {
+            background: var(--status-error);
+        }
+
+        .zone-rate-dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--status-ok);
+            margin-right: 4px;
+            animation: pulse 2s infinite;
+        }
+
+        .zone-rate-dot.idle {
+            background: var(--text-muted);
+            animation: none;
+        }
+
+        .zone-rate-dot.busy {
+            background: var(--status-warn);
+        }
+
+        .zone-rate-dot.alert {
+            background: var(--status-error);
+        }
+
+        /* ── Content wrapper with sidebar ── */
+        .content-wrapper {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* ── Severity filter buttons ── */
+        .filter-btn.severity-critical {
+            border-left: 3px solid #c62828;
+        }
+
+        .filter-btn.severity-high {
+            border-left: 3px solid #e65100;
+        }
+
+        .filter-btn.severity-medium {
+            border-left: 3px solid #f9a825;
+        }
+
+        .filter-btn.severity-low {
+            border-left: 3px solid #2e7d32;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <div class="toolbar-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+            </svg>
+            Arena Log Viewer
+        </div>
+
+        <div class="toolbar-divider"></div>
+
+        <div class="filter-bar">
+            <input type="text" class="filter-input" id="filterInput"
+                placeholder="Filter: zone == bkc_commercial && protocol == HTTP && status_code >= 400">
+            <button class="filter-btn" id="btnApplyFilter">Apply</button>
+            <button class="filter-btn" id="btnClear">Clear</button>
+            <div class="toolbar-divider"></div>
+
+            <!-- Protocol filters -->
+            <button class="filter-btn" data-filter="all" id="btnAll">All</button>
+            <button class="filter-btn" data-filter="network" id="btnNetwork">Network</button>
+            <button class="filter-btn" data-filter="sensor" id="btnSensor">Sensor</button>
+            <button class="filter-btn" data-filter="device" id="btnDevice">Device</button>
+            <button class="filter-btn" data-filter="alert" id="btnAlert">Alert</button>
+        </div>
+
+        <div class="toolbar-divider"></div>
+
+        <div class="toolbar-stats">
+            <div class="stat-item">
+                <div class="stat-dot live" id="liveDot"></div>
+                <span id="rateDisplay">0 evt/s</span>
+            </div>
+            <span id="totalDisplay">0 events</span>
+        </div>
+
+        <div class="toolbar-divider"></div>
+
+        <div class="connection-status disconnected" id="connStatus">
+            ● Disconnected
+        </div>
+
+        <button class="filter-btn" id="btnAutoScroll" title="Auto-scroll to latest">
+            ↓ Follow
+        </button>
+
+        <button class="filter-btn" id="btnPause" title="Pause/Resume">
+            ⏸ Pause
+        </button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="content-wrapper">
+            <!-- Zone Sidebar (Wireshark-style interface list) -->
+            <div class="zone-sidebar" id="zoneSidebar">
+                <div class="zone-sidebar-header">
+                    <span>ZONES / INTERFACES</span>
+                    <span class="zone-count" id="zoneCountLabel">0 active</span>
+                </div>
+                <div class="zone-item active" data-zone="all" id="zoneAll">
+                    <div class="zone-item-name">
+                        <span>🌐 All Zones</span>
+                        <span class="zone-evt-count" id="zoneAllCount">0</span>
+                    </div>
+                    <div class="zone-item-meta">
+                        <span><span class="zone-rate-dot"></span>All traffic</span>
+                        <span id="zoneAllRate">0/s</span>
+                    </div>
+                    <div class="zone-sparkline" id="zoneAllSparkline"></div>
+                </div>
+                <div class="zone-item" data-zone="bkc_commercial">
+                    <div class="zone-item-name">
+                        <span>🏢 BKC Commercial</span>
+                        <span class="zone-evt-count zone-count-bkc_commercial">0</span>
+                    </div>
+                    <div class="zone-item-meta">
+                        <span><span class="zone-rate-dot idle"></span>SL-2</span>
+                        <span class="zone-rate-bkc_commercial">0/s</span>
+                    </div>
+                    <div class="zone-sparkline zone-spark-bkc_commercial"></div>
+                </div>
+                <div class="zone-item" data-zone="reliance_hospital">
+                    <div class="zone-item-name">
+                        <span>🏥 Hospital Zone</span>
+                        <span class="zone-evt-count zone-count-reliance_hospital">0</span>
+                    </div>
+                    <div class="zone-item-meta">
+                        <span><span class="zone-rate-dot idle"></span>SL-4</span>
+                        <span class="zone-rate-reliance_hospital">0/s</span>
+                    </div>
+                    <div class="zone-sparkline zone-spark-reliance_hospital"></div>
+                </div>
+                <div class="zone-item" data-zone="airport">
+                    <div class="zone-item-name">
+                        <span>✈️ Airport Zone</span>
+                        <span class="zone-evt-count zone-count-airport">0</span>
+                    </div>
+                    <div class="zone-item-meta">
+                        <span><span class="zone-rate-dot idle"></span>SL-4</span>
+                        <span class="zone-rate-airport">0/s</span>
+                    </div>
+                    <div class="zone-sparkline zone-spark-airport"></div>
+                </div>
+                <div class="zone-item" data-zone="port_area">
+                    <div class="zone-item-name">
+                        <span>🚢 Port Zone</span>
+                        <span class="zone-evt-count zone-count-port_area">0</span>
+                    </div>
+                    <div class="zone-item-meta">
+                        <span><span class="zone-rate-dot idle"></span>SL-3</span>
+                        <span class="zone-rate-port_area">0/s</span>
+                    </div>
+                    <div class="zone-sparkline zone-spark-port_area"></div>
+                </div>
+                <div class="zone-item" data-zone="school_complex">
+                    <div class="zone-item-name">
+                        <span>🏫 School Zone</span>
+                        <span class="zone-evt-count zone-count-school_complex">0</span>
+                    </div>
+                    <div class="zone-item-meta">
+                        <span><span class="zone-rate-dot idle"></span>SL-1</span>
+                        <span class="zone-rate-school_complex">0/s</span>
+                    </div>
+                    <div class="zone-sparkline zone-spark-school_complex"></div>
+                </div>
+                <div class="zone-item" data-zone="residential">
+                    <div class="zone-item-name">
+                        <span>🏠 Residential</span>
+                        <span class="zone-evt-count zone-count-residential">0</span>
+                    </div>
+                    <div class="zone-item-meta">
+                        <span><span class="zone-rate-dot idle"></span>SL-1</span>
+                        <span class="zone-rate-residential">0/s</span>
+                    </div>
+                    <div class="zone-sparkline zone-spark-residential"></div>
+                </div>
+                <div class="zone-item" data-zone="highway_corridor">
+                    <div class="zone-item-name">
+                        <span>🛣️ Highway Corridor</span>
+                        <span class="zone-evt-count zone-count-highway_corridor">0</span>
+                    </div>
+                    <div class="zone-item-meta">
+                        <span><span class="zone-rate-dot idle"></span>SL-2</span>
+                        <span class="zone-rate-highway_corridor">0/s</span>
+                    </div>
+                    <div class="zone-sparkline zone-spark-highway_corridor"></div>
+                </div>
+            </div>
+
+            <!-- Right panel: packet list + detail -->
+            <div style="flex:1; display:flex; flex-direction:column; overflow:hidden;">
+                <!-- Packet List -->
+                <div class="packet-list-container">
+                    <div class="packet-header">
+                        <div data-sort="id">No.</div>
+                        <div data-sort="timestamp">Time</div>
+                        <div data-sort="source">Source</div>
+                        <div data-sort="destination">Destination</div>
+                        <div data-sort="protocol">Protocol</div>
+                        <div data-sort="zone">Zone</div>
+                        <div data-sort="status">Status</div>
+                        <div data-sort="info">Info</div>
+                    </div>
+                    <div class="packet-list" id="packetList">
+                        <div class="no-data" id="noData">
+                            <div class="no-data-icon">⚡</div>
+                            <div>Waiting for events...</div>
+                            <div style="font-size: 11px;">Start the server: python -m arena.log_server</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resizer -->
+                <div class="resizer" id="resizer"></div>
+
+                <!-- Detail Panel -->
+                <div class="detail-panel" id="detailPanel">
+                    <div class="detail-tree" id="detailTree">
+                        <div class="no-data">
+                            <div style="font-size: 11px; color: var(--text-muted);">Select an event to view details
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-hex" id="detailHex">
+                        <div class="no-data">
+                            <div style="font-size: 11px;">Raw payload</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <div class="status-bar-left">
+            <span id="statusPackets">Packets: 0</span>
+            <span id="statusDisplayed">Displayed: 0</span>
+            <span id="statusFilter">No filter</span>
+        </div>
+        <div class="status-bar-right">
+            <span id="statusZones">Zones: –</span>
+            <span id="statusProfile">Profile: Live Capture</span>
+        </div>
+    </div>
+
+    <script>
+        // ── State ──
+        const state = {
+            events: [],
+            filteredEvents: [],
+            selectedEvent: null,
+            autoScroll: true,
+            paused: false,
+            activeFilter: 'all',
+            activeZone: 'all',
+            filterExpression: '',
+            eventRate: 0,
+            eventCountLastSec: 0,
+            lastRateUpdate: Date.now(),
+            zones: new Set(),
+            zoneCounts: {},  // zone_id → total count
+            zoneRates: {},   // zone_id → events in last second
+            zoneHistory: {}, // zone_id → [last 20 counts for sparkline]
+            ws: null,
+            wsReconnectTimer: null,
+        };
+
+        // ── DOM refs ──
+        const packetList = document.getElementById('packetList');
+        const noData = document.getElementById('noData');
+        const detailTree = document.getElementById('detailTree');
+        const detailHex = document.getElementById('detailHex');
+        const filterInput = document.getElementById('filterInput');
+        const connStatus = document.getElementById('connStatus');
+
+        // ── WebSocket Connection ──
+        function connectWebSocket() {
+            const wsPort = parseInt(location.port || '8888') + 1;
+            const wsUrl = `ws://${location.hostname}:${wsPort}`;
+
+            state.ws = new WebSocket(wsUrl);
+
+            state.ws.onopen = () => {
+                connStatus.className = 'connection-status connected';
+                connStatus.textContent = '● Connected';
+                if (state.wsReconnectTimer) {
+                    clearTimeout(state.wsReconnectTimer);
+                    state.wsReconnectTimer = null;
+                }
+            };
+
+            state.ws.onclose = () => {
+                connStatus.className = 'connection-status disconnected';
+                connStatus.textContent = '● Disconnected';
+                state.wsReconnectTimer = setTimeout(connectWebSocket, 3000);
+            };
+
+            state.ws.onerror = () => {
+                connStatus.className = 'connection-status disconnected';
+                connStatus.textContent = '● Error';
+            };
+
+            state.ws.onmessage = (msg) => {
+                if (state.paused) return;
+                try {
+                    const event = JSON.parse(msg.data);
+                    if (event.type === 'stats') return; // Skip stats messages
+                    addEvent(event);
+                } catch (e) {
+                    console.error('Parse error:', e);
+                }
+            };
+        }
+
+        // ── Add Event ──
+        function addEvent(event) {
+            state.events.push(event);
+            state.eventCountLastSec++;
+
+            // Track zone stats
+            const zoneId = event.zone_id || 'unknown';
+            state.zones.add(zoneId);
+            state.zoneCounts[zoneId] = (state.zoneCounts[zoneId] || 0) + 1;
+            state.zoneRates[zoneId] = (state.zoneRates[zoneId] || 0) + 1;
+
+            // Keep buffer bounded
+            if (state.events.length > 10000) {
+                state.events = state.events.slice(-8000);
+            }
+
+            // Apply filter (including zone filter)
+            if (matchesFilter(event)) {
+                state.filteredEvents.push(event);
+                appendPacketRow(event);
+            }
+
+            updateStatusBar();
+            updateZoneSidebar();
+        }
+
+        // ── Filter ──
+        function matchesFilter(event) {
+            // Zone filter (sidebar)
+            if (state.activeZone !== 'all') {
+                const zoneId = event.zone_id || 'unknown';
+                if (!zoneId.includes(state.activeZone)) return false;
+            }
+
+            // Type filter
+            if (state.activeFilter !== 'all') {
+                const etype = event.event_type || '';
+                if (state.activeFilter === 'network' && !etype.includes('network')) return false;
+                if (state.activeFilter === 'sensor' && !etype.includes('sensor')) return false;
+                if (state.activeFilter === 'device' && !etype.includes('device')) return false;
+                if (state.activeFilter === 'alert' && !etype.includes('alert')) return false;
+            }
+
+            // Expression filter
+            if (state.filterExpression) {
+                const expr = state.filterExpression.toLowerCase();
+                const parts = expr.split(/\s*&&\s*/);
+                for (const part of parts) {
+                    const match = part.match(/(\w+)\s*(==|!=|>=|<=|>|<|contains)\s*(.+)/);
+                    if (!match) continue;
+                    const [, key, op, val] = match;
+                    const eventVal = getNestedValue(event, key.trim());
+                    const testVal = val.trim().replace(/['"] /g, '');
+
+                    if (eventVal === undefined) return false;
+
+                    const evStr = String(eventVal).toLowerCase();
+                    const testStr = testVal.toLowerCase();
+
+                    switch (op) {
+                        case '==': if (evStr !== testStr) return false; break;
+                        case '!=': if (evStr === testStr) return false; break;
+                        case 'contains': if (!evStr.includes(testStr)) return false; break;
+                        case '>=': if (Number(eventVal) < Number(testVal)) return false; break;
+                        case '<=': if (Number(eventVal) > Number(testVal)) return false; break;
+                        case '>': if (Number(eventVal) <= Number(testVal)) return false; break;
+                        case '<': if (Number(eventVal) >= Number(testVal)) return false; break;
+                    }
+                }
+            }
+            return true;
+        }
+
+        function getNestedValue(obj, key) {
+            const keys = key.split('.');
+            let val = obj;
+            for (const k of keys) {
+                if (val == null) return undefined;
+                val = val[k];
+            }
+            return val;
+        }
+
+        // ── Render Packet Row ──
+        function appendPacketRow(event) {
+            if (noData.parentNode) noData.remove();
+
+            const row = document.createElement('div');
+            row.className = 'packet-row';
+
+            const etype = event.event_type || 'unknown';
+            const protocol = event.protocol || (etype.includes('sensor') ? 'SENS' : etype.includes('device') ? 'DEV' : '—');
+            const typeAttr = etype.includes('sensor') ? 'sensor' : etype.includes('device') ? 'device' : etype.includes('alert') ? 'alert' : 'network';
+
+            row.setAttribute('data-protocol', protocol);
+            row.setAttribute('data-type', typeAttr);
+            row.dataset.eventId = event.id;
+
+            // Time
+            const ts = event.timestamp ? new Date(event.timestamp) : new Date();
+            const timeStr = ts.toLocaleTimeString('en-GB', { hour12: false }) + '.' + String(ts.getMilliseconds()).padStart(3, '0');
+
+            // Source / Dest
+            const source = event.source_ip || event.device_id || '—';
+            const dest = event.destination_ip ? `${event.destination_ip}:${event.destination_port || ''}` : (event.gateway_id || '—');
+
+            // Status
+            let statusHtml = '—';
+            if (event.status_code) {
+                const code = event.status_code;
+                const cls = code < 300 ? 'status-2xx' : code < 400 ? 'status-3xx' : code < 500 ? 'status-4xx' : 'status-5xx';
+                statusHtml = `<span class="status-badge ${cls}">${code}</span>`;
+            } else if (event.status) {
+                statusHtml = event.status;
+            }
+
+            // Zone
+            const zone = event.zone_id || '—';
+            const zoneShort = zone.replace(/_/g, ' ').split(' ')[0];
+            const zoneClass = zone.includes('bkc') ? 'zone-bkc' :
+                zone.includes('hospital') ? 'zone-hospital' :
+                    zone.includes('airport') ? 'zone-airport' :
+                        zone.includes('port') ? 'zone-port' :
+                            zone.includes('school') ? 'zone-school' :
+                                zone.includes('residential') ? 'zone-residential' :
+                                    zone.includes('highway') ? 'zone-highway' : '';
+
+            // Info
+            let info = '';
+            if (event.method && event.endpoint) {
+                info = `${event.method} ${event.endpoint}`;
+                if (event.bytes_sent) info += ` [${event.bytes_sent}→${event.bytes_received || 0}B]`;
+            } else if (event.metrics) {
+                const m = event.metrics;
+                info = `Lux:${m.ambient_lux || '—'} Pwr:${m.power_watts || '—'}W Brt:${m.brightness_pct || '—'}%`;
+                if (m.motion_detected) info += ' ⚡MOTION';
+            } else if (event.event_subtype) {
+                info = event.event_subtype;
+                if (event.firmware_version) info += ` (fw:${event.firmware_version})`;
+            }
+
+            row.innerHTML = `
+                <div>${event.id || '—'}</div>
+                <div>${timeStr}</div>
+                <div title="${source}">${source}</div>
+                <div title="${dest}">${dest}</div>
+                <div>${protocol}</div>
+                <div><span class="zone-badge ${zoneClass}">${zoneShort}</span></div>
+                <div>${statusHtml}</div>
+                <div title="${info}">${info}</div>
+            `;
+
+            row.addEventListener('click', () => selectEvent(event, row));
+            packetList.appendChild(row);
+
+            // Auto-scroll
+            if (state.autoScroll) {
+                packetList.scrollTop = packetList.scrollHeight;
+            }
+
+            // Performance: remove old rows
+            while (packetList.children.length > 3000) {
+                packetList.removeChild(packetList.firstChild);
+            }
+        }
+
+        // ── Select Event (show details) ──
+        function selectEvent(event, row) {
+            // Deselect previous
+            document.querySelectorAll('.packet-row.selected').forEach(r => r.classList.remove('selected'));
+            row.classList.add('selected');
+            state.selectedEvent = event;
+
+            // Render tree view
+            renderDetailTree(event);
+            renderHexView(event);
+        }
+
+        function renderDetailTree(event) {
+            detailTree.innerHTML = '';
+            const sections = organizeEventData(event);
+            for (const [name, data] of Object.entries(sections)) {
+                detailTree.appendChild(createTreeSection(name, data));
+            }
+        }
+
+        function organizeEventData(event) {
+            const sections = {};
+            const meta = {};
+            const network = {};
+            const device = {};
+            const metrics = {};
+            const other = {};
+
+            for (const [key, value] of Object.entries(event)) {
+                if (['id', 'topic', 'received_at', 'timestamp', 'event_type'].includes(key)) {
+                    meta[key] = value;
+                } else if (['source_ip', 'destination_ip', 'destination_port', 'protocol', 'method', 'endpoint',
+                    'status_code', 'response_time_ms', 'bytes_sent', 'bytes_received', 'packet_size',
+                    'source_mac', 'user_agent'].includes(key)) {
+                    network[key] = value;
+                } else if (['device_id', 'device_type', 'gateway_id', 'ip_address', 'mac_address',
+                    'firmware_version', 'status', 'event_subtype'].includes(key)) {
+                    device[key] = value;
+                } else if (key === 'metrics' && typeof value === 'object') {
+                    Object.assign(metrics, value);
+                } else if (key === 'location' && typeof value === 'object') {
+                    device['latitude'] = value.lat;
+                    device['longitude'] = value.lon;
+                } else if (key === 'details' && typeof value === 'object') {
+                    Object.assign(other, value);
+                } else {
+                    other[key] = value;
+                }
+            }
+
+            sections['▸ Event Metadata'] = meta;
+            if (Object.keys(network).length > 0) sections['▸ Network Layer'] = network;
+            if (Object.keys(device).length > 0) sections['▸ Device Info'] = device;
+            if (Object.keys(metrics).length > 0) sections['▸ Sensor Metrics'] = metrics;
+            if (Object.keys(other).length > 0) sections['▸ Additional Data'] = other;
+            return sections;
+        }
+
+        function createTreeSection(name, data) {
+            const section = document.createElement('div');
+            section.className = 'tree-section';
+
+            const header = document.createElement('div');
+            header.className = 'tree-header';
+
+            const arrow = document.createElement('span');
+            arrow.className = 'tree-arrow open';
+            arrow.textContent = '▶';
+
+            const title = document.createElement('span');
+            title.textContent = name;
+
+            header.appendChild(arrow);
+            header.appendChild(title);
+
+            const content = document.createElement('div');
+            content.className = 'tree-content';
+
+            for (const [key, value] of Object.entries(data)) {
+                const field = document.createElement('div');
+                field.className = 'tree-field';
+                const valueType = typeof value === 'string' ? 'string' :
+                    typeof value === 'number' ? 'number' :
+                        typeof value === 'boolean' ? 'boolean' : '';
+                field.innerHTML = `<span class="tree-key">${key}:</span> <span class="tree-value ${valueType}">${formatValue(value)}</span>`;
+                content.appendChild(field);
+            }
+
+            header.addEventListener('click', () => {
+                arrow.classList.toggle('open');
+                content.classList.toggle('collapsed');
+            });
+
+            section.appendChild(header);
+            section.appendChild(content);
+            return section;
+        }
+
+        function formatValue(val) {
+            if (val === null || val === undefined) return 'null';
+            if (typeof val === 'boolean') return val ? 'true' : 'false';
+            if (typeof val === 'object') return JSON.stringify(val);
+            return String(val);
+        }
+
+        // ── Hex View ──
+        function renderHexView(event) {
+            const json = JSON.stringify(event, null, 0);
+            const bytes = new TextEncoder().encode(json);
+            detailHex.innerHTML = '';
+
+            const title = document.createElement('div');
+            title.style.cssText = 'color: var(--text-secondary); margin-bottom: 8px; font-weight: 600;';
+            title.textContent = `Raw Payload (${bytes.length} bytes)`;
+            detailHex.appendChild(title);
+
+            for (let offset = 0; offset < bytes.length; offset += 16) {
+                const line = document.createElement('div');
+                line.className = 'hex-line';
+
+                const offsetSpan = document.createElement('span');
+                offsetSpan.className = 'hex-offset';
+                offsetSpan.textContent = offset.toString(16).padStart(8, '0');
+
+                const hexSpan = document.createElement('span');
+                hexSpan.className = 'hex-bytes';
+                const asciiSpan = document.createElement('span');
+                asciiSpan.className = 'hex-ascii';
+
+                let hexStr = '';
+                let asciiStr = '';
+                for (let i = 0; i < 16; i++) {
+                    if (offset + i < bytes.length) {
+                        hexStr += bytes[offset + i].toString(16).padStart(2, '0') + ' ';
+                        const ch = bytes[offset + i];
+                        asciiStr += (ch >= 32 && ch <= 126) ? String.fromCharCode(ch) : '.';
+                    } else {
+                        hexStr += '   ';
+                        asciiStr += ' ';
+                    }
+                    if (i === 7) hexStr += ' ';
+                }
+                hexSpan.textContent = hexStr;
+                asciiSpan.textContent = asciiStr;
+
+                line.appendChild(offsetSpan);
+                line.appendChild(hexSpan);
+                line.appendChild(asciiSpan);
+                detailHex.appendChild(line);
+            }
+        }
+
+        // ── Event Handlers ──
+
+        // Filter buttons
+        document.querySelectorAll('.filter-btn[data-filter]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn[data-filter]').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                state.activeFilter = btn.dataset.filter;
+                reapplyFilter();
+            });
+        });
+
+        document.getElementById('btnApplyFilter').addEventListener('click', () => {
+            state.filterExpression = filterInput.value.trim();
+            reapplyFilter();
+        });
+
+        filterInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                state.filterExpression = filterInput.value.trim();
+                reapplyFilter();
+            }
+        });
+
+        document.getElementById('btnClear').addEventListener('click', () => {
+            filterInput.value = '';
+            state.filterExpression = '';
+            state.activeFilter = 'all';
+            document.querySelectorAll('.filter-btn[data-filter]').forEach(b => b.classList.remove('active'));
+            document.querySelector('[data-filter="all"]').classList.add('active');
+            reapplyFilter();
+        });
+
+        document.getElementById('btnAutoScroll').addEventListener('click', function () {
+            state.autoScroll = !state.autoScroll;
+            this.classList.toggle('active', state.autoScroll);
+            this.textContent = state.autoScroll ? '↓ Follow' : '↓ Paused';
+        });
+
+        document.getElementById('btnPause').addEventListener('click', function () {
+            state.paused = !state.paused;
+            this.textContent = state.paused ? '▶ Resume' : '⏸ Pause';
+            this.classList.toggle('active', state.paused);
+            document.getElementById('liveDot').style.animationPlayState = state.paused ? 'paused' : 'running';
+        });
+
+        function reapplyFilter() {
+            state.filteredEvents = state.events.filter(matchesFilter);
+            packetList.innerHTML = '';
+            if (state.filteredEvents.length === 0) {
+                packetList.appendChild(noData);
+            }
+            state.filteredEvents.forEach(appendPacketRow);
+            updateStatusBar();
+        }
+
+        // ── Resizer ──
+        const resizer = document.getElementById('resizer');
+        const detailPanel = document.getElementById('detailPanel');
+        let isResizing = false;
+
+        resizer.addEventListener('mousedown', (e) => {
+            isResizing = true;
+            resizer.classList.add('active');
+            e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isResizing) return;
+            const containerRect = document.querySelector('.main-content').getBoundingClientRect();
+            const newHeight = containerRect.bottom - e.clientY;
+            detailPanel.style.height = Math.max(100, Math.min(newHeight, 600)) + 'px';
+        });
+
+        document.addEventListener('mouseup', () => {
+            isResizing = false;
+            resizer.classList.remove('active');
+        });
+
+        // ── Status Bar Updates ──
+        function updateStatusBar() {
+            document.getElementById('statusPackets').textContent = `Packets: ${state.events.length}`;
+            document.getElementById('statusDisplayed').textContent = `Displayed: ${state.filteredEvents.length}`;
+            document.getElementById('statusFilter').textContent = state.filterExpression ? `Filter: ${state.filterExpression}` : 'No filter';
+            document.getElementById('totalDisplay').textContent = `${state.events.length} events`;
+            document.getElementById('statusZones').textContent = `Zones: ${state.zones.size}`;
+        }
+
+        // ── Rate calculation ──
+        setInterval(() => {
+            const now = Date.now();
+            const elapsed = (now - state.lastRateUpdate) / 1000;
+            state.eventRate = Math.round(state.eventCountLastSec / elapsed);
+            state.eventCountLastSec = 0;
+            state.lastRateUpdate = now;
+            document.getElementById('rateDisplay').textContent = `${state.eventRate} evt/s`;
+        }, 1000);
+
+        // ── Zone Sidebar Logic ──
+        function updateZoneSidebar() {
+            // Update All Zones count
+            const allCountEl = document.getElementById('zoneAllCount');
+            if (allCountEl) allCountEl.textContent = state.events.length;
+
+            // Update per-zone counts
+            for (const zoneId of Object.keys(state.zoneCounts)) {
+                const countEl = document.querySelector(`.zone-count-${zoneId}`);
+                if (countEl) countEl.textContent = state.zoneCounts[zoneId];
+            }
+        }
+
+        function updateZoneRatesAndSparklines() {
+            // Update All rate
+            const allRateEl = document.getElementById('zoneAllRate');
+            if (allRateEl) allRateEl.textContent = `${state.eventRate}/s`;
+
+            const knownZones = ['bkc_commercial', 'hospital_zone', 'airport_zone',
+                'port_zone', 'school_zone', 'residential_zone', 'highway_zone'];
+
+            knownZones.forEach(zoneId => {
+                const rate = state.zoneRates[zoneId] || 0;
+
+                // Update rate display
+                const rateEl = document.querySelector(`.zone-rate-${zoneId}`);
+                if (rateEl) rateEl.textContent = `${rate}/s`;
+
+                // Update rate dot
+                const item = document.querySelector(`.zone-item[data-zone="${zoneId}"]`);
+                if (item) {
+                    const dot = item.querySelector('.zone-rate-dot');
+                    if (dot) {
+                        dot.className = 'zone-rate-dot ' + (rate > 20 ? 'alert' : rate > 5 ? 'busy' : rate > 0 ? '' : 'idle');
+                    }
+                    // Mark zones with alerts
+                    const hasAlerts = state.events.some(e => (e.zone_id || '').includes(zoneId) && (e.event_type || '').includes('alert'));
+                    item.classList.toggle('alert-zone', hasAlerts && rate > 10);
+                }
+
+                // Update sparkline
+                if (!state.zoneHistory[zoneId]) state.zoneHistory[zoneId] = [];
+                state.zoneHistory[zoneId].push(rate);
+                if (state.zoneHistory[zoneId].length > 20) state.zoneHistory[zoneId].shift();
+
+                const sparkEl = document.querySelector(`.zone-spark-${zoneId}`);
+                if (sparkEl) {
+                    const maxRate = Math.max(...state.zoneHistory[zoneId], 1);
+                    sparkEl.innerHTML = state.zoneHistory[zoneId].map(v =>
+                        `<div class="bar" style="height:${Math.max(1, (v / maxRate) * 16)}px"></div>`
+                    ).join('');
+                }
+
+                // Reset rate counter
+                state.zoneRates[zoneId] = 0;
+            });
+
+            // Also update All sparkline
+            if (!state.zoneHistory['_all']) state.zoneHistory['_all'] = [];
+            state.zoneHistory['_all'].push(state.eventRate);
+            if (state.zoneHistory['_all'].length > 20) state.zoneHistory['_all'].shift();
+            const allSparkEl = document.getElementById('zoneAllSparkline');
+            if (allSparkEl) {
+                const maxRate = Math.max(...state.zoneHistory['_all'], 1);
+                allSparkEl.innerHTML = state.zoneHistory['_all'].map(v =>
+                    `<div class="bar" style="height:${Math.max(1, (v / maxRate) * 16)}px"></div>`
+                ).join('');
+            }
+        }
+
+        // Zone sidebar click handlers
+        document.querySelectorAll('.zone-item[data-zone]').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelectorAll('.zone-item').forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                state.activeZone = item.dataset.zone;
+                reapplyFilter();
+
+                // Update active zone count display
+                const count = state.activeZone === 'all'
+                    ? state.events.length
+                    : (state.zoneCounts[state.activeZone] || 0);
+                document.getElementById('statusFilter').textContent =
+                    state.activeZone === 'all' ? 'All zones' : `Zone: ${state.activeZone}`;
+            });
+        });
+
+        // Hook sparkline updates into rate interval
+        const origRateInterval = setInterval(() => {
+            updateZoneRatesAndSparklines();
+        }, 1000);
+
+        // ── Initialize ──
+        document.querySelector('[data-filter="all"]').classList.add('active');
+        connectWebSocket();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+{
+  "run_id": "C2_mistral-7b_r1_3c711e",
+  "scenario_id": "C2",
+  "model_id": "mistral-7b",
+  "run_index": 1,
+  "start_time": "2026-02-24T16:05:05.308010+00:00",
+  "end_time": "2026-02-24T16:05:25.355658+00:00",
+  "duration_sec": 20.05,
+  "events_injected": 4240,
+  "attack_detected": true,
+  "detected_type": "Coordinated/Dual-Strike",
+  "detected_severity": "CRITICAL",
+  "confidence": 87.7,
+  "mitre_ttps_detected": [],
+  "ground_truth": {
+    "attack_type": "Coordinated/Dual-Strike",
+    "severity": "CRITICAL",
+    "target_zone": "bkc_commercial",
+    "secondary_zones": [
+      "port_area"
+    ],
+    "expected_detection": true,
+    "sub_attacks": [
+      "http_flood",
+      "syn_flood",
+      "ransomware"
+    ]
+  },
+  "correct_detection": true,
+  "correct_classification": true,
+  "ttp_coverage": 1.0,
+  "agent_output": {
+    "attack_detected": true,
+    "attack_type": "Coordinated/Dual-Strike",
+    "severity": "CRITICAL",
+    "confidence": 87.7,
+    "mitre_ttps": [],
+    "ddos_results": {},
+    "malware_results": {},
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

@@ -1,0 +1,72 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# C3 — Cascade Attack: Highway → Residential → School
+# Sequential multi-zone attack that spreads across 3 zones progressively.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+scenario_id: C3
+name: "Cascade Attack: Highway → Residential → School"
+description: >
+  APT-style sequential attack originating from highway corridor, spreading
+  to residential zone, then targeting school zone. Simulates worm-like
+  lateral movement across the Mumbai smart grid.
+
+target_zone: highway_corridor
+target_zone_name: Western Express Highway
+security_level: 2
+severity: HIGH
+
+timing:
+  total_duration_sec: 240
+  warmup_sec: 25
+  cooldown_sec: 20
+
+phases:
+  # Phase 1: Initial botnet on highway
+  - attack_type: botnet
+    start_offset_sec: 0
+    duration_sec: 80
+    intensity: 0.6
+    target_devices: all
+    events_per_second: 6
+    zone_override: highway_corridor
+
+  # Phase 2: Lateral movement to residential
+  - attack_type: botnet
+    start_offset_sec: 60
+    duration_sec: 90
+    intensity: 0.7
+    target_devices: random
+    events_per_second: 8
+    zone_override: residential
+
+  # Phase 3: DDoS from compromised devices onto school zone
+  - attack_type: http_flood
+    start_offset_sec: 120
+    duration_sec: 80
+    intensity: 0.8
+    events_per_second: 15
+    zone_override: school_complex
+
+  # Phase 4: Data exfiltration across all compromised zones
+  - attack_type: data_exfiltration
+    start_offset_sec: 160
+    duration_sec: 55
+    intensity: 0.5
+    events_per_second: 4
+    zone_override: highway_corridor
+
+ground_truth:
+  attack_type: "APT/Cascade"
+  severity: HIGH
+  target_zone: highway_corridor
+  secondary_zones: ["residential", "school_complex"]
+  expected_detection: true
+  sub_attacks: ["botnet", "http_flood", "data_exfiltration"]
+
+mitre_ttps: ["T0882", "T0875", "T0883", "T0834", "T0869"]
+
+evaluation:
+  expected_outcome: malware
+  expected_attack_subtype: cascade
+  min_confidence: 50
+  notes: "Multi-zone sequential attack. Partial credit for detecting individual phases."

@@ -1,0 +1,49 @@
+{
+  "run_id": "S5_mistral-7b_r1_56ceb2",
+  "scenario_id": "S5",
+  "model_id": "mistral-7b",
+  "run_index": 1,
+  "start_time": "2026-02-24T16:11:01.498765+00:00",
+  "end_time": "2026-02-24T16:11:31.641064+00:00",
+  "duration_sec": 30.14,
+  "events_injected": 825,
+  "attack_detected": true,
+  "detected_type": "DDoS/Slowloris",
+  "detected_severity": "MEDIUM",
+  "confidence": 70.1,
+  "mitre_ttps_detected": [
+    "T0883",
+    "T0813"
+  ],
+  "ground_truth": {
+    "attack_type": "DDoS/Slowloris",
+    "severity": "MEDIUM",
+    "target_zone": "port_area",
+    "expected_detection": true
+  },
+  "correct_detection": true,
+  "correct_classification": true,
+  "ttp_coverage": 0.0,
+  "agent_output": {
+    "attack_detected": true,
+    "attack_type": "DDoS/Slowloris",
+    "severity": "MEDIUM",
+    "confidence": 70.1,
+    "mitre_ttps": [
+      "T0883",
+      "T0813"
+    ],
+    "ddos_results": {
+      "attack_detected": true,
+      "attack_type": "slowloris",
+      "mitre_ttps": [
+        "T0883",
+        "T0813"
+      ]
+    },
+    "malware_results": {},
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

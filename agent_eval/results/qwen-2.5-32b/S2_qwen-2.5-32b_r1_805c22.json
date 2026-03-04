@@ -1,0 +1,52 @@
+{
+  "run_id": "S2_qwen-2.5-32b_r1_805c22",
+  "scenario_id": "S2",
+  "model_id": "qwen-2.5-32b",
+  "run_index": 1,
+  "start_time": "2026-02-24T15:47:35.763720+00:00",
+  "end_time": "2026-02-24T15:47:55.840096+00:00",
+  "duration_sec": 20.08,
+  "events_injected": 2800,
+  "attack_detected": true,
+  "detected_type": "DDoS/HTTP Flood",
+  "detected_severity": "HIGH",
+  "confidence": 76.7,
+  "mitre_ttps_detected": [
+    "T0883",
+    "T0804",
+    "T0813"
+  ],
+  "ground_truth": {
+    "attack_type": "DDoS/HTTP Flood",
+    "severity": "HIGH",
+    "target_zone": "bkc_commercial",
+    "expected_detection": true
+  },
+  "correct_detection": true,
+  "correct_classification": true,
+  "ttp_coverage": 0.0,
+  "agent_output": {
+    "attack_detected": true,
+    "attack_type": "DDoS/HTTP Flood",
+    "severity": "HIGH",
+    "confidence": 76.7,
+    "mitre_ttps": [
+      "T0883",
+      "T0804",
+      "T0813"
+    ],
+    "ddos_results": {
+      "attack_detected": true,
+      "attack_type": "http_flood",
+      "mitre_ttps": [
+        "T0883",
+        "T0804",
+        "T0813"
+      ]
+    },
+    "malware_results": {},
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

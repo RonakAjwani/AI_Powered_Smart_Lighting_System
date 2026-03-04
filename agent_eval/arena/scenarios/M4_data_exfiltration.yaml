@@ -1,0 +1,42 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# M4 — Data Exfiltration on BKC Commercial
+# Based on Mumbai power grid attack (2020) intelligence gathering.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+scenario_id: M4
+name: "Data Exfiltration on BKC Commercial"
+description: >
+  Slow data exfiltration from BKC zone via DNS tunneling / HTTPS.
+  Based on Mumbai power grid attack (2020) intelligence gathering pattern.
+  Tests pipeline's ability to detect low-volume persistent exfiltration.
+
+target_zone: bkc_commercial
+target_zone_name: BKC Commercial
+security_level: 2
+severity: HIGH
+
+timing:
+  total_duration_sec: 180
+  warmup_sec: 30
+  cooldown_sec: 15
+
+phases:
+  - attack_type: data_exfiltration
+    start_offset_sec: 0
+    duration_sec: 135
+    intensity: 0.5
+    events_per_second: 3
+
+ground_truth:
+  attack_type: "Malware/Data Exfiltration"
+  severity: HIGH
+  target_zone: bkc_commercial
+  expected_detection: true
+
+mitre_ttps: ["T0882", "T0869"]
+
+evaluation:
+  expected_outcome: malware
+  expected_malware_type: exfiltration
+  min_confidence: 60
+  notes: "Low-volume exfiltration — harder to detect. Lower confidence threshold."

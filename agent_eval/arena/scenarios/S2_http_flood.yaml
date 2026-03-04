@@ -1,0 +1,40 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# S2 — HTTP Flood on BKC Commercial
+# India's financial sector was the primary DDoS target in 2024.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+scenario_id: S2
+name: "HTTP Flood on BKC Commercial"
+description: >
+  Layer 7 HTTP flood targeting BKC lighting API.
+  India's financial-sector smart infrastructure was the primary DDoS target in 2024.
+
+target_zone: bkc_commercial
+target_zone_name: BKC Commercial
+security_level: 2
+severity: HIGH
+
+timing:
+  total_duration_sec: 120
+  warmup_sec: 20
+  cooldown_sec: 10
+
+phases:
+  - attack_type: http_flood
+    start_offset_sec: 0
+    duration_sec: 90
+    intensity: 0.8
+    events_per_second: 30
+
+ground_truth:
+  attack_type: "DDoS/HTTP Flood"
+  severity: HIGH
+  target_zone: bkc_commercial
+  expected_detection: true
+
+mitre_ttps: ["T0883", "T0804", "T0813"]
+
+evaluation:
+  expected_outcome: ddos
+  expected_attack_subtype: http_flood
+  min_confidence: 70

@@ -1,0 +1,49 @@
+{
+  "run_id": "M4_qwen-2.5-32b_r1_ad15b8",
+  "scenario_id": "M4",
+  "model_id": "qwen-2.5-32b",
+  "run_index": 1,
+  "start_time": "2026-02-24T15:45:05.461253+00:00",
+  "end_time": "2026-02-24T15:45:35.614126+00:00",
+  "duration_sec": 30.15,
+  "events_injected": 555,
+  "attack_detected": true,
+  "detected_type": "Malware/Data Exfiltration",
+  "detected_severity": "HIGH",
+  "confidence": 84.0,
+  "mitre_ttps_detected": [
+    "T0882",
+    "T0869"
+  ],
+  "ground_truth": {
+    "attack_type": "Malware/Data Exfiltration",
+    "severity": "HIGH",
+    "target_zone": "bkc_commercial",
+    "expected_detection": true
+  },
+  "correct_detection": true,
+  "correct_classification": true,
+  "ttp_coverage": 0.0,
+  "agent_output": {
+    "attack_detected": true,
+    "attack_type": "Malware/Data Exfiltration",
+    "severity": "HIGH",
+    "confidence": 84.0,
+    "mitre_ttps": [
+      "T0882",
+      "T0869"
+    ],
+    "ddos_results": {},
+    "malware_results": {
+      "malware_detected": true,
+      "malware_type": "data_exfiltration",
+      "mitre_ttps": [
+        "T0882",
+        "T0869"
+      ]
+    },
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+/* Add any global styles or overrides here */
+body {
+  /* Example: smoother font rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

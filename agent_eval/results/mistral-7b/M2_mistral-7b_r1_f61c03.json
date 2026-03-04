@@ -1,0 +1,53 @@
+{
+  "run_id": "M2_mistral-7b_r1_f61c03",
+  "scenario_id": "M2",
+  "model_id": "mistral-7b",
+  "run_index": 1,
+  "start_time": "2026-02-24T16:07:00.747999+00:00",
+  "end_time": "2026-02-24T16:07:20.879124+00:00",
+  "duration_sec": 20.13,
+  "events_injected": 1060,
+  "attack_detected": true,
+  "detected_type": "Malware/Ransomware",
+  "detected_severity": "CRITICAL",
+  "confidence": 66.2,
+  "mitre_ttps_detected": [
+    "T0883",
+    "T0875",
+    "T0834"
+  ],
+  "ground_truth": {
+    "attack_type": "Malware/Ransomware",
+    "severity": "CRITICAL",
+    "target_zone": "reliance_hospital",
+    "expected_detection": true,
+    "malware_family": "WannaCry-variant"
+  },
+  "correct_detection": true,
+  "correct_classification": true,
+  "ttp_coverage": 0.0,
+  "agent_output": {
+    "attack_detected": true,
+    "attack_type": "Malware/Ransomware",
+    "severity": "CRITICAL",
+    "confidence": 66.2,
+    "mitre_ttps": [
+      "T0883",
+      "T0875",
+      "T0834"
+    ],
+    "ddos_results": {},
+    "malware_results": {
+      "malware_detected": true,
+      "malware_type": "ransomware",
+      "mitre_ttps": [
+        "T0883",
+        "T0875",
+        "T0834"
+      ]
+    },
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

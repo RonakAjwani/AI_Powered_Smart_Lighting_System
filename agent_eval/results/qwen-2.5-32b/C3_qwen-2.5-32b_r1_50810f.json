@@ -1,0 +1,57 @@
+{
+  "run_id": "C3_qwen-2.5-32b_r1_50810f",
+  "scenario_id": "C3",
+  "model_id": "qwen-2.5-32b",
+  "run_index": 1,
+  "start_time": "2026-02-24T15:42:49.783885+00:00",
+  "end_time": "2026-02-24T15:43:14.865628+00:00",
+  "duration_sec": 25.08,
+  "events_injected": 2745,
+  "attack_detected": true,
+  "detected_type": "Unknown",
+  "detected_severity": "MEDIUM",
+  "confidence": 90.6,
+  "mitre_ttps_detected": [
+    "T0882",
+    "T0875",
+    "T0883",
+    "T0834",
+    "T0869"
+  ],
+  "ground_truth": {
+    "attack_type": "APT/Cascade",
+    "severity": "HIGH",
+    "target_zone": "highway_corridor",
+    "secondary_zones": [
+      "residential",
+      "school_complex"
+    ],
+    "expected_detection": true,
+    "sub_attacks": [
+      "botnet",
+      "http_flood",
+      "data_exfiltration"
+    ]
+  },
+  "correct_detection": true,
+  "correct_classification": false,
+  "ttp_coverage": 0.0,
+  "agent_output": {
+    "attack_detected": true,
+    "attack_type": "Unknown",
+    "severity": "MEDIUM",
+    "confidence": 90.6,
+    "mitre_ttps": [
+      "T0882",
+      "T0875",
+      "T0883",
+      "T0834",
+      "T0869"
+    ],
+    "ddos_results": {},
+    "malware_results": {},
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

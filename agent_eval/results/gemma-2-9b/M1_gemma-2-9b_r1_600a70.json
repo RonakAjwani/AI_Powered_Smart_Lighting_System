@@ -1,0 +1,56 @@
+{
+  "run_id": "M1_gemma-2-9b_r1_600a70",
+  "scenario_id": "M1",
+  "model_id": "gemma-2-9b",
+  "run_index": 1,
+  "start_time": "2026-02-24T15:59:08.842630+00:00",
+  "end_time": "2026-02-24T15:59:28.907626+00:00",
+  "duration_sec": 20.06,
+  "events_injected": 1260,
+  "attack_detected": true,
+  "detected_type": "Malware/Botnet",
+  "detected_severity": "HIGH",
+  "confidence": 75.1,
+  "mitre_ttps_detected": [
+    "T0882",
+    "T0875",
+    "T0869",
+    "T0813"
+  ],
+  "ground_truth": {
+    "attack_type": "Malware/Botnet",
+    "severity": "HIGH",
+    "target_zone": "highway_corridor",
+    "expected_detection": true,
+    "malware_family": "Mirai"
+  },
+  "correct_detection": true,
+  "correct_classification": true,
+  "ttp_coverage": 0.0,
+  "agent_output": {
+    "attack_detected": true,
+    "attack_type": "Malware/Botnet",
+    "severity": "HIGH",
+    "confidence": 75.1,
+    "mitre_ttps": [
+      "T0882",
+      "T0875",
+      "T0869",
+      "T0813"
+    ],
+    "ddos_results": {},
+    "malware_results": {
+      "malware_detected": true,
+      "malware_type": "botnet",
+      "mitre_ttps": [
+        "T0882",
+        "T0875",
+        "T0869",
+        "T0813"
+      ]
+    },
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

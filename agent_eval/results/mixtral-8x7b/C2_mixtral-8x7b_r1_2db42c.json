@@ -1,0 +1,54 @@
+{
+  "run_id": "C2_mixtral-8x7b_r1_2db42c",
+  "scenario_id": "C2",
+  "model_id": "mixtral-8x7b",
+  "run_index": 1,
+  "start_time": "2026-02-24T15:50:01.648660+00:00",
+  "end_time": "2026-02-24T15:50:21.708237+00:00",
+  "duration_sec": 20.06,
+  "events_injected": 4240,
+  "attack_detected": true,
+  "detected_type": "Coordinated/Dual-Strike",
+  "detected_severity": "CRITICAL",
+  "confidence": 76.7,
+  "mitre_ttps_detected": [
+    "T0883",
+    "T0804",
+    "T0882",
+    "T0834"
+  ],
+  "ground_truth": {
+    "attack_type": "Coordinated/Dual-Strike",
+    "severity": "CRITICAL",
+    "target_zone": "bkc_commercial",
+    "secondary_zones": [
+      "port_area"
+    ],
+    "expected_detection": true,
+    "sub_attacks": [
+      "http_flood",
+      "syn_flood",
+      "ransomware"
+    ]
+  },
+  "correct_detection": true,
+  "correct_classification": true,
+  "ttp_coverage": 0.0,
+  "agent_output": {
+    "attack_detected": true,
+    "attack_type": "Coordinated/Dual-Strike",
+    "severity": "CRITICAL",
+    "confidence": 76.7,
+    "mitre_ttps": [
+      "T0883",
+      "T0804",
+      "T0882",
+      "T0834"
+    ],
+    "ddos_results": {},
+    "malware_results": {},
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

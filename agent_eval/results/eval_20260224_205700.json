@@ -1,0 +1,4838 @@
+{
+  "eval_id": "eval_20260224_205700",
+  "timestamp": "2026-02-24T16:12:11.807569+00:00",
+  "mode": "docker",
+  "models": [
+    "llama-3.1-8b",
+    "llama-3.1-70b",
+    "qwen-2.5-32b",
+    "mixtral-8x7b",
+    "gemma-2-9b",
+    "mistral-7b"
+  ],
+  "scenarios": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7"
+  ],
+  "runs_per_combo": 1,
+  "total_runs": 96,
+  "elapsed_sec": 2711.0,
+  "model_summaries": {
+    "llama-3.1-8b": {
+      "display_name": "Llama 3.1 8B",
+      "total_runs": 16,
+      "correct_detections": 11,
+      "accuracy": 68.8,
+      "elapsed_sec": 451.9,
+      "runs": [
+        {
+          "run_id": "C1_llama-3.1-8b_r1_ccc4d7",
+          "scenario_id": "C1",
+          "model_id": "llama-3.1-8b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:27:00.858600+00:00",
+          "end_time": "2026-02-24T15:27:25.973420+00:00",
+          "duration_sec": 25.11,
+          "events_injected": 1985,
+          "attack_detected": true,
+          "detected_type": "Coordinated/Multi-Zone",
+          "detected_severity": "CRITICAL",
+          "confidence": 79.4,
+          "mitre_ttps_detected": [
+            "T0882",
+            "T0875",
+            "T0869",
+            "T0834",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "Coordinated/Multi-Zone",
+            "severity": "CRITICAL",
+            "target_zone": "reliance_hospital",
+            "secondary_zones": [
+              "airport"
+            ],
+            "expected_detection": true,
+            "sub_attacks": [
+              "botnet",
+              "firmware_tamper",
+              "data_exfiltration"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Coordinated/Multi-Zone",
+            "severity": "CRITICAL",
+            "confidence": 79.4,
+            "mitre_ttps": [
+              "T0882",
+              "T0875",
+              "T0869",
+              "T0834",
+              "T0813"
+            ],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "C2_llama-3.1-8b_r1_2afa52",
+          "scenario_id": "C2",
+          "model_id": "llama-3.1-8b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:27:25.977084+00:00",
+          "end_time": "2026-02-24T15:27:46.087181+00:00",
+          "duration_sec": 20.11,
+          "events_injected": 4240,
+          "attack_detected": false,
+          "detected_type": "none",
+          "detected_severity": "none",
+          "confidence": 17.552450533448898,
+          "mitre_ttps_detected": [],
+          "ground_truth": {
+            "attack_type": "Coordinated/Dual-Strike",
+            "severity": "CRITICAL",
+            "target_zone": "bkc_commercial",
+            "secondary_zones": [
+              "port_area"
+            ],
+            "expected_detection": true,
+            "sub_attacks": [
+              "http_flood",
+              "syn_flood",
+              "ransomware"
+            ]
+          },
+          "correct_detection": false,
+          "correct_classification": false,
+          "ttp_coverage": 1.0,
+          "agent_output": {
+            "attack_detected": false,
+            "attack_type": "none",
+            "severity": "none",
+            "confidence": 17.552450533448898,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "C3_llama-3.1-8b_r1_37c649",
+          "scenario_id": "C3",
+          "model_id": "llama-3.1-8b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:27:46.099438+00:00",
+          "end_time": "2026-02-24T15:28:11.238424+00:00",
+          "duration_sec": 25.14,
+          "events_injected": 2745,
+          "attack_detected": false,
+          "detected_type": "none",
+          "detected_severity": "none",
+          "confidence": 12.527249710315386,
+          "mitre_ttps_detected": [],
+          "ground_truth": {
+            "attack_type": "APT/Cascade",
+            "severity": "HIGH",
+            "target_zone": "highway_corridor",
+            "secondary_zones": [
+              "residential",
+              "school_complex"
+            ],
+            "expected_detection": true,
+            "sub_attacks": [
+              "botnet",
+              "http_flood",
+              "data_exfiltration"
+            ]
+          },
+          "correct_detection": false,
+          "correct_classification": false,
+          "ttp_coverage": 1.0,
+          "agent_output": {
+            "attack_detected": false,
+            "attack_type": "none",
+            "severity": "none",
+            "confidence": 12.527249710315386,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "C4_llama-3.1-8b_r1_033240",
+          "scenario_id": "C4",
+          "model_id": "llama-3.1-8b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:28:11.241154+00:00",
+          "end_time": "2026-02-24T15:28:31.350128+00:00",
+          "duration_sec": 20.11,
+          "events_injected": 2970,
+          "attack_detected": true,
+          "detected_type": "APT/Full-Assault",
+          "detected_severity": "CRITICAL",
+          "confidence": 78.9,
+          "mitre_ttps_detected": [
+            "T0804",
+            "T0883",
+            "T0882",
+            "T0875",
+            "T0834",
+            "T0869"
+          ],
+          "ground_truth": {
+            "attack_type": "APT/Full-Assault",
+            "severity": "CRITICAL",
+            "target_zone": "reliance_hospital",
+            "expected_detection": true,
+            "sub_attacks": [
+              "syn_flood",
+              "slowloris",
+              "botnet",
+              "data_exfiltration"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "APT/Full-Assault",
+            "severity": "CRITICAL",
+            "confidence": 78.9,
+            "mitre_ttps": [
+              "T0804",
+              "T0883",
+              "T0882",
+              "T0875",
+              "T0834",
+              "T0869"
+            ],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "C5_llama-3.1-8b_r1_ea57dd",
+          "scenario_id": "C5",
+          "model_id": "llama-3.1-8b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:28:31.353325+00:00",
+          "end_time": "2026-02-24T15:29:01.501968+00:00",
+          "duration_sec": 30.15,
+          "events_injected": 6600,
+          "attack_detected": true,
+          "detected_type": "APT/City-Wide",
+          "detected_severity": "CRITICAL",
+          "confidence": 72.5,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0882",
+            "T0834",
+            "T0875",
+            "T0804",
+            "T0813",
+            "T0869"
+          ],
+          "ground_truth": {
+            "attack_type": "APT/City-Wide",
+            "severity": "CRITICAL",
+            "target_zone": "bkc_commercial",
+            "secondary_zones": [
+              "reliance_hospital",
+              "airport",
+              "port_area",
+              "school_complex",
+              "residential",
+              "highway_corridor"
+            ],
+            "expected_detection": true,
+            "sub_attacks": [
+              "http_flood",
+              "ransomware",
+              "firmware_tamper",
+              "botnet",
+              "syn_flood",
+              "dns_amplification",
+              "data_exfiltration"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "APT/City-Wide",
+            "severity": "CRITICAL",
+            "confidence": 72.5,
+            "mitre_ttps": [
+              "T0883",
+              "T0882",
+              "T0834",
+              "T0875",
+              "T0804",
+              "T0813",
+              "T0869"
+            ],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "M1_llama-3.1-8b_r1_c717df",
+          "scenario_id": "M1",
+          "model_id": "llama-3.1-8b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:29:01.504881+00:00",
+          "end_time": "2026-02-24T15:29:21.601786+00:00",
+          "duration_sec": 20.1,
+          "events_injected": 1260,
+          "attack_detected": true,
+          "detected_type": "Unknown",
+          "detected_severity": "MEDIUM",
+          "confidence": 79.1,
+          "mitre_ttps_detected": [
+            "T0882",
+            "T0875",
+            "T0869",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "Malware/Botnet",
+            "severity": "HIGH",
+            "target_zone": "highway_corridor",
+            "expected_detection": true,
+            "malware_family": "Mirai"
+          },
+          "correct_detection": true,
+          "correct_classification": false,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Unknown",
+            "severity": "MEDIUM",
+            "confidence": 79.1,
+            "mitre_ttps": [
+              "T0882",
+              "T0875",
+              "T0869",
+              "T0813"
+            ],
+            "ddos_results": {},
+            "malware_results": {
+              "malware_detected": true,
+              "malware_type": "botnet",
+              "mitre_ttps": [
+                "T0882",
+                "T0875",
+                "T0869",
+                "T0813"
+              ]
+            },
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "M2_llama-3.1-8b_r1_ff19e1",
+          "scenario_id": "M2",
+          "model_id": "llama-3.1-8b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:29:21.603304+00:00",
+          "end_time": "2026-02-24T15:29:41.695740+00:00",
+          "duration_sec": 20.09,
+          "events_injected": 1060,
+          "attack_detected": true,
+          "detected_type": "Malware/Ransomware",
+          "detected_severity": "CRITICAL",
+          "confidence": 81.8,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0875",
+            "T0834"
+          ],
+          "ground_truth": {
+            "attack_type": "Malware/Ransomware",
+            "severity": "CRITICAL",
+            "target_zone": "reliance_hospital",
+            "expected_detection": true,
+            "malware_family": "WannaCry-variant"
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Malware/Ransomware",
+            "severity": "CRITICAL",
+            "confidence": 81.8,
+            "mitre_ttps": [
+              "T0883",
+              "T0875",
+              "T0834"
+            ],
+            "ddos_results": {},
+            "malware_results": {
+              "malware_detected": true,
+              "malware_type": "ransomware",
+              "mitre_ttps": [
+                "T0883",
+                "T0875",
+                "T0834"
+              ]
+            },
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "M3_llama-3.1-8b_r1_bf1549",
+          "scenario_id": "M3",
+          "model_id": "llama-3.1-8b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:29:41.698547+00:00",
+          "end_time": "2026-02-24T15:30:01.780059+00:00",
+          "duration_sec": 20.08,
+          "events_injected": 550,
+          "attack_detected": true,
+          "detected_type": "Malware/Firmware Tampering",
+          "detected_severity": "CRITICAL",
+          "confidence": 93.9,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0875"
+          ],
+          "ground_truth": {
+            "attack_type": "Malware/Firmware Tampering",
+            "severity": "CRITICAL",
+            "target_zone": "airport",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Malware/Firmware Tampering",
+            "severity": "CRITICAL",
+            "confidence": 93.9,
+            "mitre_ttps": [
+              "T0883",
+              "T0875"
+            ],
+            "ddos_results": {},
+            "malware_results": {
+              "malware_detected": true,
+              "malware_type": "firmware_tampering",
+              "mitre_ttps": [
+                "T0883",
+                "T0875"
+              ]
+            },
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "M4_llama-3.1-8b_r1_b4fb86",
+          "scenario_id": "M4",
+          "model_id": "llama-3.1-8b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:30:01.781175+00:00",
+          "end_time": "2026-02-24T15:30:31.871583+00:00",
+          "duration_sec": 30.09,
+          "events_injected": 555,
+          "attack_detected": false,
+          "detected_type": "none",
+          "detected_severity": "none",
+          "confidence": 32.22602719384706,
+          "mitre_ttps_detected": [],
+          "ground_truth": {
+            "attack_type": "Malware/Data Exfiltration",
+            "severity": "HIGH",
+            "target_zone": "bkc_commercial",
+            "expected_detection": true
+          },
+          "correct_detection": false,
+          "correct_classification": false,
+          "ttp_coverage": 1.0,
+          "agent_output": {
+            "attack_detected": false,
+            "attack_type": "none",
+            "severity": "none",
+            "confidence": 32.22602719384706,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S1_llama-3.1-8b_r1_29c0f0",
+          "scenario_id": "S1",
+          "model_id": "llama-3.1-8b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:30:31.873794+00:00",
+          "end_time": "2026-02-24T15:32:32.074933+00:00",
+          "duration_sec": 120.2,
+          "events_injected": 0,
+          "attack_detected": false,
+          "detected_type": "none",
+          "detected_severity": "none",
+          "confidence": 10.877959567250084,
+          "mitre_ttps_detected": [],
+          "ground_truth": {
+            "attack_type": "none",
+            "severity": "NONE",
+            "expected_detection": false
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 1.0,
+          "agent_output": {
+            "attack_detected": false,
+            "attack_type": "none",
+            "severity": "none",
+            "confidence": 10.877959567250084,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S2_llama-3.1-8b_r1_c47e2b",
+          "scenario_id": "S2",
+          "model_id": "llama-3.1-8b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:32:32.077842+00:00",
+          "end_time": "2026-02-24T15:32:52.164569+00:00",
+          "duration_sec": 20.09,
+          "events_injected": 2800,
+          "attack_detected": true,
+          "detected_type": "DDoS/HTTP Flood",
+          "detected_severity": "HIGH",
+          "confidence": 87.9,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0804",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/HTTP Flood",
+            "severity": "HIGH",
+            "target_zone": "bkc_commercial",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "DDoS/HTTP Flood",
+            "severity": "HIGH",
+            "confidence": 87.9,
+            "mitre_ttps": [
+              "T0883",
+              "T0804",
+              "T0813"
+            ],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "http_flood",
+              "mitre_ttps": [
+                "T0883",
+                "T0804",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S3_llama-3.1-8b_r1_abdb5e",
+          "scenario_id": "S3",
+          "model_id": "llama-3.1-8b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:32:52.166056+00:00",
+          "end_time": "2026-02-24T15:33:07.256778+00:00",
+          "duration_sec": 15.09,
+          "events_injected": 3875,
+          "attack_detected": false,
+          "detected_type": "none",
+          "detected_severity": "none",
+          "confidence": 39.530888466546514,
+          "mitre_ttps_detected": [],
+          "ground_truth": {
+            "attack_type": "DDoS/SYN Flood",
+            "severity": "CRITICAL",
+            "target_zone": "reliance_hospital",
+            "expected_detection": true
+          },
+          "correct_detection": false,
+          "correct_classification": false,
+          "ttp_coverage": 1.0,
+          "agent_output": {
+            "attack_detected": false,
+            "attack_type": "none",
+            "severity": "none",
+            "confidence": 39.530888466546514,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S4_llama-3.1-8b_r1_46e05a",
+          "scenario_id": "S4",
+          "model_id": "llama-3.1-8b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:33:07.259977+00:00",
+          "end_time": "2026-02-24T15:33:22.435500+00:00",
+          "duration_sec": 15.18,
+          "events_injected": 3400,
+          "attack_detected": true,
+          "detected_type": "DDoS/UDP Flood",
+          "detected_severity": "CRITICAL",
+          "confidence": 67.5,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/UDP Flood",
+            "severity": "CRITICAL",
+            "target_zone": "airport",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "DDoS/UDP Flood",
+            "severity": "CRITICAL",
+            "confidence": 67.5,
+            "mitre_ttps": [
+              "T0883",
+              "T0813"
+            ],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "udp_flood",
+              "mitre_ttps": [
+                "T0883",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S5_llama-3.1-8b_r1_0eb2b3",
+          "scenario_id": "S5",
+          "model_id": "llama-3.1-8b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:33:22.437165+00:00",
+          "end_time": "2026-02-24T15:33:52.581996+00:00",
+          "duration_sec": 30.14,
+          "events_injected": 825,
+          "attack_detected": false,
+          "detected_type": "none",
+          "detected_severity": "none",
+          "confidence": 18.74452407257985,
+          "mitre_ttps_detected": [],
+          "ground_truth": {
+            "attack_type": "DDoS/Slowloris",
+            "severity": "MEDIUM",
+            "target_zone": "port_area",
+            "expected_detection": true
+          },
+          "correct_detection": false,
+          "correct_classification": false,
+          "ttp_coverage": 1.0,
+          "agent_output": {
+            "attack_detected": false,
+            "attack_type": "none",
+            "severity": "none",
+            "confidence": 18.74452407257985,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S6_llama-3.1-8b_r1_ff02d6",
+          "scenario_id": "S6",
+          "model_id": "llama-3.1-8b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:33:52.581996+00:00",
+          "end_time": "2026-02-24T15:34:12.684065+00:00",
+          "duration_sec": 20.1,
+          "events_injected": 1900,
+          "attack_detected": true,
+          "detected_type": "DDoS/DNS Amplification",
+          "detected_severity": "HIGH",
+          "confidence": 91.9,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/DNS Amplification",
+            "severity": "HIGH",
+            "target_zone": "school_complex",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "DDoS/DNS Amplification",
+            "severity": "HIGH",
+            "confidence": 91.9,
+            "mitre_ttps": [
+              "T0883",
+              "T0813"
+            ],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "dns_amplification",
+              "mitre_ttps": [
+                "T0883",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S7_llama-3.1-8b_r1_a16967",
+          "scenario_id": "S7",
+          "model_id": "llama-3.1-8b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:34:12.687680+00:00",
+          "end_time": "2026-02-24T15:34:32.772254+00:00",
+          "duration_sec": 20.08,
+          "events_injected": 3650,
+          "attack_detected": true,
+          "detected_type": "DDoS/Multi-Vector",
+          "detected_severity": "HIGH",
+          "confidence": 87.9,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0804",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/Multi-Vector",
+            "severity": "HIGH",
+            "target_zone": "highway_corridor",
+            "expected_detection": true,
+            "sub_attacks": [
+              "http_flood",
+              "syn_flood",
+              "udp_flood"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "DDoS/Multi-Vector",
+            "severity": "HIGH",
+            "confidence": 87.9,
+            "mitre_ttps": [],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "multi-vector",
+              "mitre_ttps": [
+                "T0883",
+                "T0804",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        }
+      ]
+    },
+    "llama-3.1-70b": {
+      "display_name": "Llama 3.1 70B",
+      "total_runs": 16,
+      "correct_detections": 15,
+      "accuracy": 93.8,
+      "elapsed_sec": 451.8,
+      "runs": [
+        {
+          "run_id": "C1_llama-3.1-70b_r1_d8a94c",
+          "scenario_id": "C1",
+          "model_id": "llama-3.1-70b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:34:32.780189+00:00",
+          "end_time": "2026-02-24T15:34:57.871247+00:00",
+          "duration_sec": 25.09,
+          "events_injected": 1985,
+          "attack_detected": true,
+          "detected_type": "Coordinated/Multi-Zone",
+          "detected_severity": "CRITICAL",
+          "confidence": 84.2,
+          "mitre_ttps_detected": [
+            "T0882",
+            "T0875",
+            "T0869",
+            "T0834",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "Coordinated/Multi-Zone",
+            "severity": "CRITICAL",
+            "target_zone": "reliance_hospital",
+            "secondary_zones": [
+              "airport"
+            ],
+            "expected_detection": true,
+            "sub_attacks": [
+              "botnet",
+              "firmware_tamper",
+              "data_exfiltration"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Coordinated/Multi-Zone",
+            "severity": "CRITICAL",
+            "confidence": 84.2,
+            "mitre_ttps": [
+              "T0882",
+              "T0875",
+              "T0869",
+              "T0834",
+              "T0813"
+            ],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "C2_llama-3.1-70b_r1_f5b831",
+          "scenario_id": "C2",
+          "model_id": "llama-3.1-70b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:34:57.874245+00:00",
+          "end_time": "2026-02-24T15:35:17.928513+00:00",
+          "duration_sec": 20.05,
+          "events_injected": 4240,
+          "attack_detected": true,
+          "detected_type": "Coordinated/Dual-Strike",
+          "detected_severity": "CRITICAL",
+          "confidence": 94.3,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0804",
+            "T0882",
+            "T0834"
+          ],
+          "ground_truth": {
+            "attack_type": "Coordinated/Dual-Strike",
+            "severity": "CRITICAL",
+            "target_zone": "bkc_commercial",
+            "secondary_zones": [
+              "port_area"
+            ],
+            "expected_detection": true,
+            "sub_attacks": [
+              "http_flood",
+              "syn_flood",
+              "ransomware"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Coordinated/Dual-Strike",
+            "severity": "CRITICAL",
+            "confidence": 94.3,
+            "mitre_ttps": [
+              "T0883",
+              "T0804",
+              "T0882",
+              "T0834"
+            ],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "C3_llama-3.1-70b_r1_1fdb37",
+          "scenario_id": "C3",
+          "model_id": "llama-3.1-70b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:35:17.930258+00:00",
+          "end_time": "2026-02-24T15:35:43.030451+00:00",
+          "duration_sec": 25.1,
+          "events_injected": 2745,
+          "attack_detected": true,
+          "detected_type": "APT/Cascade",
+          "detected_severity": "HIGH",
+          "confidence": 94.3,
+          "mitre_ttps_detected": [],
+          "ground_truth": {
+            "attack_type": "APT/Cascade",
+            "severity": "HIGH",
+            "target_zone": "highway_corridor",
+            "secondary_zones": [
+              "residential",
+              "school_complex"
+            ],
+            "expected_detection": true,
+            "sub_attacks": [
+              "botnet",
+              "http_flood",
+              "data_exfiltration"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 1.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "APT/Cascade",
+            "severity": "HIGH",
+            "confidence": 94.3,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "C4_llama-3.1-70b_r1_3bebf9",
+          "scenario_id": "C4",
+          "model_id": "llama-3.1-70b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:35:43.033460+00:00",
+          "end_time": "2026-02-24T15:36:03.127161+00:00",
+          "duration_sec": 20.09,
+          "events_injected": 2970,
+          "attack_detected": true,
+          "detected_type": "APT/Full-Assault",
+          "detected_severity": "CRITICAL",
+          "confidence": 89.6,
+          "mitre_ttps_detected": [
+            "T0804",
+            "T0883",
+            "T0882",
+            "T0875",
+            "T0834",
+            "T0869"
+          ],
+          "ground_truth": {
+            "attack_type": "APT/Full-Assault",
+            "severity": "CRITICAL",
+            "target_zone": "reliance_hospital",
+            "expected_detection": true,
+            "sub_attacks": [
+              "syn_flood",
+              "slowloris",
+              "botnet",
+              "data_exfiltration"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "APT/Full-Assault",
+            "severity": "CRITICAL",
+            "confidence": 89.6,
+            "mitre_ttps": [
+              "T0804",
+              "T0883",
+              "T0882",
+              "T0875",
+              "T0834",
+              "T0869"
+            ],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "C5_llama-3.1-70b_r1_820b2d",
+          "scenario_id": "C5",
+          "model_id": "llama-3.1-70b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:36:03.132439+00:00",
+          "end_time": "2026-02-24T15:36:33.268133+00:00",
+          "duration_sec": 30.14,
+          "events_injected": 6600,
+          "attack_detected": true,
+          "detected_type": "APT/City-Wide",
+          "detected_severity": "CRITICAL",
+          "confidence": 71.9,
+          "mitre_ttps_detected": [],
+          "ground_truth": {
+            "attack_type": "APT/City-Wide",
+            "severity": "CRITICAL",
+            "target_zone": "bkc_commercial",
+            "secondary_zones": [
+              "reliance_hospital",
+              "airport",
+              "port_area",
+              "school_complex",
+              "residential",
+              "highway_corridor"
+            ],
+            "expected_detection": true,
+            "sub_attacks": [
+              "http_flood",
+              "ransomware",
+              "firmware_tamper",
+              "botnet",
+              "syn_flood",
+              "dns_amplification",
+              "data_exfiltration"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 1.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "APT/City-Wide",
+            "severity": "CRITICAL",
+            "confidence": 71.9,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "M1_llama-3.1-70b_r1_48bebe",
+          "scenario_id": "M1",
+          "model_id": "llama-3.1-70b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:36:33.271758+00:00",
+          "end_time": "2026-02-24T15:36:53.348235+00:00",
+          "duration_sec": 20.08,
+          "events_injected": 1260,
+          "attack_detected": true,
+          "detected_type": "Malware/Botnet",
+          "detected_severity": "HIGH",
+          "confidence": 83.9,
+          "mitre_ttps_detected": [
+            "T0882",
+            "T0875",
+            "T0869",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "Malware/Botnet",
+            "severity": "HIGH",
+            "target_zone": "highway_corridor",
+            "expected_detection": true,
+            "malware_family": "Mirai"
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Malware/Botnet",
+            "severity": "HIGH",
+            "confidence": 83.9,
+            "mitre_ttps": [
+              "T0882",
+              "T0875",
+              "T0869",
+              "T0813"
+            ],
+            "ddos_results": {},
+            "malware_results": {
+              "malware_detected": true,
+              "malware_type": "botnet",
+              "mitre_ttps": [
+                "T0882",
+                "T0875",
+                "T0869",
+                "T0813"
+              ]
+            },
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "M2_llama-3.1-70b_r1_8c15eb",
+          "scenario_id": "M2",
+          "model_id": "llama-3.1-70b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:36:53.351318+00:00",
+          "end_time": "2026-02-24T15:37:13.445761+00:00",
+          "duration_sec": 20.09,
+          "events_injected": 1060,
+          "attack_detected": true,
+          "detected_type": "Malware/Ransomware",
+          "detected_severity": "CRITICAL",
+          "confidence": 90.6,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0875",
+            "T0834"
+          ],
+          "ground_truth": {
+            "attack_type": "Malware/Ransomware",
+            "severity": "CRITICAL",
+            "target_zone": "reliance_hospital",
+            "expected_detection": true,
+            "malware_family": "WannaCry-variant"
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Malware/Ransomware",
+            "severity": "CRITICAL",
+            "confidence": 90.6,
+            "mitre_ttps": [
+              "T0883",
+              "T0875",
+              "T0834"
+            ],
+            "ddos_results": {},
+            "malware_results": {
+              "malware_detected": true,
+              "malware_type": "ransomware",
+              "mitre_ttps": [
+                "T0883",
+                "T0875",
+                "T0834"
+              ]
+            },
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "M3_llama-3.1-70b_r1_e3ba2d",
+          "scenario_id": "M3",
+          "model_id": "llama-3.1-70b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:37:13.448793+00:00",
+          "end_time": "2026-02-24T15:37:33.556672+00:00",
+          "duration_sec": 20.11,
+          "events_injected": 550,
+          "attack_detected": true,
+          "detected_type": "Malware/Firmware Tampering",
+          "detected_severity": "CRITICAL",
+          "confidence": 92.4,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0875"
+          ],
+          "ground_truth": {
+            "attack_type": "Malware/Firmware Tampering",
+            "severity": "CRITICAL",
+            "target_zone": "airport",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Malware/Firmware Tampering",
+            "severity": "CRITICAL",
+            "confidence": 92.4,
+            "mitre_ttps": [
+              "T0883",
+              "T0875"
+            ],
+            "ddos_results": {},
+            "malware_results": {
+              "malware_detected": true,
+              "malware_type": "firmware_tampering",
+              "mitre_ttps": [
+                "T0883",
+                "T0875"
+              ]
+            },
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "M4_llama-3.1-70b_r1_52d52c",
+          "scenario_id": "M4",
+          "model_id": "llama-3.1-70b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:37:33.559142+00:00",
+          "end_time": "2026-02-24T15:38:03.622677+00:00",
+          "duration_sec": 30.06,
+          "events_injected": 555,
+          "attack_detected": false,
+          "detected_type": "none",
+          "detected_severity": "none",
+          "confidence": 24.251312332716125,
+          "mitre_ttps_detected": [],
+          "ground_truth": {
+            "attack_type": "Malware/Data Exfiltration",
+            "severity": "HIGH",
+            "target_zone": "bkc_commercial",
+            "expected_detection": true
+          },
+          "correct_detection": false,
+          "correct_classification": false,
+          "ttp_coverage": 1.0,
+          "agent_output": {
+            "attack_detected": false,
+            "attack_type": "none",
+            "severity": "none",
+            "confidence": 24.251312332716125,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S1_llama-3.1-70b_r1_6ce346",
+          "scenario_id": "S1",
+          "model_id": "llama-3.1-70b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:38:03.622677+00:00",
+          "end_time": "2026-02-24T15:40:03.725883+00:00",
+          "duration_sec": 120.1,
+          "events_injected": 0,
+          "attack_detected": false,
+          "detected_type": "none",
+          "detected_severity": "none",
+          "confidence": 9.376930101165179,
+          "mitre_ttps_detected": [],
+          "ground_truth": {
+            "attack_type": "none",
+            "severity": "NONE",
+            "expected_detection": false
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 1.0,
+          "agent_output": {
+            "attack_detected": false,
+            "attack_type": "none",
+            "severity": "none",
+            "confidence": 9.376930101165179,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S2_llama-3.1-70b_r1_2acc9d",
+          "scenario_id": "S2",
+          "model_id": "llama-3.1-70b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:40:03.727603+00:00",
+          "end_time": "2026-02-24T15:40:23.842924+00:00",
+          "duration_sec": 20.12,
+          "events_injected": 2800,
+          "attack_detected": true,
+          "detected_type": "Unknown",
+          "detected_severity": "MEDIUM",
+          "confidence": 84.1,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0804",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/HTTP Flood",
+            "severity": "HIGH",
+            "target_zone": "bkc_commercial",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": false,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Unknown",
+            "severity": "MEDIUM",
+            "confidence": 84.1,
+            "mitre_ttps": [],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "http_flood",
+              "mitre_ttps": [
+                "T0883",
+                "T0804",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S3_llama-3.1-70b_r1_a8796f",
+          "scenario_id": "S3",
+          "model_id": "llama-3.1-70b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:40:23.846311+00:00",
+          "end_time": "2026-02-24T15:40:38.991112+00:00",
+          "duration_sec": 15.14,
+          "events_injected": 3875,
+          "attack_detected": true,
+          "detected_type": "Unknown",
+          "detected_severity": "MEDIUM",
+          "confidence": 68.2,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0813",
+            "T0834"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/SYN Flood",
+            "severity": "CRITICAL",
+            "target_zone": "reliance_hospital",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": false,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Unknown",
+            "severity": "MEDIUM",
+            "confidence": 68.2,
+            "mitre_ttps": [],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "syn_flood",
+              "mitre_ttps": [
+                "T0883",
+                "T0813",
+                "T0834"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S4_llama-3.1-70b_r1_1fbe32",
+          "scenario_id": "S4",
+          "model_id": "llama-3.1-70b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:40:38.996541+00:00",
+          "end_time": "2026-02-24T15:40:54.163169+00:00",
+          "duration_sec": 15.17,
+          "events_injected": 3400,
+          "attack_detected": true,
+          "detected_type": "DDoS/UDP Flood",
+          "detected_severity": "CRITICAL",
+          "confidence": 92.8,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/UDP Flood",
+            "severity": "CRITICAL",
+            "target_zone": "airport",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "DDoS/UDP Flood",
+            "severity": "CRITICAL",
+            "confidence": 92.8,
+            "mitre_ttps": [],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "udp_flood",
+              "mitre_ttps": [
+                "T0883",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S5_llama-3.1-70b_r1_a36708",
+          "scenario_id": "S5",
+          "model_id": "llama-3.1-70b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:40:54.167681+00:00",
+          "end_time": "2026-02-24T15:41:24.331187+00:00",
+          "duration_sec": 30.16,
+          "events_injected": 825,
+          "attack_detected": true,
+          "detected_type": "Unknown",
+          "detected_severity": "MEDIUM",
+          "confidence": 88.3,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/Slowloris",
+            "severity": "MEDIUM",
+            "target_zone": "port_area",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": false,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Unknown",
+            "severity": "MEDIUM",
+            "confidence": 88.3,
+            "mitre_ttps": [],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "slowloris",
+              "mitre_ttps": [
+                "T0883",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S6_llama-3.1-70b_r1_fb1144",
+          "scenario_id": "S6",
+          "model_id": "llama-3.1-70b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:41:24.336332+00:00",
+          "end_time": "2026-02-24T15:41:44.445520+00:00",
+          "duration_sec": 20.11,
+          "events_injected": 1900,
+          "attack_detected": true,
+          "detected_type": "DDoS/DNS Amplification",
+          "detected_severity": "HIGH",
+          "confidence": 70.1,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/DNS Amplification",
+            "severity": "HIGH",
+            "target_zone": "school_complex",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "DDoS/DNS Amplification",
+            "severity": "HIGH",
+            "confidence": 70.1,
+            "mitre_ttps": [],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "dns_amplification",
+              "mitre_ttps": [
+                "T0883",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S7_llama-3.1-70b_r1_95ae45",
+          "scenario_id": "S7",
+          "model_id": "llama-3.1-70b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:41:44.445520+00:00",
+          "end_time": "2026-02-24T15:42:04.603286+00:00",
+          "duration_sec": 20.16,
+          "events_injected": 3650,
+          "attack_detected": true,
+          "detected_type": "DDoS/Multi-Vector",
+          "detected_severity": "HIGH",
+          "confidence": 90.9,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0804",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/Multi-Vector",
+            "severity": "HIGH",
+            "target_zone": "highway_corridor",
+            "expected_detection": true,
+            "sub_attacks": [
+              "http_flood",
+              "syn_flood",
+              "udp_flood"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "DDoS/Multi-Vector",
+            "severity": "HIGH",
+            "confidence": 90.9,
+            "mitre_ttps": [],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "multi-vector",
+              "mitre_ttps": [
+                "T0883",
+                "T0804",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        }
+      ]
+    },
+    "qwen-2.5-32b": {
+      "display_name": "Qwen 2.5 32B",
+      "total_runs": 16,
+      "correct_detections": 14,
+      "accuracy": 87.5,
+      "elapsed_sec": 452.0,
+      "runs": [
+        {
+          "run_id": "C1_qwen-2.5-32b_r1_4bb40a",
+          "scenario_id": "C1",
+          "model_id": "qwen-2.5-32b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:42:04.616841+00:00",
+          "end_time": "2026-02-24T15:42:29.708888+00:00",
+          "duration_sec": 25.09,
+          "events_injected": 1985,
+          "attack_detected": true,
+          "detected_type": "Coordinated/Multi-Zone",
+          "detected_severity": "CRITICAL",
+          "confidence": 75.1,
+          "mitre_ttps_detected": [
+            "T0882",
+            "T0875",
+            "T0869",
+            "T0834",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "Coordinated/Multi-Zone",
+            "severity": "CRITICAL",
+            "target_zone": "reliance_hospital",
+            "secondary_zones": [
+              "airport"
+            ],
+            "expected_detection": true,
+            "sub_attacks": [
+              "botnet",
+              "firmware_tamper",
+              "data_exfiltration"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Coordinated/Multi-Zone",
+            "severity": "CRITICAL",
+            "confidence": 75.1,
+            "mitre_ttps": [
+              "T0882",
+              "T0875",
+              "T0869",
+              "T0834",
+              "T0813"
+            ],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "C2_qwen-2.5-32b_r1_8e8b8f",
+          "scenario_id": "C2",
+          "model_id": "qwen-2.5-32b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:42:29.709460+00:00",
+          "end_time": "2026-02-24T15:42:49.781710+00:00",
+          "duration_sec": 20.07,
+          "events_injected": 4240,
+          "attack_detected": true,
+          "detected_type": "Unknown",
+          "detected_severity": "MEDIUM",
+          "confidence": 67.0,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0804",
+            "T0882",
+            "T0834"
+          ],
+          "ground_truth": {
+            "attack_type": "Coordinated/Dual-Strike",
+            "severity": "CRITICAL",
+            "target_zone": "bkc_commercial",
+            "secondary_zones": [
+              "port_area"
+            ],
+            "expected_detection": true,
+            "sub_attacks": [
+              "http_flood",
+              "syn_flood",
+              "ransomware"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": false,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Unknown",
+            "severity": "MEDIUM",
+            "confidence": 67.0,
+            "mitre_ttps": [
+              "T0883",
+              "T0804",
+              "T0882",
+              "T0834"
+            ],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "C3_qwen-2.5-32b_r1_50810f",
+          "scenario_id": "C3",
+          "model_id": "qwen-2.5-32b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:42:49.783885+00:00",
+          "end_time": "2026-02-24T15:43:14.865628+00:00",
+          "duration_sec": 25.08,
+          "events_injected": 2745,
+          "attack_detected": true,
+          "detected_type": "Unknown",
+          "detected_severity": "MEDIUM",
+          "confidence": 90.6,
+          "mitre_ttps_detected": [
+            "T0882",
+            "T0875",
+            "T0883",
+            "T0834",
+            "T0869"
+          ],
+          "ground_truth": {
+            "attack_type": "APT/Cascade",
+            "severity": "HIGH",
+            "target_zone": "highway_corridor",
+            "secondary_zones": [
+              "residential",
+              "school_complex"
+            ],
+            "expected_detection": true,
+            "sub_attacks": [
+              "botnet",
+              "http_flood",
+              "data_exfiltration"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": false,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Unknown",
+            "severity": "MEDIUM",
+            "confidence": 90.6,
+            "mitre_ttps": [
+              "T0882",
+              "T0875",
+              "T0883",
+              "T0834",
+              "T0869"
+            ],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "C4_qwen-2.5-32b_r1_100dd7",
+          "scenario_id": "C4",
+          "model_id": "qwen-2.5-32b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:43:14.871913+00:00",
+          "end_time": "2026-02-24T15:43:35.053807+00:00",
+          "duration_sec": 20.18,
+          "events_injected": 2970,
+          "attack_detected": false,
+          "detected_type": "none",
+          "detected_severity": "none",
+          "confidence": 12.819402766677328,
+          "mitre_ttps_detected": [],
+          "ground_truth": {
+            "attack_type": "APT/Full-Assault",
+            "severity": "CRITICAL",
+            "target_zone": "reliance_hospital",
+            "expected_detection": true,
+            "sub_attacks": [
+              "syn_flood",
+              "slowloris",
+              "botnet",
+              "data_exfiltration"
+            ]
+          },
+          "correct_detection": false,
+          "correct_classification": false,
+          "ttp_coverage": 1.0,
+          "agent_output": {
+            "attack_detected": false,
+            "attack_type": "none",
+            "severity": "none",
+            "confidence": 12.819402766677328,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "C5_qwen-2.5-32b_r1_04cd0f",
+          "scenario_id": "C5",
+          "model_id": "qwen-2.5-32b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:43:35.056226+00:00",
+          "end_time": "2026-02-24T15:44:05.202613+00:00",
+          "duration_sec": 30.15,
+          "events_injected": 6600,
+          "attack_detected": true,
+          "detected_type": "APT/City-Wide",
+          "detected_severity": "CRITICAL",
+          "confidence": 67.9,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0882",
+            "T0834",
+            "T0875",
+            "T0804",
+            "T0813",
+            "T0869"
+          ],
+          "ground_truth": {
+            "attack_type": "APT/City-Wide",
+            "severity": "CRITICAL",
+            "target_zone": "bkc_commercial",
+            "secondary_zones": [
+              "reliance_hospital",
+              "airport",
+              "port_area",
+              "school_complex",
+              "residential",
+              "highway_corridor"
+            ],
+            "expected_detection": true,
+            "sub_attacks": [
+              "http_flood",
+              "ransomware",
+              "firmware_tamper",
+              "botnet",
+              "syn_flood",
+              "dns_amplification",
+              "data_exfiltration"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "APT/City-Wide",
+            "severity": "CRITICAL",
+            "confidence": 67.9,
+            "mitre_ttps": [
+              "T0883",
+              "T0882",
+              "T0834",
+              "T0875",
+              "T0804",
+              "T0813",
+              "T0869"
+            ],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "M1_qwen-2.5-32b_r1_72eb75",
+          "scenario_id": "M1",
+          "model_id": "qwen-2.5-32b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:44:05.206844+00:00",
+          "end_time": "2026-02-24T15:44:25.289879+00:00",
+          "duration_sec": 20.08,
+          "events_injected": 1260,
+          "attack_detected": true,
+          "detected_type": "Malware/Botnet",
+          "detected_severity": "HIGH",
+          "confidence": 95.0,
+          "mitre_ttps_detected": [
+            "T0882",
+            "T0875",
+            "T0869",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "Malware/Botnet",
+            "severity": "HIGH",
+            "target_zone": "highway_corridor",
+            "expected_detection": true,
+            "malware_family": "Mirai"
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Malware/Botnet",
+            "severity": "HIGH",
+            "confidence": 95.0,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {
+              "malware_detected": true,
+              "malware_type": "botnet",
+              "mitre_ttps": [
+                "T0882",
+                "T0875",
+                "T0869",
+                "T0813"
+              ]
+            },
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "M2_qwen-2.5-32b_r1_b6d589",
+          "scenario_id": "M2",
+          "model_id": "qwen-2.5-32b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:44:25.292649+00:00",
+          "end_time": "2026-02-24T15:44:45.372821+00:00",
+          "duration_sec": 20.08,
+          "events_injected": 1060,
+          "attack_detected": true,
+          "detected_type": "Malware/Ransomware",
+          "detected_severity": "CRITICAL",
+          "confidence": 74.2,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0875",
+            "T0834"
+          ],
+          "ground_truth": {
+            "attack_type": "Malware/Ransomware",
+            "severity": "CRITICAL",
+            "target_zone": "reliance_hospital",
+            "expected_detection": true,
+            "malware_family": "WannaCry-variant"
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Malware/Ransomware",
+            "severity": "CRITICAL",
+            "confidence": 74.2,
+            "mitre_ttps": [
+              "T0883",
+              "T0875",
+              "T0834"
+            ],
+            "ddos_results": {},
+            "malware_results": {
+              "malware_detected": true,
+              "malware_type": "ransomware",
+              "mitre_ttps": [
+                "T0883",
+                "T0875",
+                "T0834"
+              ]
+            },
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "M3_qwen-2.5-32b_r1_fbcb61",
+          "scenario_id": "M3",
+          "model_id": "qwen-2.5-32b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:44:45.378115+00:00",
+          "end_time": "2026-02-24T15:45:05.460044+00:00",
+          "duration_sec": 20.08,
+          "events_injected": 550,
+          "attack_detected": false,
+          "detected_type": "none",
+          "detected_severity": "none",
+          "confidence": 39.96180356889794,
+          "mitre_ttps_detected": [],
+          "ground_truth": {
+            "attack_type": "Malware/Firmware Tampering",
+            "severity": "CRITICAL",
+            "target_zone": "airport",
+            "expected_detection": true
+          },
+          "correct_detection": false,
+          "correct_classification": false,
+          "ttp_coverage": 1.0,
+          "agent_output": {
+            "attack_detected": false,
+            "attack_type": "none",
+            "severity": "none",
+            "confidence": 39.96180356889794,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "M4_qwen-2.5-32b_r1_ad15b8",
+          "scenario_id": "M4",
+          "model_id": "qwen-2.5-32b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:45:05.461253+00:00",
+          "end_time": "2026-02-24T15:45:35.614126+00:00",
+          "duration_sec": 30.15,
+          "events_injected": 555,
+          "attack_detected": true,
+          "detected_type": "Malware/Data Exfiltration",
+          "detected_severity": "HIGH",
+          "confidence": 84.0,
+          "mitre_ttps_detected": [
+            "T0882",
+            "T0869"
+          ],
+          "ground_truth": {
+            "attack_type": "Malware/Data Exfiltration",
+            "severity": "HIGH",
+            "target_zone": "bkc_commercial",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Malware/Data Exfiltration",
+            "severity": "HIGH",
+            "confidence": 84.0,
+            "mitre_ttps": [
+              "T0882",
+              "T0869"
+            ],
+            "ddos_results": {},
+            "malware_results": {
+              "malware_detected": true,
+              "malware_type": "data_exfiltration",
+              "mitre_ttps": [
+                "T0882",
+                "T0869"
+              ]
+            },
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S1_qwen-2.5-32b_r1_0870d7",
+          "scenario_id": "S1",
+          "model_id": "qwen-2.5-32b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:45:35.616864+00:00",
+          "end_time": "2026-02-24T15:47:35.761003+00:00",
+          "duration_sec": 120.14,
+          "events_injected": 0,
+          "attack_detected": false,
+          "detected_type": "none",
+          "detected_severity": "none",
+          "confidence": 7.905208789588207,
+          "mitre_ttps_detected": [],
+          "ground_truth": {
+            "attack_type": "none",
+            "severity": "NONE",
+            "expected_detection": false
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 1.0,
+          "agent_output": {
+            "attack_detected": false,
+            "attack_type": "none",
+            "severity": "none",
+            "confidence": 7.905208789588207,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S2_qwen-2.5-32b_r1_805c22",
+          "scenario_id": "S2",
+          "model_id": "qwen-2.5-32b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:47:35.763720+00:00",
+          "end_time": "2026-02-24T15:47:55.840096+00:00",
+          "duration_sec": 20.08,
+          "events_injected": 2800,
+          "attack_detected": true,
+          "detected_type": "DDoS/HTTP Flood",
+          "detected_severity": "HIGH",
+          "confidence": 76.7,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0804",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/HTTP Flood",
+            "severity": "HIGH",
+            "target_zone": "bkc_commercial",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "DDoS/HTTP Flood",
+            "severity": "HIGH",
+            "confidence": 76.7,
+            "mitre_ttps": [
+              "T0883",
+              "T0804",
+              "T0813"
+            ],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "http_flood",
+              "mitre_ttps": [
+                "T0883",
+                "T0804",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S3_qwen-2.5-32b_r1_330bd9",
+          "scenario_id": "S3",
+          "model_id": "qwen-2.5-32b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:47:55.841098+00:00",
+          "end_time": "2026-02-24T15:48:10.983462+00:00",
+          "duration_sec": 15.14,
+          "events_injected": 3875,
+          "attack_detected": true,
+          "detected_type": "DDoS/SYN Flood",
+          "detected_severity": "CRITICAL",
+          "confidence": 79.8,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0813",
+            "T0834"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/SYN Flood",
+            "severity": "CRITICAL",
+            "target_zone": "reliance_hospital",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "DDoS/SYN Flood",
+            "severity": "CRITICAL",
+            "confidence": 79.8,
+            "mitre_ttps": [],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "syn_flood",
+              "mitre_ttps": [
+                "T0883",
+                "T0813",
+                "T0834"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S4_qwen-2.5-32b_r1_ff74cb",
+          "scenario_id": "S4",
+          "model_id": "qwen-2.5-32b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:48:10.985081+00:00",
+          "end_time": "2026-02-24T15:48:26.139546+00:00",
+          "duration_sec": 15.15,
+          "events_injected": 3400,
+          "attack_detected": true,
+          "detected_type": "DDoS/UDP Flood",
+          "detected_severity": "CRITICAL",
+          "confidence": 70.7,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/UDP Flood",
+            "severity": "CRITICAL",
+            "target_zone": "airport",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "DDoS/UDP Flood",
+            "severity": "CRITICAL",
+            "confidence": 70.7,
+            "mitre_ttps": [
+              "T0883",
+              "T0813"
+            ],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "udp_flood",
+              "mitre_ttps": [
+                "T0883",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S5_qwen-2.5-32b_r1_4a6af9",
+          "scenario_id": "S5",
+          "model_id": "qwen-2.5-32b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:48:26.142489+00:00",
+          "end_time": "2026-02-24T15:48:56.273064+00:00",
+          "duration_sec": 30.13,
+          "events_injected": 825,
+          "attack_detected": true,
+          "detected_type": "DDoS/Slowloris",
+          "detected_severity": "MEDIUM",
+          "confidence": 66.0,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/Slowloris",
+            "severity": "MEDIUM",
+            "target_zone": "port_area",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "DDoS/Slowloris",
+            "severity": "MEDIUM",
+            "confidence": 66.0,
+            "mitre_ttps": [
+              "T0883",
+              "T0813"
+            ],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "slowloris",
+              "mitre_ttps": [
+                "T0883",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S6_qwen-2.5-32b_r1_4a3e60",
+          "scenario_id": "S6",
+          "model_id": "qwen-2.5-32b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:48:56.274651+00:00",
+          "end_time": "2026-02-24T15:49:16.369951+00:00",
+          "duration_sec": 20.1,
+          "events_injected": 1900,
+          "attack_detected": true,
+          "detected_type": "Unknown",
+          "detected_severity": "MEDIUM",
+          "confidence": 76.3,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/DNS Amplification",
+            "severity": "HIGH",
+            "target_zone": "school_complex",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": false,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Unknown",
+            "severity": "MEDIUM",
+            "confidence": 76.3,
+            "mitre_ttps": [],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "dns_amplification",
+              "mitre_ttps": [
+                "T0883",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S7_qwen-2.5-32b_r1_67d427",
+          "scenario_id": "S7",
+          "model_id": "qwen-2.5-32b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:49:16.373168+00:00",
+          "end_time": "2026-02-24T15:49:36.567454+00:00",
+          "duration_sec": 20.19,
+          "events_injected": 3650,
+          "attack_detected": true,
+          "detected_type": "Unknown",
+          "detected_severity": "MEDIUM",
+          "confidence": 73.3,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0804",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/Multi-Vector",
+            "severity": "HIGH",
+            "target_zone": "highway_corridor",
+            "expected_detection": true,
+            "sub_attacks": [
+              "http_flood",
+              "syn_flood",
+              "udp_flood"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": false,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Unknown",
+            "severity": "MEDIUM",
+            "confidence": 73.3,
+            "mitre_ttps": [],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "multi-vector",
+              "mitre_ttps": [
+                "T0883",
+                "T0804",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        }
+      ]
+    },
+    "mixtral-8x7b": {
+      "display_name": "Mixtral 8x7B",
+      "total_runs": 16,
+      "correct_detections": 15,
+      "accuracy": 93.8,
+      "elapsed_sec": 451.8,
+      "runs": [
+        {
+          "run_id": "C1_mixtral-8x7b_r1_05e89d",
+          "scenario_id": "C1",
+          "model_id": "mixtral-8x7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:49:36.578194+00:00",
+          "end_time": "2026-02-24T15:50:01.648027+00:00",
+          "duration_sec": 25.07,
+          "events_injected": 1985,
+          "attack_detected": true,
+          "detected_type": "Coordinated/Multi-Zone",
+          "detected_severity": "CRITICAL",
+          "confidence": 73.4,
+          "mitre_ttps_detected": [
+            "T0882",
+            "T0875",
+            "T0869",
+            "T0834",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "Coordinated/Multi-Zone",
+            "severity": "CRITICAL",
+            "target_zone": "reliance_hospital",
+            "secondary_zones": [
+              "airport"
+            ],
+            "expected_detection": true,
+            "sub_attacks": [
+              "botnet",
+              "firmware_tamper",
+              "data_exfiltration"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Coordinated/Multi-Zone",
+            "severity": "CRITICAL",
+            "confidence": 73.4,
+            "mitre_ttps": [
+              "T0882",
+              "T0875",
+              "T0869",
+              "T0834",
+              "T0813"
+            ],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "C2_mixtral-8x7b_r1_2db42c",
+          "scenario_id": "C2",
+          "model_id": "mixtral-8x7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:50:01.648660+00:00",
+          "end_time": "2026-02-24T15:50:21.708237+00:00",
+          "duration_sec": 20.06,
+          "events_injected": 4240,
+          "attack_detected": true,
+          "detected_type": "Coordinated/Dual-Strike",
+          "detected_severity": "CRITICAL",
+          "confidence": 76.7,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0804",
+            "T0882",
+            "T0834"
+          ],
+          "ground_truth": {
+            "attack_type": "Coordinated/Dual-Strike",
+            "severity": "CRITICAL",
+            "target_zone": "bkc_commercial",
+            "secondary_zones": [
+              "port_area"
+            ],
+            "expected_detection": true,
+            "sub_attacks": [
+              "http_flood",
+              "syn_flood",
+              "ransomware"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Coordinated/Dual-Strike",
+            "severity": "CRITICAL",
+            "confidence": 76.7,
+            "mitre_ttps": [
+              "T0883",
+              "T0804",
+              "T0882",
+              "T0834"
+            ],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "C3_mixtral-8x7b_r1_098f68",
+          "scenario_id": "C3",
+          "model_id": "mixtral-8x7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:50:21.709587+00:00",
+          "end_time": "2026-02-24T15:50:46.773320+00:00",
+          "duration_sec": 25.06,
+          "events_injected": 2745,
+          "attack_detected": true,
+          "detected_type": "APT/Cascade",
+          "detected_severity": "HIGH",
+          "confidence": 94.3,
+          "mitre_ttps_detected": [
+            "T0882",
+            "T0875",
+            "T0883",
+            "T0834",
+            "T0869"
+          ],
+          "ground_truth": {
+            "attack_type": "APT/Cascade",
+            "severity": "HIGH",
+            "target_zone": "highway_corridor",
+            "secondary_zones": [
+              "residential",
+              "school_complex"
+            ],
+            "expected_detection": true,
+            "sub_attacks": [
+              "botnet",
+              "http_flood",
+              "data_exfiltration"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "APT/Cascade",
+            "severity": "HIGH",
+            "confidence": 94.3,
+            "mitre_ttps": [
+              "T0882",
+              "T0875",
+              "T0883",
+              "T0834",
+              "T0869"
+            ],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "C4_mixtral-8x7b_r1_cc352c",
+          "scenario_id": "C4",
+          "model_id": "mixtral-8x7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:50:46.777612+00:00",
+          "end_time": "2026-02-24T15:51:06.829691+00:00",
+          "duration_sec": 20.05,
+          "events_injected": 2970,
+          "attack_detected": true,
+          "detected_type": "APT/Full-Assault",
+          "detected_severity": "CRITICAL",
+          "confidence": 73.3,
+          "mitre_ttps_detected": [],
+          "ground_truth": {
+            "attack_type": "APT/Full-Assault",
+            "severity": "CRITICAL",
+            "target_zone": "reliance_hospital",
+            "expected_detection": true,
+            "sub_attacks": [
+              "syn_flood",
+              "slowloris",
+              "botnet",
+              "data_exfiltration"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 1.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "APT/Full-Assault",
+            "severity": "CRITICAL",
+            "confidence": 73.3,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "C5_mixtral-8x7b_r1_d02425",
+          "scenario_id": "C5",
+          "model_id": "mixtral-8x7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:51:06.833833+00:00",
+          "end_time": "2026-02-24T15:51:36.953291+00:00",
+          "duration_sec": 30.12,
+          "events_injected": 6600,
+          "attack_detected": true,
+          "detected_type": "APT/City-Wide",
+          "detected_severity": "CRITICAL",
+          "confidence": 83.6,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0882",
+            "T0834",
+            "T0875",
+            "T0804",
+            "T0813",
+            "T0869"
+          ],
+          "ground_truth": {
+            "attack_type": "APT/City-Wide",
+            "severity": "CRITICAL",
+            "target_zone": "bkc_commercial",
+            "secondary_zones": [
+              "reliance_hospital",
+              "airport",
+              "port_area",
+              "school_complex",
+              "residential",
+              "highway_corridor"
+            ],
+            "expected_detection": true,
+            "sub_attacks": [
+              "http_flood",
+              "ransomware",
+              "firmware_tamper",
+              "botnet",
+              "syn_flood",
+              "dns_amplification",
+              "data_exfiltration"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "APT/City-Wide",
+            "severity": "CRITICAL",
+            "confidence": 83.6,
+            "mitre_ttps": [
+              "T0883",
+              "T0882",
+              "T0834",
+              "T0875",
+              "T0804",
+              "T0813",
+              "T0869"
+            ],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "M1_mixtral-8x7b_r1_67e037",
+          "scenario_id": "M1",
+          "model_id": "mixtral-8x7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:51:36.956190+00:00",
+          "end_time": "2026-02-24T15:51:57.139605+00:00",
+          "duration_sec": 20.18,
+          "events_injected": 1260,
+          "attack_detected": true,
+          "detected_type": "Malware/Botnet",
+          "detected_severity": "HIGH",
+          "confidence": 66.0,
+          "mitre_ttps_detected": [
+            "T0882",
+            "T0875",
+            "T0869",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "Malware/Botnet",
+            "severity": "HIGH",
+            "target_zone": "highway_corridor",
+            "expected_detection": true,
+            "malware_family": "Mirai"
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Malware/Botnet",
+            "severity": "HIGH",
+            "confidence": 66.0,
+            "mitre_ttps": [
+              "T0882",
+              "T0875",
+              "T0869",
+              "T0813"
+            ],
+            "ddos_results": {},
+            "malware_results": {
+              "malware_detected": true,
+              "malware_type": "botnet",
+              "mitre_ttps": [
+                "T0882",
+                "T0875",
+                "T0869",
+                "T0813"
+              ]
+            },
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "M2_mixtral-8x7b_r1_cfbaaa",
+          "scenario_id": "M2",
+          "model_id": "mixtral-8x7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:51:57.142371+00:00",
+          "end_time": "2026-02-24T15:52:17.206577+00:00",
+          "duration_sec": 20.06,
+          "events_injected": 1060,
+          "attack_detected": true,
+          "detected_type": "Unknown",
+          "detected_severity": "MEDIUM",
+          "confidence": 93.9,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0875",
+            "T0834"
+          ],
+          "ground_truth": {
+            "attack_type": "Malware/Ransomware",
+            "severity": "CRITICAL",
+            "target_zone": "reliance_hospital",
+            "expected_detection": true,
+            "malware_family": "WannaCry-variant"
+          },
+          "correct_detection": true,
+          "correct_classification": false,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Unknown",
+            "severity": "MEDIUM",
+            "confidence": 93.9,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {
+              "malware_detected": true,
+              "malware_type": "ransomware",
+              "mitre_ttps": [
+                "T0883",
+                "T0875",
+                "T0834"
+              ]
+            },
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "M3_mixtral-8x7b_r1_d03829",
+          "scenario_id": "M3",
+          "model_id": "mixtral-8x7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:52:17.208702+00:00",
+          "end_time": "2026-02-24T15:52:37.271893+00:00",
+          "duration_sec": 20.06,
+          "events_injected": 550,
+          "attack_detected": false,
+          "detected_type": "none",
+          "detected_severity": "none",
+          "confidence": 32.56701531797725,
+          "mitre_ttps_detected": [],
+          "ground_truth": {
+            "attack_type": "Malware/Firmware Tampering",
+            "severity": "CRITICAL",
+            "target_zone": "airport",
+            "expected_detection": true
+          },
+          "correct_detection": false,
+          "correct_classification": false,
+          "ttp_coverage": 1.0,
+          "agent_output": {
+            "attack_detected": false,
+            "attack_type": "none",
+            "severity": "none",
+            "confidence": 32.56701531797725,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "M4_mixtral-8x7b_r1_994b54",
+          "scenario_id": "M4",
+          "model_id": "mixtral-8x7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:52:37.272765+00:00",
+          "end_time": "2026-02-24T15:53:07.514133+00:00",
+          "duration_sec": 30.24,
+          "events_injected": 555,
+          "attack_detected": true,
+          "detected_type": "Malware/Data Exfiltration",
+          "detected_severity": "HIGH",
+          "confidence": 89.6,
+          "mitre_ttps_detected": [
+            "T0882",
+            "T0869"
+          ],
+          "ground_truth": {
+            "attack_type": "Malware/Data Exfiltration",
+            "severity": "HIGH",
+            "target_zone": "bkc_commercial",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Malware/Data Exfiltration",
+            "severity": "HIGH",
+            "confidence": 89.6,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {
+              "malware_detected": true,
+              "malware_type": "data_exfiltration",
+              "mitre_ttps": [
+                "T0882",
+                "T0869"
+              ]
+            },
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S1_mixtral-8x7b_r1_144114",
+          "scenario_id": "S1",
+          "model_id": "mixtral-8x7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:53:07.516331+00:00",
+          "end_time": "2026-02-24T15:55:07.664901+00:00",
+          "duration_sec": 120.15,
+          "events_injected": 0,
+          "attack_detected": false,
+          "detected_type": "none",
+          "detected_severity": "none",
+          "confidence": 7.761295896898972,
+          "mitre_ttps_detected": [],
+          "ground_truth": {
+            "attack_type": "none",
+            "severity": "NONE",
+            "expected_detection": false
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 1.0,
+          "agent_output": {
+            "attack_detected": false,
+            "attack_type": "none",
+            "severity": "none",
+            "confidence": 7.761295896898972,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S2_mixtral-8x7b_r1_2d33a7",
+          "scenario_id": "S2",
+          "model_id": "mixtral-8x7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:55:07.666592+00:00",
+          "end_time": "2026-02-24T15:55:27.758004+00:00",
+          "duration_sec": 20.09,
+          "events_injected": 2800,
+          "attack_detected": true,
+          "detected_type": "DDoS/HTTP Flood",
+          "detected_severity": "HIGH",
+          "confidence": 94.7,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0804",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/HTTP Flood",
+            "severity": "HIGH",
+            "target_zone": "bkc_commercial",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "DDoS/HTTP Flood",
+            "severity": "HIGH",
+            "confidence": 94.7,
+            "mitre_ttps": [
+              "T0883",
+              "T0804",
+              "T0813"
+            ],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "http_flood",
+              "mitre_ttps": [
+                "T0883",
+                "T0804",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S3_mixtral-8x7b_r1_3d1c08",
+          "scenario_id": "S3",
+          "model_id": "mixtral-8x7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:55:27.759137+00:00",
+          "end_time": "2026-02-24T15:55:42.850304+00:00",
+          "duration_sec": 15.09,
+          "events_injected": 3875,
+          "attack_detected": true,
+          "detected_type": "DDoS/SYN Flood",
+          "detected_severity": "CRITICAL",
+          "confidence": 76.5,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0813",
+            "T0834"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/SYN Flood",
+            "severity": "CRITICAL",
+            "target_zone": "reliance_hospital",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "DDoS/SYN Flood",
+            "severity": "CRITICAL",
+            "confidence": 76.5,
+            "mitre_ttps": [],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "syn_flood",
+              "mitre_ttps": [
+                "T0883",
+                "T0813",
+                "T0834"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S4_mixtral-8x7b_r1_4eb92b",
+          "scenario_id": "S4",
+          "model_id": "mixtral-8x7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:55:42.851922+00:00",
+          "end_time": "2026-02-24T15:55:58.006475+00:00",
+          "duration_sec": 15.15,
+          "events_injected": 3400,
+          "attack_detected": true,
+          "detected_type": "DDoS/UDP Flood",
+          "detected_severity": "CRITICAL",
+          "confidence": 94.0,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/UDP Flood",
+            "severity": "CRITICAL",
+            "target_zone": "airport",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "DDoS/UDP Flood",
+            "severity": "CRITICAL",
+            "confidence": 94.0,
+            "mitre_ttps": [],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "udp_flood",
+              "mitre_ttps": [
+                "T0883",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S5_mixtral-8x7b_r1_54363a",
+          "scenario_id": "S5",
+          "model_id": "mixtral-8x7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:55:58.009457+00:00",
+          "end_time": "2026-02-24T15:56:28.157697+00:00",
+          "duration_sec": 30.15,
+          "events_injected": 825,
+          "attack_detected": true,
+          "detected_type": "DDoS/Slowloris",
+          "detected_severity": "MEDIUM",
+          "confidence": 84.7,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/Slowloris",
+            "severity": "MEDIUM",
+            "target_zone": "port_area",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "DDoS/Slowloris",
+            "severity": "MEDIUM",
+            "confidence": 84.7,
+            "mitre_ttps": [
+              "T0883",
+              "T0813"
+            ],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "slowloris",
+              "mitre_ttps": [
+                "T0883",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S6_mixtral-8x7b_r1_7805f6",
+          "scenario_id": "S6",
+          "model_id": "mixtral-8x7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:56:28.159480+00:00",
+          "end_time": "2026-02-24T15:56:48.233517+00:00",
+          "duration_sec": 20.07,
+          "events_injected": 1900,
+          "attack_detected": true,
+          "detected_type": "DDoS/DNS Amplification",
+          "detected_severity": "HIGH",
+          "confidence": 90.3,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/DNS Amplification",
+            "severity": "HIGH",
+            "target_zone": "school_complex",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "DDoS/DNS Amplification",
+            "severity": "HIGH",
+            "confidence": 90.3,
+            "mitre_ttps": [
+              "T0883",
+              "T0813"
+            ],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "dns_amplification",
+              "mitre_ttps": [
+                "T0883",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S7_mixtral-8x7b_r1_6a4ce0",
+          "scenario_id": "S7",
+          "model_id": "mixtral-8x7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:56:48.235299+00:00",
+          "end_time": "2026-02-24T15:57:08.393059+00:00",
+          "duration_sec": 20.16,
+          "events_injected": 3650,
+          "attack_detected": true,
+          "detected_type": "DDoS/Multi-Vector",
+          "detected_severity": "HIGH",
+          "confidence": 83.9,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0804",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/Multi-Vector",
+            "severity": "HIGH",
+            "target_zone": "highway_corridor",
+            "expected_detection": true,
+            "sub_attacks": [
+              "http_flood",
+              "syn_flood",
+              "udp_flood"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "DDoS/Multi-Vector",
+            "severity": "HIGH",
+            "confidence": 83.9,
+            "mitre_ttps": [],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "multi-vector",
+              "mitre_ttps": [
+                "T0883",
+                "T0804",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        }
+      ]
+    },
+    "gemma-2-9b": {
+      "display_name": "Gemma 2 9B",
+      "total_runs": 16,
+      "correct_detections": 14,
+      "accuracy": 87.5,
+      "elapsed_sec": 451.8,
+      "runs": [
+        {
+          "run_id": "C1_gemma-2-9b_r1_c8f164",
+          "scenario_id": "C1",
+          "model_id": "gemma-2-9b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:57:08.405798+00:00",
+          "end_time": "2026-02-24T15:57:33.441034+00:00",
+          "duration_sec": 25.04,
+          "events_injected": 1985,
+          "attack_detected": true,
+          "detected_type": "Unknown",
+          "detected_severity": "MEDIUM",
+          "confidence": 69.7,
+          "mitre_ttps_detected": [
+            "T0882",
+            "T0875",
+            "T0869",
+            "T0834",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "Coordinated/Multi-Zone",
+            "severity": "CRITICAL",
+            "target_zone": "reliance_hospital",
+            "secondary_zones": [
+              "airport"
+            ],
+            "expected_detection": true,
+            "sub_attacks": [
+              "botnet",
+              "firmware_tamper",
+              "data_exfiltration"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": false,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Unknown",
+            "severity": "MEDIUM",
+            "confidence": 69.7,
+            "mitre_ttps": [
+              "T0882",
+              "T0875",
+              "T0869",
+              "T0834",
+              "T0813"
+            ],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "C2_gemma-2-9b_r1_9b627c",
+          "scenario_id": "C2",
+          "model_id": "gemma-2-9b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:57:33.443701+00:00",
+          "end_time": "2026-02-24T15:57:53.498006+00:00",
+          "duration_sec": 20.05,
+          "events_injected": 4240,
+          "attack_detected": true,
+          "detected_type": "Coordinated/Dual-Strike",
+          "detected_severity": "CRITICAL",
+          "confidence": 79.3,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0804",
+            "T0882",
+            "T0834"
+          ],
+          "ground_truth": {
+            "attack_type": "Coordinated/Dual-Strike",
+            "severity": "CRITICAL",
+            "target_zone": "bkc_commercial",
+            "secondary_zones": [
+              "port_area"
+            ],
+            "expected_detection": true,
+            "sub_attacks": [
+              "http_flood",
+              "syn_flood",
+              "ransomware"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Coordinated/Dual-Strike",
+            "severity": "CRITICAL",
+            "confidence": 79.3,
+            "mitre_ttps": [
+              "T0883",
+              "T0804",
+              "T0882",
+              "T0834"
+            ],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "C3_gemma-2-9b_r1_692c7d",
+          "scenario_id": "C3",
+          "model_id": "gemma-2-9b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:57:53.503104+00:00",
+          "end_time": "2026-02-24T15:58:18.629626+00:00",
+          "duration_sec": 25.13,
+          "events_injected": 2745,
+          "attack_detected": true,
+          "detected_type": "APT/Cascade",
+          "detected_severity": "HIGH",
+          "confidence": 75.1,
+          "mitre_ttps_detected": [
+            "T0882",
+            "T0875",
+            "T0883",
+            "T0834",
+            "T0869"
+          ],
+          "ground_truth": {
+            "attack_type": "APT/Cascade",
+            "severity": "HIGH",
+            "target_zone": "highway_corridor",
+            "secondary_zones": [
+              "residential",
+              "school_complex"
+            ],
+            "expected_detection": true,
+            "sub_attacks": [
+              "botnet",
+              "http_flood",
+              "data_exfiltration"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "APT/Cascade",
+            "severity": "HIGH",
+            "confidence": 75.1,
+            "mitre_ttps": [
+              "T0882",
+              "T0875",
+              "T0883",
+              "T0834",
+              "T0869"
+            ],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "C4_gemma-2-9b_r1_7c6e3e",
+          "scenario_id": "C4",
+          "model_id": "gemma-2-9b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:58:18.634422+00:00",
+          "end_time": "2026-02-24T15:58:38.698480+00:00",
+          "duration_sec": 20.06,
+          "events_injected": 2970,
+          "attack_detected": true,
+          "detected_type": "Unknown",
+          "detected_severity": "MEDIUM",
+          "confidence": 71.7,
+          "mitre_ttps_detected": [],
+          "ground_truth": {
+            "attack_type": "APT/Full-Assault",
+            "severity": "CRITICAL",
+            "target_zone": "reliance_hospital",
+            "expected_detection": true,
+            "sub_attacks": [
+              "syn_flood",
+              "slowloris",
+              "botnet",
+              "data_exfiltration"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": false,
+          "ttp_coverage": 1.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Unknown",
+            "severity": "MEDIUM",
+            "confidence": 71.7,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "C5_gemma-2-9b_r1_7b0fc5",
+          "scenario_id": "C5",
+          "model_id": "gemma-2-9b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:58:38.702519+00:00",
+          "end_time": "2026-02-24T15:59:08.839190+00:00",
+          "duration_sec": 30.14,
+          "events_injected": 6600,
+          "attack_detected": true,
+          "detected_type": "APT/City-Wide",
+          "detected_severity": "CRITICAL",
+          "confidence": 80.7,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0882",
+            "T0834",
+            "T0875",
+            "T0804",
+            "T0813",
+            "T0869"
+          ],
+          "ground_truth": {
+            "attack_type": "APT/City-Wide",
+            "severity": "CRITICAL",
+            "target_zone": "bkc_commercial",
+            "secondary_zones": [
+              "reliance_hospital",
+              "airport",
+              "port_area",
+              "school_complex",
+              "residential",
+              "highway_corridor"
+            ],
+            "expected_detection": true,
+            "sub_attacks": [
+              "http_flood",
+              "ransomware",
+              "firmware_tamper",
+              "botnet",
+              "syn_flood",
+              "dns_amplification",
+              "data_exfiltration"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "APT/City-Wide",
+            "severity": "CRITICAL",
+            "confidence": 80.7,
+            "mitre_ttps": [
+              "T0883",
+              "T0882",
+              "T0834",
+              "T0875",
+              "T0804",
+              "T0813",
+              "T0869"
+            ],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "M1_gemma-2-9b_r1_600a70",
+          "scenario_id": "M1",
+          "model_id": "gemma-2-9b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:59:08.842630+00:00",
+          "end_time": "2026-02-24T15:59:28.907626+00:00",
+          "duration_sec": 20.06,
+          "events_injected": 1260,
+          "attack_detected": true,
+          "detected_type": "Malware/Botnet",
+          "detected_severity": "HIGH",
+          "confidence": 75.1,
+          "mitre_ttps_detected": [
+            "T0882",
+            "T0875",
+            "T0869",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "Malware/Botnet",
+            "severity": "HIGH",
+            "target_zone": "highway_corridor",
+            "expected_detection": true,
+            "malware_family": "Mirai"
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Malware/Botnet",
+            "severity": "HIGH",
+            "confidence": 75.1,
+            "mitre_ttps": [
+              "T0882",
+              "T0875",
+              "T0869",
+              "T0813"
+            ],
+            "ddos_results": {},
+            "malware_results": {
+              "malware_detected": true,
+              "malware_type": "botnet",
+              "mitre_ttps": [
+                "T0882",
+                "T0875",
+                "T0869",
+                "T0813"
+              ]
+            },
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "M2_gemma-2-9b_r1_c66496",
+          "scenario_id": "M2",
+          "model_id": "gemma-2-9b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:59:28.909256+00:00",
+          "end_time": "2026-02-24T15:59:49.001645+00:00",
+          "duration_sec": 20.09,
+          "events_injected": 1060,
+          "attack_detected": true,
+          "detected_type": "Unknown",
+          "detected_severity": "MEDIUM",
+          "confidence": 92.7,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0875",
+            "T0834"
+          ],
+          "ground_truth": {
+            "attack_type": "Malware/Ransomware",
+            "severity": "CRITICAL",
+            "target_zone": "reliance_hospital",
+            "expected_detection": true,
+            "malware_family": "WannaCry-variant"
+          },
+          "correct_detection": true,
+          "correct_classification": false,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Unknown",
+            "severity": "MEDIUM",
+            "confidence": 92.7,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {
+              "malware_detected": true,
+              "malware_type": "ransomware",
+              "mitre_ttps": [
+                "T0883",
+                "T0875",
+                "T0834"
+              ]
+            },
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "M3_gemma-2-9b_r1_23b386",
+          "scenario_id": "M3",
+          "model_id": "gemma-2-9b",
+          "run_index": 1,
+          "start_time": "2026-02-24T15:59:49.004222+00:00",
+          "end_time": "2026-02-24T16:00:09.163375+00:00",
+          "duration_sec": 20.16,
+          "events_injected": 550,
+          "attack_detected": true,
+          "detected_type": "Malware/Firmware Tampering",
+          "detected_severity": "CRITICAL",
+          "confidence": 77.4,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0875"
+          ],
+          "ground_truth": {
+            "attack_type": "Malware/Firmware Tampering",
+            "severity": "CRITICAL",
+            "target_zone": "airport",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Malware/Firmware Tampering",
+            "severity": "CRITICAL",
+            "confidence": 77.4,
+            "mitre_ttps": [
+              "T0883",
+              "T0875"
+            ],
+            "ddos_results": {},
+            "malware_results": {
+              "malware_detected": true,
+              "malware_type": "firmware_tampering",
+              "mitre_ttps": [
+                "T0883",
+                "T0875"
+              ]
+            },
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "M4_gemma-2-9b_r1_041ef4",
+          "scenario_id": "M4",
+          "model_id": "gemma-2-9b",
+          "run_index": 1,
+          "start_time": "2026-02-24T16:00:09.165991+00:00",
+          "end_time": "2026-02-24T16:00:39.335549+00:00",
+          "duration_sec": 30.17,
+          "events_injected": 555,
+          "attack_detected": true,
+          "detected_type": "Malware/Data Exfiltration",
+          "detected_severity": "HIGH",
+          "confidence": 85.6,
+          "mitre_ttps_detected": [
+            "T0882",
+            "T0869"
+          ],
+          "ground_truth": {
+            "attack_type": "Malware/Data Exfiltration",
+            "severity": "HIGH",
+            "target_zone": "bkc_commercial",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Malware/Data Exfiltration",
+            "severity": "HIGH",
+            "confidence": 85.6,
+            "mitre_ttps": [
+              "T0882",
+              "T0869"
+            ],
+            "ddos_results": {},
+            "malware_results": {
+              "malware_detected": true,
+              "malware_type": "data_exfiltration",
+              "mitre_ttps": [
+                "T0882",
+                "T0869"
+              ]
+            },
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S1_gemma-2-9b_r1_499c00",
+          "scenario_id": "S1",
+          "model_id": "gemma-2-9b",
+          "run_index": 1,
+          "start_time": "2026-02-24T16:00:39.337206+00:00",
+          "end_time": "2026-02-24T16:02:39.403325+00:00",
+          "duration_sec": 120.07,
+          "events_injected": 0,
+          "attack_detected": true,
+          "detected_type": "http_flood",
+          "detected_severity": "low",
+          "confidence": 25.7095946233451,
+          "mitre_ttps_detected": [],
+          "ground_truth": {
+            "attack_type": "none",
+            "severity": "NONE",
+            "expected_detection": false
+          },
+          "correct_detection": false,
+          "correct_classification": false,
+          "ttp_coverage": 1.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "http_flood",
+            "severity": "low",
+            "confidence": 25.7095946233451,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S2_gemma-2-9b_r1_686a0e",
+          "scenario_id": "S2",
+          "model_id": "gemma-2-9b",
+          "run_index": 1,
+          "start_time": "2026-02-24T16:02:39.404949+00:00",
+          "end_time": "2026-02-24T16:02:59.509317+00:00",
+          "duration_sec": 20.1,
+          "events_injected": 2800,
+          "attack_detected": true,
+          "detected_type": "DDoS/HTTP Flood",
+          "detected_severity": "HIGH",
+          "confidence": 73.6,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0804",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/HTTP Flood",
+            "severity": "HIGH",
+            "target_zone": "bkc_commercial",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "DDoS/HTTP Flood",
+            "severity": "HIGH",
+            "confidence": 73.6,
+            "mitre_ttps": [
+              "T0883",
+              "T0804",
+              "T0813"
+            ],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "http_flood",
+              "mitre_ttps": [
+                "T0883",
+                "T0804",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S3_gemma-2-9b_r1_8ef4e6",
+          "scenario_id": "S3",
+          "model_id": "gemma-2-9b",
+          "run_index": 1,
+          "start_time": "2026-02-24T16:02:59.514469+00:00",
+          "end_time": "2026-02-24T16:03:14.672594+00:00",
+          "duration_sec": 15.16,
+          "events_injected": 3875,
+          "attack_detected": true,
+          "detected_type": "DDoS/SYN Flood",
+          "detected_severity": "CRITICAL",
+          "confidence": 85.8,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0813",
+            "T0834"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/SYN Flood",
+            "severity": "CRITICAL",
+            "target_zone": "reliance_hospital",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "DDoS/SYN Flood",
+            "severity": "CRITICAL",
+            "confidence": 85.8,
+            "mitre_ttps": [
+              "T0883",
+              "T0813",
+              "T0834"
+            ],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "syn_flood",
+              "mitre_ttps": [
+                "T0883",
+                "T0813",
+                "T0834"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S4_gemma-2-9b_r1_080cbb",
+          "scenario_id": "S4",
+          "model_id": "gemma-2-9b",
+          "run_index": 1,
+          "start_time": "2026-02-24T16:03:14.674106+00:00",
+          "end_time": "2026-02-24T16:03:29.842949+00:00",
+          "duration_sec": 15.17,
+          "events_injected": 3400,
+          "attack_detected": false,
+          "detected_type": "none",
+          "detected_severity": "none",
+          "confidence": 19.35681105938501,
+          "mitre_ttps_detected": [],
+          "ground_truth": {
+            "attack_type": "DDoS/UDP Flood",
+            "severity": "CRITICAL",
+            "target_zone": "airport",
+            "expected_detection": true
+          },
+          "correct_detection": false,
+          "correct_classification": false,
+          "ttp_coverage": 1.0,
+          "agent_output": {
+            "attack_detected": false,
+            "attack_type": "none",
+            "severity": "none",
+            "confidence": 19.35681105938501,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S5_gemma-2-9b_r1_4605b1",
+          "scenario_id": "S5",
+          "model_id": "gemma-2-9b",
+          "run_index": 1,
+          "start_time": "2026-02-24T16:03:29.846546+00:00",
+          "end_time": "2026-02-24T16:04:00.010213+00:00",
+          "duration_sec": 30.16,
+          "events_injected": 825,
+          "attack_detected": true,
+          "detected_type": "DDoS/Slowloris",
+          "detected_severity": "MEDIUM",
+          "confidence": 93.0,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/Slowloris",
+            "severity": "MEDIUM",
+            "target_zone": "port_area",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "DDoS/Slowloris",
+            "severity": "MEDIUM",
+            "confidence": 93.0,
+            "mitre_ttps": [
+              "T0883",
+              "T0813"
+            ],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "slowloris",
+              "mitre_ttps": [
+                "T0883",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S6_gemma-2-9b_r1_ebb378",
+          "scenario_id": "S6",
+          "model_id": "gemma-2-9b",
+          "run_index": 1,
+          "start_time": "2026-02-24T16:04:00.012864+00:00",
+          "end_time": "2026-02-24T16:04:20.115626+00:00",
+          "duration_sec": 20.1,
+          "events_injected": 1900,
+          "attack_detected": true,
+          "detected_type": "DDoS/DNS Amplification",
+          "detected_severity": "HIGH",
+          "confidence": 69.1,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/DNS Amplification",
+            "severity": "HIGH",
+            "target_zone": "school_complex",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "DDoS/DNS Amplification",
+            "severity": "HIGH",
+            "confidence": 69.1,
+            "mitre_ttps": [
+              "T0883",
+              "T0813"
+            ],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "dns_amplification",
+              "mitre_ttps": [
+                "T0883",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S7_gemma-2-9b_r1_3fc579",
+          "scenario_id": "S7",
+          "model_id": "gemma-2-9b",
+          "run_index": 1,
+          "start_time": "2026-02-24T16:04:20.115626+00:00",
+          "end_time": "2026-02-24T16:04:40.201836+00:00",
+          "duration_sec": 20.09,
+          "events_injected": 3650,
+          "attack_detected": true,
+          "detected_type": "DDoS/Multi-Vector",
+          "detected_severity": "HIGH",
+          "confidence": 69.6,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0804",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/Multi-Vector",
+            "severity": "HIGH",
+            "target_zone": "highway_corridor",
+            "expected_detection": true,
+            "sub_attacks": [
+              "http_flood",
+              "syn_flood",
+              "udp_flood"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "DDoS/Multi-Vector",
+            "severity": "HIGH",
+            "confidence": 69.6,
+            "mitre_ttps": [
+              "T0883",
+              "T0804",
+              "T0813"
+            ],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "multi-vector",
+              "mitre_ttps": [
+                "T0883",
+                "T0804",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        }
+      ]
+    },
+    "mistral-7b": {
+      "display_name": "Mistral 7B",
+      "total_runs": 16,
+      "correct_detections": 15,
+      "accuracy": 93.8,
+      "elapsed_sec": 451.6,
+      "runs": [
+        {
+          "run_id": "C1_mistral-7b_r1_e914e5",
+          "scenario_id": "C1",
+          "model_id": "mistral-7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T16:04:40.206957+00:00",
+          "end_time": "2026-02-24T16:05:05.303395+00:00",
+          "duration_sec": 25.1,
+          "events_injected": 1985,
+          "attack_detected": true,
+          "detected_type": "Coordinated/Multi-Zone",
+          "detected_severity": "CRITICAL",
+          "confidence": 65.7,
+          "mitre_ttps_detected": [
+            "T0882",
+            "T0875",
+            "T0869",
+            "T0834",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "Coordinated/Multi-Zone",
+            "severity": "CRITICAL",
+            "target_zone": "reliance_hospital",
+            "secondary_zones": [
+              "airport"
+            ],
+            "expected_detection": true,
+            "sub_attacks": [
+              "botnet",
+              "firmware_tamper",
+              "data_exfiltration"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Coordinated/Multi-Zone",
+            "severity": "CRITICAL",
+            "confidence": 65.7,
+            "mitre_ttps": [
+              "T0882",
+              "T0875",
+              "T0869",
+              "T0834",
+              "T0813"
+            ],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "C2_mistral-7b_r1_3c711e",
+          "scenario_id": "C2",
+          "model_id": "mistral-7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T16:05:05.308010+00:00",
+          "end_time": "2026-02-24T16:05:25.355658+00:00",
+          "duration_sec": 20.05,
+          "events_injected": 4240,
+          "attack_detected": true,
+          "detected_type": "Coordinated/Dual-Strike",
+          "detected_severity": "CRITICAL",
+          "confidence": 87.7,
+          "mitre_ttps_detected": [],
+          "ground_truth": {
+            "attack_type": "Coordinated/Dual-Strike",
+            "severity": "CRITICAL",
+            "target_zone": "bkc_commercial",
+            "secondary_zones": [
+              "port_area"
+            ],
+            "expected_detection": true,
+            "sub_attacks": [
+              "http_flood",
+              "syn_flood",
+              "ransomware"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 1.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Coordinated/Dual-Strike",
+            "severity": "CRITICAL",
+            "confidence": 87.7,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "C3_mistral-7b_r1_2e18ba",
+          "scenario_id": "C3",
+          "model_id": "mistral-7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T16:05:25.358209+00:00",
+          "end_time": "2026-02-24T16:05:50.465914+00:00",
+          "duration_sec": 25.11,
+          "events_injected": 2745,
+          "attack_detected": true,
+          "detected_type": "Unknown",
+          "detected_severity": "MEDIUM",
+          "confidence": 71.8,
+          "mitre_ttps_detected": [],
+          "ground_truth": {
+            "attack_type": "APT/Cascade",
+            "severity": "HIGH",
+            "target_zone": "highway_corridor",
+            "secondary_zones": [
+              "residential",
+              "school_complex"
+            ],
+            "expected_detection": true,
+            "sub_attacks": [
+              "botnet",
+              "http_flood",
+              "data_exfiltration"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": false,
+          "ttp_coverage": 1.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Unknown",
+            "severity": "MEDIUM",
+            "confidence": 71.8,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "C4_mistral-7b_r1_4fd376",
+          "scenario_id": "C4",
+          "model_id": "mistral-7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T16:05:50.469111+00:00",
+          "end_time": "2026-02-24T16:06:10.538879+00:00",
+          "duration_sec": 20.07,
+          "events_injected": 2970,
+          "attack_detected": true,
+          "detected_type": "APT/Full-Assault",
+          "detected_severity": "CRITICAL",
+          "confidence": 67.6,
+          "mitre_ttps_detected": [
+            "T0804",
+            "T0883",
+            "T0882",
+            "T0875",
+            "T0834",
+            "T0869"
+          ],
+          "ground_truth": {
+            "attack_type": "APT/Full-Assault",
+            "severity": "CRITICAL",
+            "target_zone": "reliance_hospital",
+            "expected_detection": true,
+            "sub_attacks": [
+              "syn_flood",
+              "slowloris",
+              "botnet",
+              "data_exfiltration"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "APT/Full-Assault",
+            "severity": "CRITICAL",
+            "confidence": 67.6,
+            "mitre_ttps": [
+              "T0804",
+              "T0883",
+              "T0882",
+              "T0875",
+              "T0834",
+              "T0869"
+            ],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "C5_mistral-7b_r1_28e113",
+          "scenario_id": "C5",
+          "model_id": "mistral-7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T16:06:10.540654+00:00",
+          "end_time": "2026-02-24T16:06:40.678678+00:00",
+          "duration_sec": 30.14,
+          "events_injected": 6600,
+          "attack_detected": true,
+          "detected_type": "APT/City-Wide",
+          "detected_severity": "CRITICAL",
+          "confidence": 65.3,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0882",
+            "T0834",
+            "T0875",
+            "T0804",
+            "T0813",
+            "T0869"
+          ],
+          "ground_truth": {
+            "attack_type": "APT/City-Wide",
+            "severity": "CRITICAL",
+            "target_zone": "bkc_commercial",
+            "secondary_zones": [
+              "reliance_hospital",
+              "airport",
+              "port_area",
+              "school_complex",
+              "residential",
+              "highway_corridor"
+            ],
+            "expected_detection": true,
+            "sub_attacks": [
+              "http_flood",
+              "ransomware",
+              "firmware_tamper",
+              "botnet",
+              "syn_flood",
+              "dns_amplification",
+              "data_exfiltration"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "APT/City-Wide",
+            "severity": "CRITICAL",
+            "confidence": 65.3,
+            "mitre_ttps": [
+              "T0883",
+              "T0882",
+              "T0834",
+              "T0875",
+              "T0804",
+              "T0813",
+              "T0869"
+            ],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "M1_mistral-7b_r1_dad951",
+          "scenario_id": "M1",
+          "model_id": "mistral-7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T16:06:40.681368+00:00",
+          "end_time": "2026-02-24T16:07:00.745982+00:00",
+          "duration_sec": 20.06,
+          "events_injected": 1260,
+          "attack_detected": true,
+          "detected_type": "Malware/Botnet",
+          "detected_severity": "HIGH",
+          "confidence": 90.7,
+          "mitre_ttps_detected": [
+            "T0882",
+            "T0875",
+            "T0869",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "Malware/Botnet",
+            "severity": "HIGH",
+            "target_zone": "highway_corridor",
+            "expected_detection": true,
+            "malware_family": "Mirai"
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Malware/Botnet",
+            "severity": "HIGH",
+            "confidence": 90.7,
+            "mitre_ttps": [
+              "T0882",
+              "T0875",
+              "T0869",
+              "T0813"
+            ],
+            "ddos_results": {},
+            "malware_results": {
+              "malware_detected": true,
+              "malware_type": "botnet",
+              "mitre_ttps": [
+                "T0882",
+                "T0875",
+                "T0869",
+                "T0813"
+              ]
+            },
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "M2_mistral-7b_r1_f61c03",
+          "scenario_id": "M2",
+          "model_id": "mistral-7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T16:07:00.747999+00:00",
+          "end_time": "2026-02-24T16:07:20.879124+00:00",
+          "duration_sec": 20.13,
+          "events_injected": 1060,
+          "attack_detected": true,
+          "detected_type": "Malware/Ransomware",
+          "detected_severity": "CRITICAL",
+          "confidence": 66.2,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0875",
+            "T0834"
+          ],
+          "ground_truth": {
+            "attack_type": "Malware/Ransomware",
+            "severity": "CRITICAL",
+            "target_zone": "reliance_hospital",
+            "expected_detection": true,
+            "malware_family": "WannaCry-variant"
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Malware/Ransomware",
+            "severity": "CRITICAL",
+            "confidence": 66.2,
+            "mitre_ttps": [
+              "T0883",
+              "T0875",
+              "T0834"
+            ],
+            "ddos_results": {},
+            "malware_results": {
+              "malware_detected": true,
+              "malware_type": "ransomware",
+              "mitre_ttps": [
+                "T0883",
+                "T0875",
+                "T0834"
+              ]
+            },
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "M3_mistral-7b_r1_69dc56",
+          "scenario_id": "M3",
+          "model_id": "mistral-7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T16:07:20.883482+00:00",
+          "end_time": "2026-02-24T16:07:40.985758+00:00",
+          "duration_sec": 20.1,
+          "events_injected": 550,
+          "attack_detected": true,
+          "detected_type": "Malware/Firmware Tampering",
+          "detected_severity": "CRITICAL",
+          "confidence": 78.5,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0875"
+          ],
+          "ground_truth": {
+            "attack_type": "Malware/Firmware Tampering",
+            "severity": "CRITICAL",
+            "target_zone": "airport",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Malware/Firmware Tampering",
+            "severity": "CRITICAL",
+            "confidence": 78.5,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {
+              "malware_detected": true,
+              "malware_type": "firmware_tampering",
+              "mitre_ttps": [
+                "T0883",
+                "T0875"
+              ]
+            },
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "M4_mistral-7b_r1_93527d",
+          "scenario_id": "M4",
+          "model_id": "mistral-7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T16:07:40.986323+00:00",
+          "end_time": "2026-02-24T16:08:11.127765+00:00",
+          "duration_sec": 30.14,
+          "events_injected": 555,
+          "attack_detected": true,
+          "detected_type": "Malware/Data Exfiltration",
+          "detected_severity": "HIGH",
+          "confidence": 86.6,
+          "mitre_ttps_detected": [
+            "T0882",
+            "T0869"
+          ],
+          "ground_truth": {
+            "attack_type": "Malware/Data Exfiltration",
+            "severity": "HIGH",
+            "target_zone": "bkc_commercial",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Malware/Data Exfiltration",
+            "severity": "HIGH",
+            "confidence": 86.6,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {
+              "malware_detected": true,
+              "malware_type": "data_exfiltration",
+              "mitre_ttps": [
+                "T0882",
+                "T0869"
+              ]
+            },
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S1_mistral-7b_r1_6cc36a",
+          "scenario_id": "S1",
+          "model_id": "mistral-7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T16:08:11.127765+00:00",
+          "end_time": "2026-02-24T16:10:11.237061+00:00",
+          "duration_sec": 120.11,
+          "events_injected": 0,
+          "attack_detected": false,
+          "detected_type": "none",
+          "detected_severity": "none",
+          "confidence": 11.57074476647674,
+          "mitre_ttps_detected": [],
+          "ground_truth": {
+            "attack_type": "none",
+            "severity": "NONE",
+            "expected_detection": false
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 1.0,
+          "agent_output": {
+            "attack_detected": false,
+            "attack_type": "none",
+            "severity": "none",
+            "confidence": 11.57074476647674,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S2_mistral-7b_r1_2f3b02",
+          "scenario_id": "S2",
+          "model_id": "mistral-7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T16:10:11.241184+00:00",
+          "end_time": "2026-02-24T16:10:31.333462+00:00",
+          "duration_sec": 20.09,
+          "events_injected": 2800,
+          "attack_detected": true,
+          "detected_type": "Unknown",
+          "detected_severity": "MEDIUM",
+          "confidence": 86.1,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0804",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/HTTP Flood",
+            "severity": "HIGH",
+            "target_zone": "bkc_commercial",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": false,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Unknown",
+            "severity": "MEDIUM",
+            "confidence": 86.1,
+            "mitre_ttps": [],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "http_flood",
+              "mitre_ttps": [
+                "T0883",
+                "T0804",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S3_mistral-7b_r1_e91efd",
+          "scenario_id": "S3",
+          "model_id": "mistral-7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T16:10:31.335629+00:00",
+          "end_time": "2026-02-24T16:10:46.422007+00:00",
+          "duration_sec": 15.09,
+          "events_injected": 3875,
+          "attack_detected": false,
+          "detected_type": "none",
+          "detected_severity": "none",
+          "confidence": 16.92083052630537,
+          "mitre_ttps_detected": [],
+          "ground_truth": {
+            "attack_type": "DDoS/SYN Flood",
+            "severity": "CRITICAL",
+            "target_zone": "reliance_hospital",
+            "expected_detection": true
+          },
+          "correct_detection": false,
+          "correct_classification": false,
+          "ttp_coverage": 1.0,
+          "agent_output": {
+            "attack_detected": false,
+            "attack_type": "none",
+            "severity": "none",
+            "confidence": 16.92083052630537,
+            "mitre_ttps": [],
+            "ddos_results": {},
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S4_mistral-7b_r1_ed08db",
+          "scenario_id": "S4",
+          "model_id": "mistral-7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T16:10:46.423077+00:00",
+          "end_time": "2026-02-24T16:11:01.498452+00:00",
+          "duration_sec": 15.08,
+          "events_injected": 3400,
+          "attack_detected": true,
+          "detected_type": "DDoS/UDP Flood",
+          "detected_severity": "CRITICAL",
+          "confidence": 75.7,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/UDP Flood",
+            "severity": "CRITICAL",
+            "target_zone": "airport",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "DDoS/UDP Flood",
+            "severity": "CRITICAL",
+            "confidence": 75.7,
+            "mitre_ttps": [
+              "T0883",
+              "T0813"
+            ],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "udp_flood",
+              "mitre_ttps": [
+                "T0883",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S5_mistral-7b_r1_56ceb2",
+          "scenario_id": "S5",
+          "model_id": "mistral-7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T16:11:01.498765+00:00",
+          "end_time": "2026-02-24T16:11:31.641064+00:00",
+          "duration_sec": 30.14,
+          "events_injected": 825,
+          "attack_detected": true,
+          "detected_type": "DDoS/Slowloris",
+          "detected_severity": "MEDIUM",
+          "confidence": 70.1,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/Slowloris",
+            "severity": "MEDIUM",
+            "target_zone": "port_area",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "DDoS/Slowloris",
+            "severity": "MEDIUM",
+            "confidence": 70.1,
+            "mitre_ttps": [
+              "T0883",
+              "T0813"
+            ],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "slowloris",
+              "mitre_ttps": [
+                "T0883",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S6_mistral-7b_r1_0fb373",
+          "scenario_id": "S6",
+          "model_id": "mistral-7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T16:11:31.642658+00:00",
+          "end_time": "2026-02-24T16:11:51.724134+00:00",
+          "duration_sec": 20.08,
+          "events_injected": 1900,
+          "attack_detected": true,
+          "detected_type": "Unknown",
+          "detected_severity": "MEDIUM",
+          "confidence": 84.6,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/DNS Amplification",
+            "severity": "HIGH",
+            "target_zone": "school_complex",
+            "expected_detection": true
+          },
+          "correct_detection": true,
+          "correct_classification": false,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "Unknown",
+            "severity": "MEDIUM",
+            "confidence": 84.6,
+            "mitre_ttps": [],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "dns_amplification",
+              "mitre_ttps": [
+                "T0883",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        },
+        {
+          "run_id": "S7_mistral-7b_r1_a6be13",
+          "scenario_id": "S7",
+          "model_id": "mistral-7b",
+          "run_index": 1,
+          "start_time": "2026-02-24T16:11:51.725551+00:00",
+          "end_time": "2026-02-24T16:12:11.804832+00:00",
+          "duration_sec": 20.08,
+          "events_injected": 3650,
+          "attack_detected": true,
+          "detected_type": "DDoS/Multi-Vector",
+          "detected_severity": "HIGH",
+          "confidence": 86.5,
+          "mitre_ttps_detected": [
+            "T0883",
+            "T0804",
+            "T0813"
+          ],
+          "ground_truth": {
+            "attack_type": "DDoS/Multi-Vector",
+            "severity": "HIGH",
+            "target_zone": "highway_corridor",
+            "expected_detection": true,
+            "sub_attacks": [
+              "http_flood",
+              "syn_flood",
+              "udp_flood"
+            ]
+          },
+          "correct_detection": true,
+          "correct_classification": true,
+          "ttp_coverage": 0.0,
+          "agent_output": {
+            "attack_detected": true,
+            "attack_type": "DDoS/Multi-Vector",
+            "severity": "HIGH",
+            "confidence": 86.5,
+            "mitre_ttps": [],
+            "ddos_results": {
+              "attack_detected": true,
+              "attack_type": "multi-vector",
+              "mitre_ttps": [
+                "T0883",
+                "T0804",
+                "T0813"
+              ]
+            },
+            "malware_results": {},
+            "mode": "simulated"
+          },
+          "status": "completed",
+          "error": ""
+        }
+      ]
+    }
+  }
+}

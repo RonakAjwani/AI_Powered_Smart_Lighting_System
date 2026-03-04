@@ -1,0 +1,35 @@
+{
+  "run_id": "S1_mistral-7b_r1_6cc36a",
+  "scenario_id": "S1",
+  "model_id": "mistral-7b",
+  "run_index": 1,
+  "start_time": "2026-02-24T16:08:11.127765+00:00",
+  "end_time": "2026-02-24T16:10:11.237061+00:00",
+  "duration_sec": 120.11,
+  "events_injected": 0,
+  "attack_detected": false,
+  "detected_type": "none",
+  "detected_severity": "none",
+  "confidence": 11.57074476647674,
+  "mitre_ttps_detected": [],
+  "ground_truth": {
+    "attack_type": "none",
+    "severity": "NONE",
+    "expected_detection": false
+  },
+  "correct_detection": true,
+  "correct_classification": true,
+  "ttp_coverage": 1.0,
+  "agent_output": {
+    "attack_detected": false,
+    "attack_type": "none",
+    "severity": "none",
+    "confidence": 11.57074476647674,
+    "mitre_ttps": [],
+    "ddos_results": {},
+    "malware_results": {},
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

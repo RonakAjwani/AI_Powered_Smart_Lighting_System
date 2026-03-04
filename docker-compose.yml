@@ -1,0 +1,250 @@
+services:
+  # Zookeeper
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.4.0
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - smart-lighting-net
+
+  # Kafka (Shared by all services)
+  kafka:
+    image: confluentinc/cp-kafka:7.4.0
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+    networks:
+      - smart-lighting-net
+    healthcheck:
+      test: ["CMD-SHELL", "kafka-broker-api-versions --bootstrap-server localhost:9092"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Cybersecurity Agent
+  cybersecurity-agent:
+    build:
+      context: ./backend/cybersecurity
+      dockerfile: Dockerfile
+    container_name: cybersecurity-agent
+    depends_on:
+      kafka:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+      KAFKA_CONSUMER_GROUP: cybersecurity_agents
+      GROQ_API_KEY: ${GROQ_API_KEY}
+      LOG_LEVEL: INFO
+    networks:
+      - smart-lighting-net
+    restart: unless-stopped
+    volumes:
+      - ./logs/cybersecurity:/app/logs
+
+  # Weather Intelligence Agent
+  weather-agent:
+    build:
+      context: ./backend/weather
+      dockerfile: Dockerfile
+    container_name: weather-agent
+    depends_on:
+      kafka:
+        condition: service_healthy
+    ports:
+      - "8001:8001"
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+      KAFKA_CONSUMER_GROUP: weather_agents
+      GROQ_API_KEY: ${GROQ_API_KEY}
+      WEATHERAPI_API_KEY: ${WEATHERAPI_API_KEY}
+      WEATHER_PORT: 8001
+      LOG_LEVEL: INFO
+    networks:
+      - smart-lighting-net
+    restart: unless-stopped
+    volumes:
+      - ./logs/weather:/app/logs
+
+  # Power Grid Management Agent
+  power-agent:
+    build:
+      context: ./backend/power
+      dockerfile: Dockerfile
+    container_name: power-agent
+    depends_on:
+      kafka:
+        condition: service_healthy
+    ports:
+      - "8002:8002"
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+      KAFKA_CONSUMER_GROUP: power_grid_agents
+      GROQ_API_KEY: ${GROQ_API_KEY}
+      POWER_PORT: 8002
+      LOG_LEVEL: INFO
+      ENERGY_SAVINGS_TARGET: 15.0
+      RELIABILITY_TARGET: 99.5
+      EFFICIENCY_BASELINE: 95.0
+      PEAK_LOAD_THRESHOLD: 1000
+      MONTHLY_ENERGY_BUDGET: 50000
+      BUDGET_ALERT_THRESHOLD: 85
+    networks:
+      - smart-lighting-net
+    restart: unless-stopped
+    volumes:
+      - ./logs/power:/app/logs
+
+  coordinator-agent:
+    build:
+      context: ./backend/coordinator
+    container_name: coordinator-agent
+    ports:
+      - "8004:8004"
+    env_file:
+      - ./backend/coordinator/.env.example
+      - ./.env # Also load shared .env
+    environment:
+      - KAFKA_BROKER_URL=kafka:29092
+      # Add any other environment overrides here
+    depends_on:
+      - kafka
+      - postgres
+    networks:
+      - smart-lighting-net
+    restart: on-failure
+    
+  # Redis (Shared caching for all services)
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    networks:
+      - smart-lighting-net
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+
+  # PostgreSQL (Shared database for all services)
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: smart_lighting
+      POSTGRES_USER: smart_user
+      POSTGRES_PASSWORD: smart_pass
+      POSTGRES_MULTIPLE_DATABASES: cybersecurity_db,weather_intelligence_db,power_grid_db
+    networks:
+      - smart-lighting-net
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./init-databases.sql:/docker-entrypoint-initdb.d/init-databases.sql
+    restart: unless-stopped
+
+  # Prometheus (Shared monitoring for all services)
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    networks:
+      - smart-lighting-net
+    restart: unless-stopped
+
+  # Grafana (Shared visualization for all services)
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin123
+      GF_USERS_ALLOW_SIGN_UP: false
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./monitoring/grafana/datasources:/etc/grafana/provisioning/datasources
+    networks:
+      - smart-lighting-net
+    restart: unless-stopped
+
+  # Additional Grafana instance for Power Grid monitoring
+  grafana-power:
+    image: grafana/grafana:latest
+    container_name: grafana-power
+    ports:
+      - "3002:3000"  # Different port for power grid dashboards
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin123
+      GF_USERS_ALLOW_SIGN_UP: false
+      GF_SERVER_ROOT_URL: http://localhost:3002
+    volumes:
+      - grafana-power-data:/var/lib/grafana
+      - ./monitoring/grafana/power-dashboards:/etc/grafana/provisioning/dashboards
+      - ./monitoring/grafana/datasources:/etc/grafana/provisioning/datasources
+    networks:
+      - smart-lighting-net
+    restart: unless-stopped
+
+  # Kafka UI (For managing Kafka topics used by all services)
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui
+    ports:
+      - "8080:8080"
+    environment:
+      KAFKA_CLUSTERS_0_NAME: smart-lighting-cluster
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
+      KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
+    depends_on:
+      - kafka
+    networks:
+      - smart-lighting-net
+    restart: unless-stopped
+
+networks:
+  smart-lighting-net:
+    driver: bridge
+    name: smart-lighting-network
+
+volumes:
+  redis-data:
+    name: smart-lighting-redis-data
+  postgres-data:
+    name: smart-lighting-postgres-data
+  prometheus-data:
+    name: smart-lighting-prometheus-data
+  grafana-data:
+    name: smart-lighting-grafana-data
+  grafana-power-data:
+    name: smart-lighting-grafana-power-data

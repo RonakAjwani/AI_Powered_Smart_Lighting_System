@@ -1,0 +1,46 @@
+{
+  "run_id": "S6_mistral-7b_r1_0fb373",
+  "scenario_id": "S6",
+  "model_id": "mistral-7b",
+  "run_index": 1,
+  "start_time": "2026-02-24T16:11:31.642658+00:00",
+  "end_time": "2026-02-24T16:11:51.724134+00:00",
+  "duration_sec": 20.08,
+  "events_injected": 1900,
+  "attack_detected": true,
+  "detected_type": "Unknown",
+  "detected_severity": "MEDIUM",
+  "confidence": 84.6,
+  "mitre_ttps_detected": [
+    "T0883",
+    "T0813"
+  ],
+  "ground_truth": {
+    "attack_type": "DDoS/DNS Amplification",
+    "severity": "HIGH",
+    "target_zone": "school_complex",
+    "expected_detection": true
+  },
+  "correct_detection": true,
+  "correct_classification": false,
+  "ttp_coverage": 0.0,
+  "agent_output": {
+    "attack_detected": true,
+    "attack_type": "Unknown",
+    "severity": "MEDIUM",
+    "confidence": 84.6,
+    "mitre_ttps": [],
+    "ddos_results": {
+      "attack_detected": true,
+      "attack_type": "dns_amplification",
+      "mitre_ttps": [
+        "T0883",
+        "T0813"
+      ]
+    },
+    "malware_results": {},
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

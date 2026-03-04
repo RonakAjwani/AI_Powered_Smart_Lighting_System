@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Cyber Arena — Evaluation Report</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f6fa;
+            color: #2d3436;
+            line-height: 1.6;
+        }
+        .header {
+            background: linear-gradient(135deg, #0984e3, #6c5ce7);
+            color: white;
+            padding: 32px 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header h1 { font-size: 24px; font-weight: 600; }
+        .header .subtitle { opacity: 0.85; font-size: 14px; margin-top: 4px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+
+        /* Summary Cards */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+        .summary-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            border-top: 3px solid #0984e3;
+        }
+        .summary-card.best { border-top-color: #00b894; }
+        .summary-card.warn { border-top-color: #fdcb6e; }
+        .summary-card .value { font-size: 28px; font-weight: 700; color: #0984e3; }
+        .summary-card.best .value { color: #00b894; }
+        .summary-card .label { font-size: 12px; color: #636e72; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* Tables */
+        .section { background: white; border-radius: 12px; padding: 24px; margin: 24px 0; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+        .section h2 { font-size: 18px; color: #2d3436; margin-bottom: 16px; border-bottom: 2px solid #f0f0f0; padding-bottom: 8px; }
+        table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        th { background: #f8f9fa; padding: 10px 12px; text-align: left; font-weight: 600; color: #636e72; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+        td { padding: 10px 12px; border-bottom: 1px solid #f0f0f0; }
+        tr:hover { background: #f8f9fa; }
+        .highlight { background: #e8f8f5 !important; font-weight: 600; }
+        .best-badge { background: #00b894; color: white; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+
+        /* Metric bars */
+        .metric-bar {
+            height: 6px;
+            background: #ecf0f1;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 4px;
+        }
+        .metric-bar .fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+        .fill-green { background: linear-gradient(90deg, #00b894, #55efc4); }
+        .fill-blue { background: linear-gradient(90deg, #0984e3, #74b9ff); }
+        .fill-orange { background: linear-gradient(90deg, #fdcb6e, #ffeaa7); }
+        .fill-red { background: linear-gradient(90deg, #d63031, #ff7675); }
+
+        /* Heatmap */
+        .heatmap { overflow-x: auto; }
+        .heatmap td { text-align: center; font-weight: 600; min-width: 60px; }
+        .heat-100 { background: #00b894; color: white; }
+        .heat-75 { background: #55efc4; color: #2d3436; }
+        .heat-50 { background: #ffeaa7; color: #2d3436; }
+        .heat-25 { background: #fab1a0; color: #2d3436; }
+        .heat-0 { background: #d63031; color: white; }
+
+        /* Footer */
+        .footer { text-align: center; padding: 24px; color: #b2bec3; font-size: 12px; }
+
+        /* Confusion Matrix */
+        .confusion { display: inline-grid; grid-template-columns: auto auto auto; gap: 2px; font-size: 13px; }
+        .confusion .cell { padding: 8px 16px; text-align: center; font-weight: 600; }
+        .confusion .tp { background: #e8f8f5; color: #00b894; }
+        .confusion .fp { background: #ffeaa7; color: #e17055; }
+        .confusion .fn { background: #fab1a0; color: #d63031; }
+        .confusion .tn { background: #dfe6e9; color: #636e72; }
+        .confusion .label-cell { background: #f8f9fa; font-weight: 400; font-size: 11px; color: #636e72; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🛡️ AI Cyber Arena — Evaluation Report</h1>
+        <div class="subtitle">Generated: 2026-02-24T21:42:11.824463 | 6 models × 16 scenarios × 96 runs</div>
+    </div>
+    <div class="container">
+        <div class="summary-grid">
+            <div class="summary-card best"><div class="value">llama-3.1-70b</div><div class="label">Best Model (F1)</div></div>
+            <div class="summary-card best"><div class="value">96.6%</div><div class="label">Best F1 Score</div></div>
+            <div class="summary-card"><div class="value">6</div><div class="label">Models Evaluated</div></div>
+            <div class="summary-card"><div class="value">16</div><div class="label">Scenarios</div></div>
+            <div class="summary-card"><div class="value">96</div><div class="label">Total Runs</div></div>
+            <div class="summary-card warn"><div class="value">100.0%</div><div class="label">Worst FPR</div></div>
+        </div>
+        <div class="section">
+            <h2>📊 Model Comparison</h2>
+            <table>
+                <tr><th>Rank</th><th>Model</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>F1</th><th>FPR</th><th>TTP Cov.</th><th>Avg Conf.</th><th>TTD</th></tr>
+                <tr class="highlight">
+                    <td>#1</td>
+                    <td><strong>llama-3.1-70b</strong> <span class="best-badge">BEST</span></td>
+                    <td>93.8%<div class="metric-bar"><div class="fill fill-blue" style="width:94%"></div></div></td>
+                    <td>100.0%</td>
+                    <td>93.3%</td>
+                    <td><strong>96.6%</strong><div class="metric-bar"><div class="fill fill-green" style="width:97%"></div></div></td>
+                    <td>0.0%<div class="metric-bar"><div class="fill fill-green" style="width:0%"></div></div></td>
+                    <td>25%</td>
+                    <td>76.8%</td>
+                    <td>28.2s</td>
+                </tr>
+                <tr class="highlight">
+                    <td>#2</td>
+                    <td><strong>mistral-7b</strong> <span class="best-badge">BEST</span></td>
+                    <td>93.8%<div class="metric-bar"><div class="fill fill-blue" style="width:94%"></div></div></td>
+                    <td>100.0%</td>
+                    <td>93.3%</td>
+                    <td><strong>96.6%</strong><div class="metric-bar"><div class="fill fill-green" style="width:97%"></div></div></td>
+                    <td>0.0%<div class="metric-bar"><div class="fill fill-green" style="width:0%"></div></div></td>
+                    <td>25%</td>
+                    <td>69.5%</td>
+                    <td>28.2s</td>
+                </tr>
+                <tr class="highlight">
+                    <td>#3</td>
+                    <td><strong>mixtral-8x7b</strong> <span class="best-badge">BEST</span></td>
+                    <td>93.8%<div class="metric-bar"><div class="fill fill-blue" style="width:94%"></div></div></td>
+                    <td>100.0%</td>
+                    <td>93.3%</td>
+                    <td><strong>96.6%</strong><div class="metric-bar"><div class="fill fill-green" style="width:97%"></div></div></td>
+                    <td>0.0%<div class="metric-bar"><div class="fill fill-green" style="width:0%"></div></div></td>
+                    <td>19%</td>
+                    <td>76.0%</td>
+                    <td>28.2s</td>
+                </tr>
+                <tr>
+                    <td>#4</td>
+                    <td><strong>gemma-2-9b</strong></td>
+                    <td>87.5%<div class="metric-bar"><div class="fill fill-blue" style="width:88%"></div></div></td>
+                    <td>93.3%</td>
+                    <td>93.3%</td>
+                    <td><strong>93.3%</strong><div class="metric-bar"><div class="fill fill-green" style="width:93%"></div></div></td>
+                    <td>100.0%<div class="metric-bar"><div class="fill fill-red" style="width:100%"></div></div></td>
+                    <td>19%</td>
+                    <td>71.5%</td>
+                    <td>28.2s</td>
+                </tr>
+                <tr>
+                    <td>#5</td>
+                    <td><strong>qwen-2.5-32b</strong></td>
+                    <td>87.5%<div class="metric-bar"><div class="fill fill-blue" style="width:88%"></div></div></td>
+                    <td>100.0%</td>
+                    <td>86.7%</td>
+                    <td><strong>92.9%</strong><div class="metric-bar"><div class="fill fill-green" style="width:93%"></div></div></td>
+                    <td>0.0%<div class="metric-bar"><div class="fill fill-green" style="width:0%"></div></div></td>
+                    <td>19%</td>
+                    <td>66.1%</td>
+                    <td>28.2s</td>
+                </tr>
+                <tr>
+                    <td>#6</td>
+                    <td><strong>llama-3.1-8b</strong></td>
+                    <td>68.8%<div class="metric-bar"><div class="fill fill-blue" style="width:69%"></div></div></td>
+                    <td>100.0%</td>
+                    <td>66.7%</td>
+                    <td><strong>80.0%</strong><div class="metric-bar"><div class="fill fill-green" style="width:80%"></div></div></td>
+                    <td>0.0%<div class="metric-bar"><div class="fill fill-green" style="width:0%"></div></div></td>
+                    <td>38%</td>
+                    <td>59.5%</td>
+                    <td>28.2s</td>
+                </tr>
+            </table>
+        </div>
+        <div class="section">
+            <h2>🔥 Per-Scenario Detection Heatmap</h2>
+            <div class="heatmap"><table>
+                <tr><th>Model</th><th>C1</th><th>C2</th><th>C3</th><th>C4</th><th>C5</th><th>M1</th><th>M2</th><th>M3</th><th>M4</th><th>S1</th><th>S2</th><th>S3</th><th>S4</th><th>S5</th><th>S6</th><th>S7</th></tr>
+                <tr><td><strong>llama-3.1-70b</strong></td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-0">0%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td></tr>
+                <tr><td><strong>mistral-7b</strong></td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-0">0%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td></tr>
+                <tr><td><strong>mixtral-8x7b</strong></td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-0">0%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td></tr>
+                <tr><td><strong>gemma-2-9b</strong></td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-0">0%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-0">0%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td></tr>
+                <tr><td><strong>qwen-2.5-32b</strong></td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-0">0%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-0">0%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td></tr>
+                <tr><td><strong>llama-3.1-8b</strong></td><td class="heat-100">100%</td><td class="heat-0">0%</td><td class="heat-0">0%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-0">0%</td><td class="heat-100">100%</td><td class="heat-100">100%</td><td class="heat-0">0%</td><td class="heat-100">100%</td><td class="heat-0">0%</td><td class="heat-100">100%</td><td class="heat-100">100%</td></tr>
+            </table></div>
+        </div>
+        <div class="section">
+            <h2>🤖 llama-3.1-70b</h2>
+            <div class="confusion">
+                <div class="label-cell"></div><div class="label-cell">Predicted +</div><div class="label-cell">Predicted −</div>
+                <div class="label-cell">Actual +</div><div class="cell tp">TP: 14</div><div class="cell fn">FN: 1</div>
+                <div class="label-cell">Actual −</div><div class="cell fp">FP: 0</div><div class="cell tn">TN: 1</div>
+            </div>
+            <table style="margin-top:16px">
+                <tr><th>Scenario</th><th>Detection</th><th>Classification</th><th>Confidence</th><th>TTP Coverage</th><th>Pass@k</th></tr>
+                <tr><td>C1</td><td>100%</td><td>100%</td><td>84.2%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>C2</td><td>100%</td><td>100%</td><td>94.3%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>C3</td><td>100%</td><td>100%</td><td>94.3%</td><td>100%</td><td>100% (1/1)</td></tr>
+                <tr><td>C4</td><td>100%</td><td>100%</td><td>89.6%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>C5</td><td>100%</td><td>100%</td><td>71.9%</td><td>100%</td><td>100% (1/1)</td></tr>
+                <tr><td>M1</td><td>100%</td><td>100%</td><td>83.9%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>M2</td><td>100%</td><td>100%</td><td>90.6%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>M3</td><td>100%</td><td>100%</td><td>92.4%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>M4</td><td>0%</td><td>0%</td><td>24.3%</td><td>100%</td><td>0% (0/1)</td></tr>
+                <tr><td>S1</td><td>100%</td><td>100%</td><td>9.4%</td><td>100%</td><td>100% (1/1)</td></tr>
+                <tr><td>S2</td><td>100%</td><td>0%</td><td>84.1%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S3</td><td>100%</td><td>0%</td><td>68.2%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S4</td><td>100%</td><td>100%</td><td>92.8%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S5</td><td>100%</td><td>0%</td><td>88.3%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S6</td><td>100%</td><td>100%</td><td>70.1%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S7</td><td>100%</td><td>100%</td><td>90.9%</td><td>0%</td><td>100% (1/1)</td></tr>
+            </table>
+        </div>
+        <div class="section">
+            <h2>🤖 mistral-7b</h2>
+            <div class="confusion">
+                <div class="label-cell"></div><div class="label-cell">Predicted +</div><div class="label-cell">Predicted −</div>
+                <div class="label-cell">Actual +</div><div class="cell tp">TP: 14</div><div class="cell fn">FN: 1</div>
+                <div class="label-cell">Actual −</div><div class="cell fp">FP: 0</div><div class="cell tn">TN: 1</div>
+            </div>
+            <table style="margin-top:16px">
+                <tr><th>Scenario</th><th>Detection</th><th>Classification</th><th>Confidence</th><th>TTP Coverage</th><th>Pass@k</th></tr>
+                <tr><td>C1</td><td>100%</td><td>100%</td><td>65.7%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>C2</td><td>100%</td><td>100%</td><td>87.7%</td><td>100%</td><td>100% (1/1)</td></tr>
+                <tr><td>C3</td><td>100%</td><td>0%</td><td>71.8%</td><td>100%</td><td>100% (1/1)</td></tr>
+                <tr><td>C4</td><td>100%</td><td>100%</td><td>67.6%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>C5</td><td>100%</td><td>100%</td><td>65.3%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>M1</td><td>100%</td><td>100%</td><td>90.7%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>M2</td><td>100%</td><td>100%</td><td>66.2%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>M3</td><td>100%</td><td>100%</td><td>78.5%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>M4</td><td>100%</td><td>100%</td><td>86.6%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S1</td><td>100%</td><td>100%</td><td>11.6%</td><td>100%</td><td>100% (1/1)</td></tr>
+                <tr><td>S2</td><td>100%</td><td>0%</td><td>86.1%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S3</td><td>0%</td><td>0%</td><td>16.9%</td><td>100%</td><td>0% (0/1)</td></tr>
+                <tr><td>S4</td><td>100%</td><td>100%</td><td>75.7%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S5</td><td>100%</td><td>100%</td><td>70.1%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S6</td><td>100%</td><td>0%</td><td>84.6%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S7</td><td>100%</td><td>100%</td><td>86.5%</td><td>0%</td><td>100% (1/1)</td></tr>
+            </table>
+        </div>
+        <div class="section">
+            <h2>🤖 mixtral-8x7b</h2>
+            <div class="confusion">
+                <div class="label-cell"></div><div class="label-cell">Predicted +</div><div class="label-cell">Predicted −</div>
+                <div class="label-cell">Actual +</div><div class="cell tp">TP: 14</div><div class="cell fn">FN: 1</div>
+                <div class="label-cell">Actual −</div><div class="cell fp">FP: 0</div><div class="cell tn">TN: 1</div>
+            </div>
+            <table style="margin-top:16px">
+                <tr><th>Scenario</th><th>Detection</th><th>Classification</th><th>Confidence</th><th>TTP Coverage</th><th>Pass@k</th></tr>
+                <tr><td>C1</td><td>100%</td><td>100%</td><td>73.4%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>C2</td><td>100%</td><td>100%</td><td>76.7%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>C3</td><td>100%</td><td>100%</td><td>94.3%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>C4</td><td>100%</td><td>100%</td><td>73.3%</td><td>100%</td><td>100% (1/1)</td></tr>
+                <tr><td>C5</td><td>100%</td><td>100%</td><td>83.6%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>M1</td><td>100%</td><td>100%</td><td>66.0%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>M2</td><td>100%</td><td>0%</td><td>93.9%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>M3</td><td>0%</td><td>0%</td><td>32.6%</td><td>100%</td><td>0% (0/1)</td></tr>
+                <tr><td>M4</td><td>100%</td><td>100%</td><td>89.6%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S1</td><td>100%</td><td>100%</td><td>7.8%</td><td>100%</td><td>100% (1/1)</td></tr>
+                <tr><td>S2</td><td>100%</td><td>100%</td><td>94.7%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S3</td><td>100%</td><td>100%</td><td>76.5%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S4</td><td>100%</td><td>100%</td><td>94.0%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S5</td><td>100%</td><td>100%</td><td>84.7%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S6</td><td>100%</td><td>100%</td><td>90.3%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S7</td><td>100%</td><td>100%</td><td>83.9%</td><td>0%</td><td>100% (1/1)</td></tr>
+            </table>
+        </div>
+        <div class="section">
+            <h2>🤖 gemma-2-9b</h2>
+            <div class="confusion">
+                <div class="label-cell"></div><div class="label-cell">Predicted +</div><div class="label-cell">Predicted −</div>
+                <div class="label-cell">Actual +</div><div class="cell tp">TP: 14</div><div class="cell fn">FN: 1</div>
+                <div class="label-cell">Actual −</div><div class="cell fp">FP: 1</div><div class="cell tn">TN: 0</div>
+            </div>
+            <table style="margin-top:16px">
+                <tr><th>Scenario</th><th>Detection</th><th>Classification</th><th>Confidence</th><th>TTP Coverage</th><th>Pass@k</th></tr>
+                <tr><td>C1</td><td>100%</td><td>0%</td><td>69.7%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>C2</td><td>100%</td><td>100%</td><td>79.3%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>C3</td><td>100%</td><td>100%</td><td>75.1%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>C4</td><td>100%</td><td>0%</td><td>71.7%</td><td>100%</td><td>100% (1/1)</td></tr>
+                <tr><td>C5</td><td>100%</td><td>100%</td><td>80.7%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>M1</td><td>100%</td><td>100%</td><td>75.1%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>M2</td><td>100%</td><td>0%</td><td>92.7%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>M3</td><td>100%</td><td>100%</td><td>77.4%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>M4</td><td>100%</td><td>100%</td><td>85.6%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S1</td><td>0%</td><td>0%</td><td>25.7%</td><td>100%</td><td>0% (0/1)</td></tr>
+                <tr><td>S2</td><td>100%</td><td>100%</td><td>73.6%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S3</td><td>100%</td><td>100%</td><td>85.8%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S4</td><td>0%</td><td>0%</td><td>19.4%</td><td>100%</td><td>0% (0/1)</td></tr>
+                <tr><td>S5</td><td>100%</td><td>100%</td><td>93.0%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S6</td><td>100%</td><td>100%</td><td>69.1%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S7</td><td>100%</td><td>100%</td><td>69.6%</td><td>0%</td><td>100% (1/1)</td></tr>
+            </table>
+        </div>
+        <div class="section">
+            <h2>🤖 qwen-2.5-32b</h2>
+            <div class="confusion">
+                <div class="label-cell"></div><div class="label-cell">Predicted +</div><div class="label-cell">Predicted −</div>
+                <div class="label-cell">Actual +</div><div class="cell tp">TP: 13</div><div class="cell fn">FN: 2</div>
+                <div class="label-cell">Actual −</div><div class="cell fp">FP: 0</div><div class="cell tn">TN: 1</div>
+            </div>
+            <table style="margin-top:16px">
+                <tr><th>Scenario</th><th>Detection</th><th>Classification</th><th>Confidence</th><th>TTP Coverage</th><th>Pass@k</th></tr>
+                <tr><td>C1</td><td>100%</td><td>100%</td><td>75.1%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>C2</td><td>100%</td><td>0%</td><td>67.0%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>C3</td><td>100%</td><td>0%</td><td>90.6%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>C4</td><td>0%</td><td>0%</td><td>12.8%</td><td>100%</td><td>0% (0/1)</td></tr>
+                <tr><td>C5</td><td>100%</td><td>100%</td><td>67.9%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>M1</td><td>100%</td><td>100%</td><td>95.0%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>M2</td><td>100%</td><td>100%</td><td>74.2%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>M3</td><td>0%</td><td>0%</td><td>40.0%</td><td>100%</td><td>0% (0/1)</td></tr>
+                <tr><td>M4</td><td>100%</td><td>100%</td><td>84.0%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S1</td><td>100%</td><td>100%</td><td>7.9%</td><td>100%</td><td>100% (1/1)</td></tr>
+                <tr><td>S2</td><td>100%</td><td>100%</td><td>76.7%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S3</td><td>100%</td><td>100%</td><td>79.8%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S4</td><td>100%</td><td>100%</td><td>70.7%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S5</td><td>100%</td><td>100%</td><td>66.0%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S6</td><td>100%</td><td>0%</td><td>76.3%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S7</td><td>100%</td><td>0%</td><td>73.3%</td><td>0%</td><td>100% (1/1)</td></tr>
+            </table>
+        </div>
+        <div class="section">
+            <h2>🤖 llama-3.1-8b</h2>
+            <div class="confusion">
+                <div class="label-cell"></div><div class="label-cell">Predicted +</div><div class="label-cell">Predicted −</div>
+                <div class="label-cell">Actual +</div><div class="cell tp">TP: 10</div><div class="cell fn">FN: 5</div>
+                <div class="label-cell">Actual −</div><div class="cell fp">FP: 0</div><div class="cell tn">TN: 1</div>
+            </div>
+            <table style="margin-top:16px">
+                <tr><th>Scenario</th><th>Detection</th><th>Classification</th><th>Confidence</th><th>TTP Coverage</th><th>Pass@k</th></tr>
+                <tr><td>C1</td><td>100%</td><td>100%</td><td>79.4%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>C2</td><td>0%</td><td>0%</td><td>17.6%</td><td>100%</td><td>0% (0/1)</td></tr>
+                <tr><td>C3</td><td>0%</td><td>0%</td><td>12.5%</td><td>100%</td><td>0% (0/1)</td></tr>
+                <tr><td>C4</td><td>100%</td><td>100%</td><td>78.9%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>C5</td><td>100%</td><td>100%</td><td>72.5%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>M1</td><td>100%</td><td>0%</td><td>79.1%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>M2</td><td>100%</td><td>100%</td><td>81.8%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>M3</td><td>100%</td><td>100%</td><td>93.9%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>M4</td><td>0%</td><td>0%</td><td>32.2%</td><td>100%</td><td>0% (0/1)</td></tr>
+                <tr><td>S1</td><td>100%</td><td>100%</td><td>10.9%</td><td>100%</td><td>100% (1/1)</td></tr>
+                <tr><td>S2</td><td>100%</td><td>100%</td><td>87.9%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S3</td><td>0%</td><td>0%</td><td>39.5%</td><td>100%</td><td>0% (0/1)</td></tr>
+                <tr><td>S4</td><td>100%</td><td>100%</td><td>67.5%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S5</td><td>0%</td><td>0%</td><td>18.7%</td><td>100%</td><td>0% (0/1)</td></tr>
+                <tr><td>S6</td><td>100%</td><td>100%</td><td>91.9%</td><td>0%</td><td>100% (1/1)</td></tr>
+                <tr><td>S7</td><td>100%</td><td>100%</td><td>87.9%</td><td>0%</td><td>100% (1/1)</td></tr>
+            </table>
+        </div>
+
+        <div class="footer">
+            AI Cyber Arena — Evaluation Framework v1.0<br>
+            NIST SP 800-61r3 compliant | MITRE ATT&CK for ICS aligned<br>
+            Report generated: 2026-02-24T21:42:11.824463
+        </div>
+    </div>
+</body>
+</html>

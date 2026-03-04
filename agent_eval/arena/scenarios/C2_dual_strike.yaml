@@ -1,0 +1,62 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# C2 — Simultaneous DDoS on BKC + Ransomware on Port
+# Two critical zones under different attack types simultaneously.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+scenario_id: C2
+name: "Dual Strike: BKC DDoS + Port Ransomware"
+description: >
+  Coordinated dual-zone attack: HTTP + SYN flood DDoS on BKC Commercial
+  district while ransomware encrypts Port Zone SCADA controllers.
+  Tests detection breadth and prioritization under multi-zone pressure.
+
+target_zone: bkc_commercial
+target_zone_name: BKC Commercial
+security_level: 2
+severity: CRITICAL
+
+timing:
+  total_duration_sec: 180
+  warmup_sec: 20
+  cooldown_sec: 15
+
+phases:
+  # Phase 1: HTTP flood on BKC
+  - attack_type: http_flood
+    start_offset_sec: 0
+    duration_sec: 90
+    intensity: 0.85
+    events_per_second: 20
+    zone_override: bkc_commercial
+
+  # Phase 2: SYN flood on BKC (escalation)
+  - attack_type: syn_flood
+    start_offset_sec: 20
+    duration_sec: 100
+    intensity: 0.75
+    events_per_second: 15
+    zone_override: bkc_commercial
+
+  # Phase 3: Ransomware on Port Zone (diversionary)
+  - attack_type: ransomware
+    start_offset_sec: 10
+    duration_sec: 120
+    intensity: 0.9
+    events_per_second: 7
+    zone_override: port_area
+
+ground_truth:
+  attack_type: "Coordinated/Dual-Strike"
+  severity: CRITICAL
+  target_zone: bkc_commercial
+  secondary_zones: ["port_area"]
+  expected_detection: true
+  sub_attacks: ["http_flood", "syn_flood", "ransomware"]
+
+mitre_ttps: ["T0883", "T0804", "T0882", "T0834"]
+
+evaluation:
+  expected_outcome: mixed
+  expected_attack_subtype: dual_strike
+  min_confidence: 55
+  notes: "Two different attack categories across zones. Full credit if both detected."

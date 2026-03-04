@@ -1,0 +1,49 @@
+{
+  "run_id": "S6_mixtral-8x7b_r1_7805f6",
+  "scenario_id": "S6",
+  "model_id": "mixtral-8x7b",
+  "run_index": 1,
+  "start_time": "2026-02-24T15:56:28.159480+00:00",
+  "end_time": "2026-02-24T15:56:48.233517+00:00",
+  "duration_sec": 20.07,
+  "events_injected": 1900,
+  "attack_detected": true,
+  "detected_type": "DDoS/DNS Amplification",
+  "detected_severity": "HIGH",
+  "confidence": 90.3,
+  "mitre_ttps_detected": [
+    "T0883",
+    "T0813"
+  ],
+  "ground_truth": {
+    "attack_type": "DDoS/DNS Amplification",
+    "severity": "HIGH",
+    "target_zone": "school_complex",
+    "expected_detection": true
+  },
+  "correct_detection": true,
+  "correct_classification": true,
+  "ttp_coverage": 0.0,
+  "agent_output": {
+    "attack_detected": true,
+    "attack_type": "DDoS/DNS Amplification",
+    "severity": "HIGH",
+    "confidence": 90.3,
+    "mitre_ttps": [
+      "T0883",
+      "T0813"
+    ],
+    "ddos_results": {
+      "attack_detected": true,
+      "attack_type": "dns_amplification",
+      "mitre_ttps": [
+        "T0883",
+        "T0813"
+      ]
+    },
+    "malware_results": {},
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

@@ -1,0 +1,54 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# S7 — Multi-Vector DDoS on Highway Corridor
+# Coordinated attack combining HTTP + SYN + UDP floods.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+scenario_id: S7
+name: "Multi-Vector DDoS on Highway Corridor"
+description: >
+  Coordinated attack combining HTTP flood + SYN flood + UDP flood on highway.
+  Tests the pipeline's ability to detect and classify overlapping attack vectors.
+
+target_zone: highway_corridor
+target_zone_name: Western Express Highway
+security_level: 2
+severity: HIGH
+
+timing:
+  total_duration_sec: 180
+  warmup_sec: 20
+  cooldown_sec: 15
+
+phases:
+  - attack_type: http_flood
+    start_offset_sec: 0
+    duration_sec: 60
+    intensity: 0.7
+    events_per_second: 15
+
+  - attack_type: syn_flood
+    start_offset_sec: 30
+    duration_sec: 90
+    intensity: 0.8
+    events_per_second: 20
+
+  - attack_type: udp_flood
+    start_offset_sec: 60
+    duration_sec: 85
+    intensity: 0.6
+    events_per_second: 10
+
+ground_truth:
+  attack_type: "DDoS/Multi-Vector"
+  severity: HIGH
+  target_zone: highway_corridor
+  expected_detection: true
+  sub_attacks: ["http_flood", "syn_flood", "udp_flood"]
+
+mitre_ttps: ["T0883", "T0804", "T0813"]
+
+evaluation:
+  expected_outcome: ddos
+  expected_attack_subtype: multi_vector
+  min_confidence: 70
+  notes: "Multi-phase overlapping attack. Extra credit if agent identifies all 3 vectors."

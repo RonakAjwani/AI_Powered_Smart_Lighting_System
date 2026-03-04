@@ -1,0 +1,56 @@
+{
+  "run_id": "C1_gemma-2-9b_r1_c8f164",
+  "scenario_id": "C1",
+  "model_id": "gemma-2-9b",
+  "run_index": 1,
+  "start_time": "2026-02-24T15:57:08.405798+00:00",
+  "end_time": "2026-02-24T15:57:33.441034+00:00",
+  "duration_sec": 25.04,
+  "events_injected": 1985,
+  "attack_detected": true,
+  "detected_type": "Unknown",
+  "detected_severity": "MEDIUM",
+  "confidence": 69.7,
+  "mitre_ttps_detected": [
+    "T0882",
+    "T0875",
+    "T0869",
+    "T0834",
+    "T0813"
+  ],
+  "ground_truth": {
+    "attack_type": "Coordinated/Multi-Zone",
+    "severity": "CRITICAL",
+    "target_zone": "reliance_hospital",
+    "secondary_zones": [
+      "airport"
+    ],
+    "expected_detection": true,
+    "sub_attacks": [
+      "botnet",
+      "firmware_tamper",
+      "data_exfiltration"
+    ]
+  },
+  "correct_detection": true,
+  "correct_classification": false,
+  "ttp_coverage": 0.0,
+  "agent_output": {
+    "attack_detected": true,
+    "attack_type": "Unknown",
+    "severity": "MEDIUM",
+    "confidence": 69.7,
+    "mitre_ttps": [
+      "T0882",
+      "T0875",
+      "T0869",
+      "T0834",
+      "T0813"
+    ],
+    "ddos_results": {},
+    "malware_results": {},
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

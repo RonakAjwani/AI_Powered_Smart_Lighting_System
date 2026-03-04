@@ -1,0 +1,13 @@
+# Zone Simulator Container — Lightweight Python process
+# Simulates smart poles, gateways, and zone controller
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY agents/cybersecurity/src/simulator/ ./simulator/
+COPY arena/zone_simulator.py ./zone_simulator.py
+COPY arena/requirements.zone.txt ./requirements.txt
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+CMD ["python", "zone_simulator.py"]

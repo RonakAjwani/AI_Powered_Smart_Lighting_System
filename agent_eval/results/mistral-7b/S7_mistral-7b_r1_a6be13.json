@@ -1,0 +1,53 @@
+{
+  "run_id": "S7_mistral-7b_r1_a6be13",
+  "scenario_id": "S7",
+  "model_id": "mistral-7b",
+  "run_index": 1,
+  "start_time": "2026-02-24T16:11:51.725551+00:00",
+  "end_time": "2026-02-24T16:12:11.804832+00:00",
+  "duration_sec": 20.08,
+  "events_injected": 3650,
+  "attack_detected": true,
+  "detected_type": "DDoS/Multi-Vector",
+  "detected_severity": "HIGH",
+  "confidence": 86.5,
+  "mitre_ttps_detected": [
+    "T0883",
+    "T0804",
+    "T0813"
+  ],
+  "ground_truth": {
+    "attack_type": "DDoS/Multi-Vector",
+    "severity": "HIGH",
+    "target_zone": "highway_corridor",
+    "expected_detection": true,
+    "sub_attacks": [
+      "http_flood",
+      "syn_flood",
+      "udp_flood"
+    ]
+  },
+  "correct_detection": true,
+  "correct_classification": true,
+  "ttp_coverage": 0.0,
+  "agent_output": {
+    "attack_detected": true,
+    "attack_type": "DDoS/Multi-Vector",
+    "severity": "HIGH",
+    "confidence": 86.5,
+    "mitre_ttps": [],
+    "ddos_results": {
+      "attack_detected": true,
+      "attack_type": "multi-vector",
+      "mitre_ttps": [
+        "T0883",
+        "T0804",
+        "T0813"
+      ]
+    },
+    "malware_results": {},
+    "mode": "simulated"
+  },
+  "status": "completed",
+  "error": ""
+}

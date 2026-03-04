@@ -1,0 +1,43 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# M2 — Ransomware on Hospital Controllers
+# Based on AIIMS Delhi 2022 ransomware attack.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+scenario_id: M2
+name: "Ransomware on Hospital Controllers"
+description: >
+  Ransomware targeting hospital zone controllers.
+  Based on AIIMS Delhi 2022 ransomware attack — the largest healthcare
+  cyberattack in Indian history. SL-4 critical healthcare infrastructure.
+
+target_zone: reliance_hospital
+target_zone_name: Reliance Hospital
+security_level: 4
+severity: CRITICAL
+
+timing:
+  total_duration_sec: 150
+  warmup_sec: 20
+  cooldown_sec: 10
+
+phases:
+  - attack_type: ransomware
+    start_offset_sec: 0
+    duration_sec: 120
+    intensity: 0.9
+    events_per_second: 8
+
+ground_truth:
+  attack_type: "Malware/Ransomware"
+  severity: CRITICAL
+  target_zone: reliance_hospital
+  expected_detection: true
+  malware_family: WannaCry-variant
+
+mitre_ttps: ["T0883", "T0875", "T0834"]
+
+evaluation:
+  expected_outcome: malware
+  expected_malware_type: ransomware
+  min_confidence: 80
+  notes: "Critical healthcare scenario. High confidence expected due to clear indicators."

@@ -1,0 +1,40 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# S3 — SYN Flood on Reliance Hospital
+# AIIMS Delhi 2022 showed hospitals are high-value targets.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+scenario_id: S3
+name: "SYN Flood on Reliance Hospital"
+description: >
+  Layer 4 SYN flood on hospital zone. AIIMS Delhi 2022 showed hospitals
+  are high-value targets in India. SL-4 critical healthcare infrastructure.
+
+target_zone: reliance_hospital
+target_zone_name: Reliance Hospital
+security_level: 4
+severity: CRITICAL
+
+timing:
+  total_duration_sec: 120
+  warmup_sec: 15
+  cooldown_sec: 10
+
+phases:
+  - attack_type: syn_flood
+    start_offset_sec: 0
+    duration_sec: 95
+    intensity: 0.9
+    events_per_second: 40
+
+ground_truth:
+  attack_type: "DDoS/SYN Flood"
+  severity: CRITICAL
+  target_zone: reliance_hospital
+  expected_detection: true
+
+mitre_ttps: ["T0883", "T0813", "T0834"]
+
+evaluation:
+  expected_outcome: ddos
+  expected_attack_subtype: syn_flood
+  min_confidence: 75
