@@ -2,7 +2,7 @@
 
 // Backend ports
 export const API_PORTS = {
-    cybersecurity: 8003,
+    cybersecurity: 8000,
     weather: 8001,
     power: 8002,
     coordinator: 8004,
@@ -344,7 +344,7 @@ export interface ServiceHealth {
 
 export async function getAllServicesHealth(): Promise<ServiceHealth[]> {
     const services: { name: string; port: number; service: keyof typeof API_PORTS }[] = [
-        { name: "Cybersecurity", port: 8003, service: "cybersecurity" },
+        { name: "Cybersecurity", port: 8000, service: "cybersecurity" },
         { name: "Weather", port: 8001, service: "weather" },
         { name: "Power Grid", port: 8002, service: "power" },
         { name: "Coordinator", port: 8004, service: "coordinator" },

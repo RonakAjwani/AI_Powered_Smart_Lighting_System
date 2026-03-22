@@ -444,7 +444,7 @@ class MetricsEvaluator:
         return md_content
 
     def generate_html_report(self, report: EvaluationReport, output_path: str = None) -> str:
-        """Generate an HTML evaluation report with the light-theme battery-report style."""
+        """Generate a professional HTML evaluation report with Chart.js charts and graphs."""
         mm_list = sorted(report.model_metrics.values(), key=lambda x: x.overall_f1, reverse=True)
 
         # Find best values for highlighting
@@ -456,110 +456,359 @@ class MetricsEvaluator:
         # Build scenario heatmap data
         all_scenario_ids = sorted(self.scenarios)
 
+        # ── Color palette for charts ──
+        chart_colors = [
+            "rgba(9, 132, 227, 0.85)",    # Blue
+            "rgba(0, 184, 148, 0.85)",     # Green
+            "rgba(108, 92, 231, 0.85)",    # Purple
+            "rgba(253, 203, 110, 0.85)",   # Yellow
+            "rgba(225, 112, 85, 0.85)",    # Coral
+            "rgba(116, 185, 255, 0.85)",   # Light Blue
+            "rgba(85, 239, 196, 0.85)",    # Mint
+            "rgba(162, 155, 254, 0.85)",   # Lavender
+        ]
+        chart_borders = [c.replace("0.85", "1") for c in chart_colors]
+        chart_bg_light = [c.replace("0.85", "0.15") for c in chart_colors]
+
+        # ── Prepare chart data as JSON-safe structures ──
+        model_labels = [mm.model_id for mm in mm_list]
+        accuracy_data = [round(mm.overall_accuracy * 100, 1) for mm in mm_list]
+        precision_data = [round(mm.overall_precision * 100, 1) for mm in mm_list]
+        recall_data = [round(mm.overall_recall * 100, 1) for mm in mm_list]
+        f1_data = [round(mm.overall_f1 * 100, 1) for mm in mm_list]
+        fpr_data = [round(mm.overall_fpr * 100, 1) for mm in mm_list]
+        ttp_data = [round(mm.avg_ttp_coverage * 100, 1) for mm in mm_list]
+        confidence_data = [round(mm.avg_confidence, 1) for mm in mm_list]
+        tp_data = [mm.confusion.tp for mm in mm_list]
+        fp_data = [mm.confusion.fp for mm in mm_list]
+        tn_data = [mm.confusion.tn for mm in mm_list]
+        fn_data = [mm.confusion.fn for mm in mm_list]
+
+        # Per-scenario confidence data (more informative than binary detection)
+        scenario_confidence_data = {}
+        for mm in mm_list:
+            model_scenario_conf = []
+            for sid in all_scenario_ids:
+                sm = mm.scenario_metrics.get(sid)
+                model_scenario_conf.append(round(sm.avg_confidence, 1) if sm else 0)
+            scenario_confidence_data[mm.model_id] = model_scenario_conf
+
+        # ── Build executive summary ──
+        best_model_name = mm_list[0].model_id if mm_list else "N/A"
+        worst_model_name = mm_list[-1].model_id if mm_list else "N/A"
+        avg_f1 = sum(f1_data) / len(f1_data) if f1_data else 0
+        perfect_models = sum(1 for f in f1_data if f >= 95)
+
+        # Import json for chart data serialization
+        import json as _json
+
         html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Cyber Arena — Evaluation Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <style>
         * {{ margin: 0; padding: 0; box-sizing: border-box; }}
         body {{
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f5f6fa;
-            color: #2d3436;
-            line-height: 1.6;
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #f0f2f5;
+            color: #1a1a2e;
+            line-height: 1.7;
+            font-size: 14px;
         }}
-        .header {{
-            background: linear-gradient(135deg, #0984e3, #6c5ce7);
-            color: white;
-            padding: 32px 40px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }}
-        .header h1 {{ font-size: 24px; font-weight: 600; }}
-        .header .subtitle {{ opacity: 0.85; font-size: 14px; margin-top: 4px; }}
-        .container {{ max-width: 1200px; margin: 0 auto; padding: 24px; }}
 
-        /* Summary Cards */
+        /* ── Header ── */
+        .header {{
+            background: linear-gradient(135deg, #0c1445 0%, #1a1a6e 40%, #0984e3 100%);
+            color: white;
+            padding: 48px 40px 40px;
+            position: relative;
+            overflow: hidden;
+        }}
+        .header::before {{
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }}
+        .header h1 {{
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 4px;
+        }}
+        .header .subtitle {{
+            opacity: 0.7;
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }}
+        .header .report-meta {{
+            display: flex;
+            gap: 24px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }}
+        .header .meta-chip {{
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-size: 12px;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }}
+        .header .meta-chip strong {{ font-weight: 700; color: #74b9ff; }}
+
+        /* ── Navigation ── */
+        .nav-bar {{
+            background: white;
+            border-bottom: 1px solid #e1e4e8;
+            padding: 0 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }}
+        .nav-bar ul {{
+            list-style: none;
+            display: flex;
+            gap: 0;
+            max-width: 1280px;
+            margin: 0 auto;
+            overflow-x: auto;
+        }}
+        .nav-bar li a {{
+            display: block;
+            padding: 14px 18px;
+            color: #636e72;
+            text-decoration: none;
+            font-size: 12.5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }}
+        .nav-bar li a:hover {{
+            color: #0984e3;
+            border-bottom-color: #0984e3;
+            background: #f8f9ff;
+        }}
+
+        /* ── Container ── */
+        .container {{ max-width: 1280px; margin: 0 auto; padding: 32px 24px; }}
+
+        /* ── Summary Cards ── */
         .summary-grid {{
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
             gap: 16px;
-            margin: 24px 0;
+            margin-bottom: 32px;
         }}
         .summary-card {{
             background: white;
-            border-radius: 12px;
-            padding: 20px;
+            border-radius: 14px;
+            padding: 24px 20px;
             text-align: center;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-            border-top: 3px solid #0984e3;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.03);
+            border-left: 4px solid #0984e3;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
         }}
-        .summary-card.best {{ border-top-color: #00b894; }}
-        .summary-card.warn {{ border-top-color: #fdcb6e; }}
-        .summary-card .value {{ font-size: 28px; font-weight: 700; color: #0984e3; }}
+        .summary-card:hover {{ transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.1); }}
+        .summary-card.best {{ border-left-color: #00b894; }}
+        .summary-card.warn {{ border-left-color: #e17055; }}
+        .summary-card .value {{ font-size: 30px; font-weight: 800; color: #0984e3; letter-spacing: -1px; }}
         .summary-card.best .value {{ color: #00b894; }}
-        .summary-card .label {{ font-size: 12px; color: #636e72; text-transform: uppercase; letter-spacing: 0.5px; }}
-
-        /* Tables */
-        .section {{ background: white; border-radius: 12px; padding: 24px; margin: 24px 0; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }}
-        .section h2 {{ font-size: 18px; color: #2d3436; margin-bottom: 16px; border-bottom: 2px solid #f0f0f0; padding-bottom: 8px; }}
-        table {{ width: 100%; border-collapse: collapse; font-size: 14px; }}
-        th {{ background: #f8f9fa; padding: 10px 12px; text-align: left; font-weight: 600; color: #636e72; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }}
-        td {{ padding: 10px 12px; border-bottom: 1px solid #f0f0f0; }}
-        tr:hover {{ background: #f8f9fa; }}
-        .highlight {{ background: #e8f8f5 !important; font-weight: 600; }}
-        .best-badge {{ background: #00b894; color: white; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }}
-
-        /* Metric bars */
-        .metric-bar {{
-            height: 6px;
-            background: #ecf0f1;
-            border-radius: 3px;
-            overflow: hidden;
+        .summary-card.warn .value {{ color: #e17055; }}
+        .summary-card .label {{
+            font-size: 11px;
+            color: #636e72;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 600;
             margin-top: 4px;
         }}
-        .metric-bar .fill {{
-            height: 100%;
-            border-radius: 3px;
-            transition: width 0.5s ease;
+
+        /* ── Executive Summary ── */
+        .executive-summary {{
+            background: linear-gradient(135deg, #f8f9ff, #eef1ff);
+            border: 1px solid #d5deff;
+            border-radius: 14px;
+            padding: 28px 32px;
+            margin-bottom: 32px;
+            font-size: 14.5px;
+            line-height: 1.8;
+            color: #2d3436;
         }}
+        .executive-summary h2 {{ font-size: 17px; color: #0c1445; margin-bottom: 12px; font-weight: 700; }}
+        .executive-summary strong {{ color: #0984e3; }}
+
+        /* ── Sections ── */
+        .section {{
+            background: white;
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.03);
+        }}
+        .section h2 {{
+            font-size: 17px;
+            color: #1a1a2e;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f0f2f5;
+            font-weight: 700;
+        }}
+
+        /* ── Charts ── */
+        .chart-grid {{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }}
+        .chart-card {{
+            background: white;
+            border-radius: 14px;
+            padding: 24px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.03);
+        }}
+        .chart-card h3 {{
+            font-size: 14px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 4px;
+            letter-spacing: 0.2px;
+        }}
+        .chart-card h3 .fig-num {{
+            color: #636e72;
+            font-weight: 600;
+            font-size: 12px;
+        }}
+        .chart-card .chart-subtitle {{
+            font-size: 12px;
+            color: #636e72;
+            margin-bottom: 16px;
+            font-weight: 400;
+            font-style: italic;
+        }}
+        .chart-container {{
+            position: relative;
+            width: 100%;
+        }}
+        .chart-container canvas {{ max-height: 380px; }}
+        .chart-card.full-width {{ grid-column: 1 / -1; }}
+
+        /* ── Tables ── */
+        table {{ width: 100%; border-collapse: collapse; font-size: 13px; }}
+        th {{
+            background: #f8f9fa;
+            padding: 12px 14px;
+            text-align: left;
+            font-weight: 700;
+            color: #636e72;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+            border-bottom: 2px solid #e1e4e8;
+        }}
+        td {{ padding: 11px 14px; border-bottom: 1px solid #f0f2f5; }}
+        tr:hover {{ background: #f8f9ff; }}
+        .highlight {{ background: #e8f8f5 !important; }}
+        .best-badge {{ background: linear-gradient(135deg, #00b894, #55efc4); color: white; padding: 3px 10px; border-radius: 6px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }}
+
+        /* ── Metric bars ── */
+        .metric-bar {{ height: 5px; background: #ecf0f1; border-radius: 3px; overflow: hidden; margin-top: 6px; }}
+        .metric-bar .fill {{ height: 100%; border-radius: 3px; }}
         .fill-green {{ background: linear-gradient(90deg, #00b894, #55efc4); }}
         .fill-blue {{ background: linear-gradient(90deg, #0984e3, #74b9ff); }}
         .fill-orange {{ background: linear-gradient(90deg, #fdcb6e, #ffeaa7); }}
         .fill-red {{ background: linear-gradient(90deg, #d63031, #ff7675); }}
 
-        /* Heatmap */
+        /* ── Heatmap (confidence-based) ── */
         .heatmap {{ overflow-x: auto; }}
-        .heatmap td {{ text-align: center; font-weight: 600; min-width: 60px; }}
-        .heat-100 {{ background: #00b894; color: white; }}
-        .heat-75 {{ background: #55efc4; color: #2d3436; }}
-        .heat-50 {{ background: #ffeaa7; color: #2d3436; }}
-        .heat-25 {{ background: #fab1a0; color: #2d3436; }}
-        .heat-0 {{ background: #d63031; color: white; }}
+        .heatmap td {{ text-align: center; font-weight: 700; min-width: 56px; font-size: 11.5px; padding: 8px 5px; }}
+        .heat-high {{ background: #00b894; color: white; }}
+        .heat-good {{ background: #55efc4; color: #1a1a2e; }}
+        .heat-mid {{ background: #ffeaa7; color: #1a1a2e; }}
+        .heat-low {{ background: #fab1a0; color: #1a1a2e; }}
+        .heat-fail {{ background: #d63031; color: white; }}
 
-        /* Footer */
-        .footer {{ text-align: center; padding: 24px; color: #b2bec3; font-size: 12px; }}
+        /* ── Confusion Matrix ── */
+        .confusion-grid {{ display: inline-grid; grid-template-columns: auto auto auto; gap: 3px; font-size: 13px; border-radius: 8px; overflow: hidden; }}
+        .confusion-grid .cell {{ padding: 10px 18px; text-align: center; font-weight: 700; }}
+        .confusion-grid .tp {{ background: #e8f8f5; color: #00b894; }}
+        .confusion-grid .fp {{ background: #fff3e0; color: #e17055; }}
+        .confusion-grid .fn {{ background: #fce4ec; color: #d63031; }}
+        .confusion-grid .tn {{ background: #ecf0f1; color: #636e72; }}
+        .confusion-grid .label-cell {{ background: #f8f9fa; font-weight: 500; font-size: 11px; color: #636e72; }}
 
-        /* Confusion Matrix */
-        .confusion {{ display: inline-grid; grid-template-columns: auto auto auto; gap: 2px; font-size: 13px; }}
-        .confusion .cell {{ padding: 8px 16px; text-align: center; font-weight: 600; }}
-        .confusion .tp {{ background: #e8f8f5; color: #00b894; }}
-        .confusion .fp {{ background: #ffeaa7; color: #e17055; }}
-        .confusion .fn {{ background: #fab1a0; color: #d63031; }}
-        .confusion .tn {{ background: #dfe6e9; color: #636e72; }}
-        .confusion .label-cell {{ background: #f8f9fa; font-weight: 400; font-size: 11px; color: #636e72; }}
+        /* ── Footer ── */
+        .footer {{
+            text-align: center;
+            padding: 32px;
+            color: #b2bec3;
+            font-size: 12px;
+            border-top: 1px solid #e1e4e8;
+            margin-top: 16px;
+        }}
+        .footer strong {{ color: #636e72; }}
+
+        /* ── Print styles ── */
+        @media print {{
+            .nav-bar {{ display: none; }}
+            .header {{ padding: 24px; }}
+            .chart-grid {{ break-inside: avoid; }}
+            .section {{ break-inside: avoid; box-shadow: none; border: 1px solid #e1e4e8; }}
+            body {{ background: white; }}
+        }}
+        @media (max-width: 768px) {{
+            .chart-grid {{ grid-template-columns: 1fr; }}
+            .header .report-meta {{ flex-direction: column; gap: 8px; }}
+        }}
     </style>
 </head>
 <body>
+    <!-- Header -->
     <div class="header">
         <h1>🛡️ AI Cyber Arena — Evaluation Report</h1>
-        <div class="subtitle">Generated: {report.timestamp} | {report.models_evaluated} models × {report.scenarios_evaluated} scenarios × {report.total_runs} runs</div>
+        <div class="subtitle">Comprehensive Model Performance Analysis</div>
+        <div class="report-meta">
+            <div class="meta-chip">📅 <strong>{report.timestamp[:10] if report.timestamp else 'N/A'}</strong></div>
+            <div class="meta-chip">🤖 <strong>{report.models_evaluated}</strong> Models</div>
+            <div class="meta-chip">🎯 <strong>{report.scenarios_evaluated}</strong> Scenarios</div>
+            <div class="meta-chip">🔄 <strong>{report.total_runs}</strong> Total Runs</div>
+            <div class="meta-chip">🏆 Best: <strong>{report.best_model}</strong> (F1 {report.best_f1:.1%})</div>
+        </div>
     </div>
+
+    <!-- Navigation -->
+    <div class="nav-bar">
+        <ul>
+            <li><a href="#summary">Summary</a></li>
+            <li><a href="#charts">Charts</a></li>
+            <li><a href="#comparison">Comparison</a></li>
+            <li><a href="#heatmap">Heatmap</a></li>
+            <li><a href="#models">Model Details</a></li>
+        </ul>
+    </div>
+
     <div class="container">
 """
 
-        # Summary Cards
+        # ── Summary Cards ──
+        html += '        <div id="summary"></div>\n'
         html += '        <div class="summary-grid">\n'
         html += f'            <div class="summary-card best"><div class="value">{report.best_model or "–"}</div><div class="label">Best Model (F1)</div></div>\n'
         html += f'            <div class="summary-card best"><div class="value">{report.best_f1:.1%}</div><div class="label">Best F1 Score</div></div>\n'
@@ -570,19 +819,113 @@ class MetricsEvaluator:
         html += f'            <div class="summary-card {fpr_class}"><div class="value">{report.worst_fpr:.1%}</div><div class="label">Worst FPR</div></div>\n'
         html += '        </div>\n'
 
-        # Model Comparison Table
+        # ── Executive Summary ──
+        html += f"""
+        <div class="executive-summary">
+            <h2>Executive Summary</h2>
+            <p>
+                This evaluation benchmarked <strong>{report.models_evaluated} AI models</strong> across
+                <strong>{report.scenarios_evaluated} cybersecurity scenarios</strong> ({report.total_runs} total runs),
+                covering DDoS attacks (S-series), malware threats (M-series), and complex/coordinated attacks (C-series).
+            </p>
+            <p>
+                <strong>{best_model_name}</strong> achieved the highest F1 score of <strong>{report.best_f1:.1%}</strong>,
+                while the average F1 across all models was <strong>{avg_f1:.1f}%</strong>.
+                {"<strong>" + str(perfect_models) + " model(s)</strong> achieved near-perfect F1 scores (≥95%)." if perfect_models > 0 else ""}
+                The lowest-performing model was <strong>{worst_model_name}</strong> with an F1 of <strong>{f1_data[-1] if f1_data else 0:.1f}%</strong>.
+            </p>
+        </div>
+"""
+
+        # ══════════════════════════════════════════════════════════════
+        #  CHARTS SECTION
+        # ══════════════════════════════════════════════════════════════
+        html += '        <div id="charts"></div>\n'
+        html += '        <div class="chart-grid">\n'
+
+        # ── Chart 1: Radar — Multi-metric Model Comparison ──
+        html += """
+            <div class="chart-card">
+                <h3><span class="fig-num">Figure 1.</span> Model Performance Radar</h3>
+                <p class="chart-subtitle">Multi-dimensional comparison of Accuracy, Precision, Recall, F1, TTP Coverage and Confidence across all evaluated models</p>
+                <div class="chart-container"><canvas id="radarChart"></canvas></div>
+            </div>
+"""
+
+        # ── Chart 2: Grouped Bar — Core Metrics Comparison ──
+        html += """
+            <div class="chart-card">
+                <h3><span class="fig-num">Figure 2.</span> Core Metrics Comparison</h3>
+                <p class="chart-subtitle">Accuracy, Precision, Recall and F1 Score for each model (higher is better)</p>
+                <div class="chart-container"><canvas id="metricsBarChart"></canvas></div>
+            </div>
+"""
+
+        # ── Chart 3: Stacked Bar — Confusion Matrix Breakdown ──
+        html += """
+            <div class="chart-card">
+                <h3><span class="fig-num">Figure 3.</span> Confusion Matrix Breakdown</h3>
+                <p class="chart-subtitle">Distribution of True Positives, True Negatives, False Positives, and False Negatives per model</p>
+                <div class="chart-container"><canvas id="confusionBarChart"></canvas></div>
+            </div>
+"""
+
+        # ── Chart 4: Horizontal Bar — Average Confidence ──
+        html += """
+            <div class="chart-card">
+                <h3><span class="fig-num">Figure 4.</span> Average Confidence Score</h3>
+                <p class="chart-subtitle">Mean prediction confidence level across all scenarios for each model</p>
+                <div class="chart-container"><canvas id="confidenceChart"></canvas></div>
+            </div>
+"""
+
+        # ── Chart 5: Scenario Confidence (full width) ──
+        html += """
+            <div class="chart-card full-width">
+                <h3><span class="fig-num">Figure 5.</span> Per-Scenario Confidence Scores</h3>
+                <p class="chart-subtitle">Confidence score (%) for each model across all 16 attack scenarios — higher values indicate stronger detection certainty</p>
+                <div class="chart-container"><canvas id="scenarioChart"></canvas></div>
+            </div>
+"""
+
+        # ── Chart 6: Doughnut — F1 Score Distribution ──
+        html += """
+            <div class="chart-card">
+                <h3><span class="fig-num">Figure 6.</span> F1 Score Distribution</h3>
+                <p class="chart-subtitle">Proportional F1 score comparison across all evaluated models</p>
+                <div class="chart-container"><canvas id="f1DoughnutChart"></canvas></div>
+            </div>
+"""
+
+        # ── Chart 7: FPR Bar ──
+        html += """
+            <div class="chart-card">
+                <h3><span class="fig-num">Figure 7.</span> False Positive Rate Comparison</h3>
+                <p class="chart-subtitle">False positive rate per model — lower values indicate fewer false alarms</p>
+                <div class="chart-container"><canvas id="fprChart"></canvas></div>
+            </div>
+"""
+
+        html += '        </div><!-- /chart-grid -->\n'
+
+        # ══════════════════════════════════════════════════════════════
+        #  MODEL COMPARISON TABLE
+        # ══════════════════════════════════════════════════════════════
+        html += '        <div id="comparison"></div>\n'
         html += '        <div class="section">\n'
-        html += '            <h2>📊 Model Comparison</h2>\n'
+        html += '            <h2>Table 1: Model Performance Comparison</h2>\n'
         html += '            <table>\n'
         html += '                <tr><th>Rank</th><th>Model</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>F1</th><th>FPR</th><th>TTP Cov.</th><th>Avg Conf.</th><th>TTD</th></tr>\n'
 
+        medals = ["🥇", "🥈", "🥉"]
         for rank, mm in enumerate(mm_list, 1):
-            is_best = mm.overall_f1 == best_f1 and len(mm_list) > 1
+            is_best = (rank == 1) and len(mm_list) > 1
             row_class = ' class="highlight"' if is_best else ""
             badge = ' <span class="best-badge">BEST</span>' if is_best else ""
+            medal = medals[rank - 1] if rank <= 3 else f"#{rank}"
 
             html += f'                <tr{row_class}>\n'
-            html += f'                    <td>#{rank}</td>\n'
+            html += f'                    <td>{medal}</td>\n'
             html += f'                    <td><strong>{mm.model_id}</strong>{badge}</td>\n'
             html += f'                    <td>{mm.overall_accuracy:.1%}<div class="metric-bar"><div class="fill fill-blue" style="width:{mm.overall_accuracy*100:.0f}%"></div></div></td>\n'
             html += f'                    <td>{mm.overall_precision:.1%}</td>\n'
@@ -601,38 +944,61 @@ class MetricsEvaluator:
         html += '            </table>\n'
         html += '        </div>\n'
 
-        # Scenario Heatmap
+        # ══════════════════════════════════════════════════════════════
+        #  CONFIDENCE HEATMAP (replaces binary detection heatmap)
+        # ══════════════════════════════════════════════════════════════
+        html += '        <div id="heatmap"></div>\n'
         if all_scenario_ids and mm_list:
             html += '        <div class="section">\n'
-            html += '            <h2>🔥 Per-Scenario Detection Heatmap</h2>\n'
+            html += '            <h2>Table 2: Per-Scenario Confidence Heatmap</h2>\n'
+            html += '            <p style="font-size:12.5px;color:#636e72;margin-bottom:16px;font-style:italic;">Confidence score (%) for each model–scenario combination. Higher scores (green) indicate stronger detection certainty; lower scores (red) indicate weaker or missed detections.</p>\n'
             html += '            <div class="heatmap"><table>\n'
             html += f'                <tr><th>Model</th>'
             for sid in all_scenario_ids:
                 html += f'<th>{sid}</th>'
-            html += '</tr>\n'
+            html += '<th>Avg</th></tr>\n'
 
             for mm in mm_list:
                 html += f'                <tr><td><strong>{mm.model_id}</strong></td>'
+                conf_values = []
                 for sid in all_scenario_ids:
                     sm = mm.scenario_metrics.get(sid)
                     if sm:
-                        rate = sm.detection_rate
-                        heat = "heat-100" if rate >= 1.0 else ("heat-75" if rate >= 0.75 else ("heat-50" if rate >= 0.5 else ("heat-25" if rate > 0 else "heat-0")))
-                        html += f'<td class="{heat}">{rate:.0%}</td>'
+                        conf = sm.avg_confidence
+                        conf_values.append(conf)
+                        # Confidence-based heat coloring (continuous scale)
+                        heat = "heat-high" if conf >= 80 else ("heat-good" if conf >= 60 else ("heat-mid" if conf >= 40 else ("heat-low" if conf >= 20 else "heat-fail")))
+                        html += f'<td class="{heat}">{conf:.0f}%</td>'
                     else:
                         html += '<td>—</td>'
+                avg_conf = sum(conf_values) / len(conf_values) if conf_values else 0
+                avg_heat = "heat-high" if avg_conf >= 80 else ("heat-good" if avg_conf >= 60 else ("heat-mid" if avg_conf >= 40 else ("heat-low" if avg_conf >= 20 else "heat-fail")))
+                html += f'<td class="{avg_heat}" style="border-left:2px solid #636e72"><strong>{avg_conf:.0f}%</strong></td>'
                 html += '</tr>\n'
 
             html += '            </table></div>\n'
             html += '        </div>\n'
 
-        # Per-model cards
-        for mm in mm_list:
+        # ══════════════════════════════════════════════════════════════
+        #  PER-MODEL DETAIL CARDS
+        # ══════════════════════════════════════════════════════════════
+        html += '        <div id="models"></div>\n'
+        for idx, mm in enumerate(mm_list):
+            medal_str = medals[idx] + " " if idx < 3 else ""
             html += f'        <div class="section">\n'
-            html += f'            <h2>🤖 {mm.model_id}</h2>\n'
+            html += f'            <h2>{medal_str}{mm.model_id} — Detailed Results</h2>\n'
+
+            # Key metrics inline
+            html += f'            <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:16px;">\n'
+            html += f'                <div><strong style="color:#0984e3">Accuracy:</strong> {mm.overall_accuracy:.1%}</div>\n'
+            html += f'                <div><strong style="color:#6c5ce7">Precision:</strong> {mm.overall_precision:.1%}</div>\n'
+            html += f'                <div><strong style="color:#00b894">Recall:</strong> {mm.overall_recall:.1%}</div>\n'
+            html += f'                <div><strong style="color:#e17055">F1:</strong> {mm.overall_f1:.1%}</div>\n'
+            html += f'                <div><strong style="color:#636e72">FPR:</strong> {mm.overall_fpr:.1%}</div>\n'
+            html += f'            </div>\n'
 
             # Confusion matrix
-            html += '            <div class="confusion">\n'
+            html += '            <div class="confusion-grid">\n'
             html += '                <div class="label-cell"></div><div class="label-cell">Predicted +</div><div class="label-cell">Predicted −</div>\n'
             html += f'                <div class="label-cell">Actual +</div><div class="cell tp">TP: {mm.confusion.tp}</div><div class="cell fn">FN: {mm.confusion.fn}</div>\n'
             html += f'                <div class="label-cell">Actual −</div><div class="cell fp">FP: {mm.confusion.fp}</div><div class="cell tn">TN: {mm.confusion.tn}</div>\n'
@@ -640,22 +1006,246 @@ class MetricsEvaluator:
 
             # Scenario table
             if mm.scenario_metrics:
-                html += '            <table style="margin-top:16px">\n'
+                html += '            <table style="margin-top:20px">\n'
                 html += '                <tr><th>Scenario</th><th>Detection</th><th>Classification</th><th>Confidence</th><th>TTP Coverage</th><th>Pass@k</th></tr>\n'
                 for sid, sm in sorted(mm.scenario_metrics.items()):
-                    html += f'                <tr><td>{sid}</td><td>{sm.detection_rate:.0%}</td><td>{sm.classification_rate:.0%}</td><td>{sm.avg_confidence:.1f}%</td><td>{sm.avg_ttp_coverage:.0%}</td><td>{sm.pass_at_k:.0%} ({sm.correct_detections}/{sm.num_runs})</td></tr>\n'
+                    det_icon = "✅" if sm.detection_rate >= 1.0 else ("⚠️" if sm.detection_rate > 0 else "❌")
+                    html += f'                <tr><td>{det_icon} {sid}</td><td>{sm.detection_rate:.0%}</td><td>{sm.classification_rate:.0%}</td><td>{sm.avg_confidence:.1f}%</td><td>{sm.avg_ttp_coverage:.0%}</td><td>{sm.pass_at_k:.0%} ({sm.correct_detections}/{sm.num_runs})</td></tr>\n'
                 html += '            </table>\n'
 
             html += '        </div>\n'
 
-        # Footer
+        # ══════════════════════════════════════════════════════════════
+        #  FOOTER
+        # ══════════════════════════════════════════════════════════════
         html += f"""
         <div class="footer">
-            AI Cyber Arena — Evaluation Framework v1.0<br>
-            NIST SP 800-61r3 compliant | MITRE ATT&CK for ICS aligned<br>
+            <strong>AI Cyber Arena — Evaluation Framework v1.0</strong><br>
+            NIST SP 800-61r3 compliant · MITRE ATT&CK for ICS aligned<br>
             Report generated: {report.timestamp}
         </div>
     </div>
+
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!--  Chart.js Scripts                                         -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <script>
+        const modelLabels = {_json.dumps(model_labels)};
+        const chartColors = {_json.dumps(chart_colors)};
+        const chartBorders = {_json.dumps(chart_borders)};
+        const chartBgLight = {_json.dumps(chart_bg_light)};
+
+        // Shared defaults
+        Chart.defaults.font.family = "'Inter', 'Segoe UI', system-ui, sans-serif";
+        Chart.defaults.font.size = 12;
+        Chart.defaults.color = '#636e72';
+        Chart.defaults.plugins.legend.labels.usePointStyle = true;
+        Chart.defaults.plugins.legend.labels.pointStyle = 'circle';
+        Chart.defaults.plugins.legend.labels.padding = 16;
+
+        // ── 1. Radar Chart ──
+        new Chart(document.getElementById('radarChart'), {{
+            type: 'radar',
+            data: {{
+                labels: ['Accuracy (%)', 'Precision (%)', 'Recall (%)', 'F1 Score (%)', 'TTP Coverage (%)', 'Avg Confidence (%)'],
+                datasets: modelLabels.map((label, i) => ({{
+                    label: label,
+                    data: [
+                        {_json.dumps(accuracy_data)}[i],
+                        {_json.dumps(precision_data)}[i],
+                        {_json.dumps(recall_data)}[i],
+                        {_json.dumps(f1_data)}[i],
+                        {_json.dumps(ttp_data)}[i],
+                        {_json.dumps(confidence_data)}[i]
+                    ],
+                    borderColor: chartBorders[i],
+                    backgroundColor: chartBgLight[i],
+                    borderWidth: 2.5,
+                    pointRadius: 4,
+                    pointHoverRadius: 6,
+                    pointBackgroundColor: chartBorders[i],
+                }}))
+            }},
+            options: {{
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {{
+                    r: {{
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {{ stepSize: 20, font: {{ size: 10 }}, backdropColor: 'transparent' }},
+                        grid: {{ color: 'rgba(0,0,0,0.08)' }},
+                        angleLines: {{ color: 'rgba(0,0,0,0.06)' }},
+                        pointLabels: {{ font: {{ size: 11.5, weight: '600' }}, color: '#2d3436' }}
+                    }}
+                }},
+                plugins: {{
+                    legend: {{ position: 'bottom', labels: {{ font: {{ size: 11 }}, padding: 20 }} }},
+                    tooltip: {{ callbacks: {{ label: ctx => ctx.dataset.label + ': ' + ctx.parsed.r + '%' }} }}
+                }}
+        }});
+
+        // ── 2. Core Metrics Bar Chart ──
+        new Chart(document.getElementById('metricsBarChart'), {{
+            type: 'bar',
+            data: {{
+                labels: modelLabels,
+                datasets: [
+                    {{ label: 'Accuracy', data: {_json.dumps(accuracy_data)}, backgroundColor: 'rgba(9, 132, 227, 0.75)', borderColor: 'rgba(9, 132, 227, 1)', borderWidth: 1, borderRadius: 4 }},
+                    {{ label: 'Precision', data: {_json.dumps(precision_data)}, backgroundColor: 'rgba(108, 92, 231, 0.75)', borderColor: 'rgba(108, 92, 231, 1)', borderWidth: 1, borderRadius: 4 }},
+                    {{ label: 'Recall', data: {_json.dumps(recall_data)}, backgroundColor: 'rgba(0, 184, 148, 0.75)', borderColor: 'rgba(0, 184, 148, 1)', borderWidth: 1, borderRadius: 4 }},
+                    {{ label: 'F1 Score', data: {_json.dumps(f1_data)}, backgroundColor: 'rgba(253, 203, 110, 0.85)', borderColor: 'rgba(253, 203, 110, 1)', borderWidth: 1, borderRadius: 4 }},
+                ]
+            }},
+            options: {{
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {{
+                    y: {{ beginAtZero: true, max: 105, title: {{ display: true, text: 'Score (%)', font: {{ size: 12, weight: '600' }} }}, ticks: {{ callback: v => v + '%' }}, grid: {{ color: 'rgba(0,0,0,0.04)' }} }},
+                    x: {{ title: {{ display: true, text: 'Model', font: {{ size: 12, weight: '600' }} }}, grid: {{ display: false }} }}
+                }},
+                plugins: {{
+                    legend: {{ position: 'bottom', labels: {{ padding: 20 }} }},
+                    tooltip: {{ callbacks: {{ label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y + '%' }} }}
+                }}
+            }}
+        }});
+
+        // ── 3. Confusion Matrix Stacked Bar ──
+        new Chart(document.getElementById('confusionBarChart'), {{
+            type: 'bar',
+            data: {{
+                labels: modelLabels,
+                datasets: [
+                    {{ label: 'True Positives', data: {_json.dumps(tp_data)}, backgroundColor: 'rgba(0, 184, 148, 0.8)', borderRadius: 2 }},
+                    {{ label: 'True Negatives', data: {_json.dumps(tn_data)}, backgroundColor: 'rgba(178, 190, 195, 0.7)', borderRadius: 2 }},
+                    {{ label: 'False Positives', data: {_json.dumps(fp_data)}, backgroundColor: 'rgba(253, 203, 110, 0.85)', borderRadius: 2 }},
+                    {{ label: 'False Negatives', data: {_json.dumps(fn_data)}, backgroundColor: 'rgba(214, 48, 49, 0.75)', borderRadius: 2 }},
+                ]
+            }},
+            options: {{
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {{
+                    y: {{ stacked: true, beginAtZero: true, title: {{ display: true, text: 'Number of Predictions', font: {{ size: 12, weight: '600' }} }}, grid: {{ color: 'rgba(0,0,0,0.04)' }} }},
+                    x: {{ stacked: true, title: {{ display: true, text: 'Model', font: {{ size: 12, weight: '600' }} }}, grid: {{ display: false }} }}
+                }},
+                plugins: {{
+                    legend: {{ position: 'bottom', labels: {{ padding: 20 }} }}
+                }}
+            }}
+        }});
+
+        // ── 4. Confidence Horizontal Bar ──
+        new Chart(document.getElementById('confidenceChart'), {{
+            type: 'bar',
+            data: {{
+                labels: modelLabels,
+                datasets: [{{
+                    label: 'Avg Confidence %',
+                    data: {_json.dumps(confidence_data)},
+                    backgroundColor: chartColors.slice(0, modelLabels.length),
+                    borderColor: chartBorders.slice(0, modelLabels.length),
+                    borderWidth: 1,
+                    borderRadius: 6,
+                }}]
+            }},
+            options: {{
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {{
+                    x: {{ beginAtZero: true, max: 100, title: {{ display: true, text: 'Confidence Score (%)', font: {{ size: 12, weight: '600' }} }}, ticks: {{ callback: v => v + '%' }}, grid: {{ color: 'rgba(0,0,0,0.04)' }} }},
+                    y: {{ title: {{ display: true, text: 'Model', font: {{ size: 12, weight: '600' }} }}, grid: {{ display: false }} }}
+                }},
+                plugins: {{
+                    legend: {{ display: false }},
+                    tooltip: {{ callbacks: {{ label: ctx => 'Avg Confidence: ' + ctx.parsed.x + '%' }} }}
+                }}
+            }}
+        }});
+
+        // ── 5. Per-Scenario Confidence Scores ──
+        const scenarioLabels = {_json.dumps(all_scenario_ids)};
+        const scenarioDatasets = modelLabels.map((model, i) => ({{
+            label: model,
+            data: {_json.dumps(scenario_confidence_data)}[model],
+            backgroundColor: chartColors[i],
+            borderColor: chartBorders[i],
+            borderWidth: 1,
+            borderRadius: 3,
+        }}));
+        new Chart(document.getElementById('scenarioChart'), {{
+            type: 'bar',
+            data: {{ labels: scenarioLabels, datasets: scenarioDatasets }},
+            options: {{
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {{
+                    y: {{ beginAtZero: true, max: 105, title: {{ display: true, text: 'Confidence Score (%)', font: {{ size: 12, weight: '600' }} }}, ticks: {{ callback: v => v + '%' }}, grid: {{ color: 'rgba(0,0,0,0.04)' }} }},
+                    x: {{ title: {{ display: true, text: 'Attack Scenario', font: {{ size: 12, weight: '600' }} }}, grid: {{ display: false }} }}
+                }},
+                plugins: {{
+                    legend: {{ position: 'bottom', labels: {{ padding: 16 }} }},
+                    tooltip: {{ callbacks: {{ label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y + '% confidence' }} }}
+                }}
+            }}
+        }});
+
+        // ── 6. F1 Doughnut Chart ──
+        new Chart(document.getElementById('f1DoughnutChart'), {{
+            type: 'doughnut',
+            data: {{
+                labels: modelLabels,
+                datasets: [{{
+                    data: {_json.dumps(f1_data)},
+                    backgroundColor: chartColors.slice(0, modelLabels.length),
+                    borderColor: 'white',
+                    borderWidth: 3,
+                    hoverOffset: 8,
+                }}]
+            }},
+            options: {{
+                responsive: true,
+                maintainAspectRatio: true,
+                cutout: '55%',
+                plugins: {{
+                    legend: {{ position: 'bottom', labels: {{ font: {{ size: 11 }} }} }},
+                    tooltip: {{ callbacks: {{ label: ctx => ctx.label + ': ' + ctx.parsed + '% F1' }} }}
+                }}
+            }}
+        }});
+
+        // ── 7. FPR Bar Chart ──
+        new Chart(document.getElementById('fprChart'), {{
+            type: 'bar',
+            data: {{
+                labels: modelLabels,
+                datasets: [{{
+                    label: 'False Positive Rate %',
+                    data: {_json.dumps(fpr_data)},
+                    backgroundColor: {_json.dumps(fpr_data)}.map(v =>
+                        v <= 5 ? 'rgba(0, 184, 148, 0.75)' :
+                        v <= 15 ? 'rgba(253, 203, 110, 0.85)' :
+                        'rgba(214, 48, 49, 0.75)'
+                    ),
+                    borderRadius: 6,
+                }}]
+            }},
+            options: {{
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {{
+                    y: {{ beginAtZero: true, title: {{ display: true, text: 'False Positive Rate (%)', font: {{ size: 12, weight: '600' }} }}, ticks: {{ callback: v => v + '%' }}, grid: {{ color: 'rgba(0,0,0,0.04)' }} }},
+                    x: {{ title: {{ display: true, text: 'Model', font: {{ size: 12, weight: '600' }} }}, grid: {{ display: false }} }}
+                }},
+                plugins: {{
+                    legend: {{ display: false }},
+                    tooltip: {{ callbacks: {{ label: ctx => 'FPR: ' + ctx.parsed.y + '%' }} }}
+                }}
+            }}
+        }});
+    </script>
 </body>
 </html>"""
 

@@ -1,0 +1,255 @@
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 521, in get_ddos_config
+    "normal_rps": config.DDOS_NORMAL_RPS,
+                  ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'DDOS_NORMAL_RPS'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INFO:     172.20.0.1:43024 - "GET /config/malware HTTP/1.1" 500 Internal Server Error
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INFO:     172.20.0.1:43034 - "GET /status/agents HTTP/1.1" 200 OK
+INFO:     172.20.0.1:43042 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43056 - "GET /simulator/zones HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43058 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43066 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43066 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43058 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43056 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:56816 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:56830 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:56844 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:59860 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+  File "/app/src/main.py", line 538, in get_malware_config
+    "file_encryption_rate": config.MALWARE_FILE_ENCRYPTION_RATE,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'MALWARE_FILE_ENCRYPTION_RATE'
+INFO:     172.20.0.1:59862 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:59866 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:52796 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54044 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:59866 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:59862 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:59860 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47726 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47736 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47742 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47742 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47736 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47726 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47726 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47736 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47742 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47736 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47742 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47726 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:45898 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:45902 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:45904 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:36698 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34910 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:45904 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:45902 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:45898 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:45902 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:45898 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:45904 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:40254 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:40268 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:40282 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41050 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41060 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41062 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41060 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41062 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41050 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41050 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41062 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41060 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:49234 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47972 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:41062 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41060 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41050 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:52358 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:52364 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:52378 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:52384 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:52398 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:52410 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43046 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43056 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43068 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36128 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36112 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36104 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36104 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36112 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36128 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:43988 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36640 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:36138 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36160 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36148 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36148 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36148 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36148 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36148 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36148 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:37678 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:60830 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:60832 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:60836 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:60830 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:60832 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:60836 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:60830 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:60836 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:60832 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:45912 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     172.20.0.1:37508 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42634 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:37518 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:37534 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:56892 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:56892 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:56892 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:55554 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55812 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:36208 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36218 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36234 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:39636 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59010 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.6:56698 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41796 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:51654 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:51664 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:51668 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:59220 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43642 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.6:36048 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45628 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:54766 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:54772 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:54774 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:41760 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46134 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.6:54730 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58332 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:54404 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:54402 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:54420 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:56710 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43534 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.6:33554 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48168 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:57064 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57072 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57088 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:44822 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38188 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.6:39920 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58760 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:38990 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:38998 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39010 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:36370 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40468 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.6:38064 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59324 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:50396 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50402 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50404 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:56898 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53000 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:37110 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:37124 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:37130 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:37130 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:37124 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:37124 - "GET /simulator/status HTTP/1.1" 404 Not Found

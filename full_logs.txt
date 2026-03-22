@@ -1,0 +1,2756 @@
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+2026-03-22 07:48:32,632 - main - INFO - Starting Cybersecurity 2-Agent System
+2026-03-22 07:48:32,633 - kafka.producer.transaction_manager - INFO - ProducerId set to 1 with epoch 0
+2026-03-22 07:48:32,636 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-2.3.0, node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.20.0.8', 29092)]>: connecting to kafka:29092 [('172.20.0.8', 29092) IPv4]
+2026-03-22 07:48:32,641 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-2.3.0, node_id=bootstrap-0 host=kafka:29092 <checking_api_versions_recv> [IPv4 ('172.20.0.8', 29092)]>: Broker version identified as 2.6
+2026-03-22 07:48:32,642 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-2.3.0, node_id=bootstrap-0 host=kafka:29092 <connected> [IPv4 ('172.20.0.8', 29092)]>: Connection complete.
+2026-03-22 07:48:32,643 - kafka.consumer.subscription_state - INFO - Updating subscribed topics to: ('network_events', 'device_events', 'cyber_alerts')
+2026-03-22 07:48:32,643 - src.kafka.kafka_consumer - INFO - Kafka consumer created for 2-agent system. Topics: ['network_events', 'device_events', 'cyber_alerts']
+INFO:     127.0.0.1:49770 - "GET /health HTTP/1.1" 200 OK
+2026-03-22 07:48:32,644 - src.kafka.kafka_consumer - INFO - Starting message consumption loop
+2026-03-22 07:48:32,644 - src.kafka.kafka_consumer - INFO - Cybersecurity Kafka consumer started
+2026-03-22 07:48:32,645 - main - INFO - Kafka consumer started
+2026-03-22 07:48:32,646 - main - INFO - Kafka producer status: True
+2026-03-22 07:48:32,647 - main - INFO - Background periodic updates started
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2026-03-22 07:48:32,722 - kafka.cluster - WARNING - Topic device_events is not available during auto-create initialization
+2026-03-22 07:48:32,723 - kafka.cluster - WARNING - Topic network_events is not available during auto-create initialization
+2026-03-22 07:48:32,724 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-2.3.0, node_id=1 host=kafka:29092 <connecting> [IPv4 ('172.20.0.8', 29092)]>: connecting to kafka:29092 [('172.20.0.8', 29092) IPv4]
+2026-03-22 07:48:32,725 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-2.3.0, node_id=1 host=kafka:29092 <connected> [IPv4 ('172.20.0.8', 29092)]>: Connection complete.
+2026-03-22 07:48:32,726 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-2.3.0, node_id=bootstrap-0 host=kafka:29092 <connected> [IPv4 ('172.20.0.8', 29092)]>: Closing connection. 
+2026-03-22 07:48:32,833 - kafka.cluster - INFO - Coordinator for group/cybersecurity_agents is BrokerMetadata(nodeId='coordinator-1', host='kafka', port=29092, rack=None)
+2026-03-22 07:48:32,834 - kafka.coordinator - INFO - Discovered coordinator coordinator-1 for group cybersecurity_agents
+2026-03-22 07:48:32,834 - kafka.coordinator.heartbeat - INFO - Starting new heartbeat thread
+2026-03-22 07:48:32,835 - kafka.coordinator.consumer - INFO - Revoking previously assigned partitions set() for group cybersecurity_agents
+2026-03-22 07:48:32,835 - kafka.coordinator - INFO - Failed to join group cybersecurity_agents: NodeNotReadyError: coordinator-1
+INFO:     172.20.0.6:33172 - "GET /metrics HTTP/1.1" 200 OK
+2026-03-22 07:48:32,837 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-2.3.0, node_id=coordinator-1 host=kafka:29092 <connecting> [IPv4 ('172.20.0.8', 29092)]>: connecting to kafka:29092 [('172.20.0.8', 29092) IPv4]
+INFO:     127.0.0.1:58334 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.6:36336 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43814 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.6:56696 - "GET /metrics HTTP/1.1" 200 OK
+2026-03-22 07:48:32,838 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-2.3.0, node_id=coordinator-1 host=kafka:29092 <connected> [IPv4 ('172.20.0.8', 29092)]>: Connection complete.
+INFO:     127.0.0.1:52714 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.6:39118 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54794 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.6:59846 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56004 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.6:42552 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47198 - "GET /health HTTP/1.1" 200 OK
+2026-03-22 07:48:32,940 - kafka.coordinator - INFO - (Re-)joining group cybersecurity_agents
+2026-03-22 07:48:32,945 - kafka.coordinator - INFO - Received member id kafka-python-2.3.0-cf1abab5-b0c9-4022-b82c-593da9f57d65 for group cybersecurity_agents; will retry join-group
+2026-03-22 07:48:32,945 - kafka.coordinator - INFO - Failed to join group cybersecurity_agents: [Error 79] MemberIdRequiredError
+INFO:     172.20.0.6:45782 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42738 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.6:47176 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56346 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.6:39900 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52420 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.6:53572 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51988 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.6:41032 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33664 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.6:50300 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52666 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.6:59164 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43126 - "GET /health HTTP/1.1" 200 OK
+2026-03-22 07:48:32,945 - kafka.coordinator - INFO - (Re-)joining group cybersecurity_agents
+2026-03-22 07:48:35,956 - kafka.coordinator - INFO - Successfully joined group cybersecurity_agents <Generation 1 (member_id: kafka-python-2.3.0-cf1abab5-b0c9-4022-b82c-593da9f57d65, protocol: range)>
+2026-03-22 07:48:35,956 - kafka.coordinator - INFO - Elected group leader -- performing partition assignments using range
+2026-03-22 07:48:35,958 - kafka.coordinator.assignors.range - WARNING - No partition metadata for topic device_events
+2026-03-22 07:48:35,958 - kafka.coordinator.assignors.range - WARNING - No partition metadata for topic network_events
+2026-03-22 07:48:35,971 - kafka.consumer.subscription_state - INFO - Updated partition assignment: [TopicPartition(topic='cyber_alerts', partition=0)]
+2026-03-22 07:48:35,972 - kafka.coordinator.consumer - INFO - Setting newly assigned partitions {TopicPartition(topic='cyber_alerts', partition=0)} for group cybersecurity_agents
+2026-03-22 07:48:35,984 - kafka.coordinator.consumer - INFO - Revoking previously assigned partitions {TopicPartition(topic='cyber_alerts', partition=0)} for group cybersecurity_agents
+2026-03-22 07:48:35,984 - kafka.coordinator - INFO - (Re-)joining group cybersecurity_agents
+2026-03-22 07:48:35,993 - kafka.coordinator - INFO - Successfully joined group cybersecurity_agents <Generation 2 (member_id: kafka-python-2.3.0-cf1abab5-b0c9-4022-b82c-593da9f57d65, protocol: range)>
+2026-03-22 07:48:35,993 - kafka.coordinator - INFO - Elected group leader -- performing partition assignments using range
+2026-03-22 07:48:36,000 - kafka.consumer.fetcher - INFO - Resetting offset for partition TopicPartition(topic='cyber_alerts', partition=0) to offset 0.
+2026-03-22 07:48:36,001 - kafka.consumer.subscription_state - INFO - Updated partition assignment: [TopicPartition(topic='cyber_alerts', partition=0), TopicPartition(topic='device_events', partition=0), TopicPartition(topic='network_events', partition=0)]
+INFO:     172.20.0.6:33118 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     172.20.0.1:40616 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46994 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.6:48992 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     172.20.0.1:57944 - "GET /health HTTP/1.1" 200 OK
+2026-03-22 07:48:36,001 - kafka.coordinator.consumer - INFO - Setting newly assigned partitions {TopicPartition(topic='network_events', partition=0), TopicPartition(topic='cyber_alerts', partition=0), TopicPartition(topic='device_events', partition=0)} for group cybersecurity_agents
+2026-03-22 07:48:36,005 - kafka.consumer.fetcher - INFO - Resetting offset for partition TopicPartition(topic='network_events', partition=0) to offset 0.
+2026-03-22 07:48:36,006 - kafka.consumer.fetcher - INFO - Resetting offset for partition TopicPartition(topic='cyber_alerts', partition=0) to offset 0.
+2026-03-22 07:48:36,006 - kafka.consumer.fetcher - INFO - Resetting offset for partition TopicPartition(topic='device_events', partition=0) to offset 0.
+2026-03-22 07:53:32,705 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=kafka:29092 <connecting> [IPv4 ('172.20.0.8', 29092)]>: connecting to kafka:29092 [('172.20.0.8', 29092) IPv4]
+INFO:     172.20.0.1:57944 - "GET /health HTTP/1.1" 200 OK
+2026-03-22 07:53:32,716 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=1 host=kafka:29092 <connected> [IPv4 ('172.20.0.8', 29092)]>: Connection complete.
+2026-03-22 07:53:32,718 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-producer-1, node_id=bootstrap-0 host=kafka:29092 <connected> [IPv4 ('172.20.0.8', 29092)]>: Closing connection. 
+INFO:     172.20.0.1:57944 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:57944 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57950 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57944 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57954 - "GET /config/ddos HTTP/1.1" 500 Internal Server Error
+INFO:     172.20.0.1:57950 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57960 - "GET /simulator/zones HTTP/1.1" 404 Not Found
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INFO:     172.20.0.1:57972 - "GET /status/agents HTTP/1.1" 200 OK
+INFO:     172.20.0.1:57944 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57950 - "GET /config/ddos HTTP/1.1" 500 Internal Server Error
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 521, in get_ddos_config
+    "normal_rps": config.DDOS_NORMAL_RPS,
+                  ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'DDOS_NORMAL_RPS'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+INFO:     172.20.0.1:57960 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57976 - "GET /config/malware HTTP/1.1" 500 Internal Server Error
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 521, in get_ddos_config
+    "normal_rps": config.DDOS_NORMAL_RPS,
+                  ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'DDOS_NORMAL_RPS'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+INFO:     172.20.0.1:57972 - "GET /simulator/zones HTTP/1.1" 404 Not Found
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 538, in get_malware_config
+INFO:     172.20.0.1:57960 - "GET /simulator/status HTTP/1.1" 404 Not Found
+    "file_encryption_rate": config.MALWARE_FILE_ENCRYPTION_RATE,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'MALWARE_FILE_ENCRYPTION_RATE'
+INFO:     172.20.0.1:57986 - "WebSocket /ws" [accepted]
+2026-03-22 07:56:02,376 - main - INFO - WebSocket connected. Total connections: 1
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+INFO:     172.20.0.1:57944 - "GET /config/ddos HTTP/1.1" 500 Internal Server Error
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 521, in get_ddos_config
+    "normal_rps": config.DDOS_NORMAL_RPS,
+                  ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'DDOS_NORMAL_RPS'
+INFO:     172.20.0.1:57990 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     connection open
+INFO:     172.20.0.1:57972 - "GET /simulator/zones HTTP/1.1" 404 Not Found
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+INFO:     172.20.0.1:57992 - "GET /config/malware HTTP/1.1" 500 Internal Server Error
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+INFO:     172.20.0.1:57990 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57998 - "GET /status/agents HTTP/1.1" 200 OK
+INFO:     172.20.0.1:57972 - "GET /config/malware HTTP/1.1" 500 Internal Server Error
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 538, in get_malware_config
+    "file_encryption_rate": config.MALWARE_FILE_ENCRYPTION_RATE,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'MALWARE_FILE_ENCRYPTION_RATE'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INFO:     172.20.0.1:57998 - "GET /status/agents HTTP/1.1" 200 OK
+  File "/app/src/main.py", line 538, in get_malware_config
+    "file_encryption_rate": config.MALWARE_FILE_ENCRYPTION_RATE,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'MALWARE_FILE_ENCRYPTION_RATE'
+INFO:     172.20.0.1:57998 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57990 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57960 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:41804 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47632 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:57960 - "POST /simulator/start HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57960 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:57960 - "GET /config/ddos HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+INFO:     172.20.0.1:57990 - "GET /config/malware HTTP/1.1" 500 Internal Server Error
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+INFO:     172.20.0.1:57998 - "GET /status/agents HTTP/1.1" 200 OK
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 521, in get_ddos_config
+    "normal_rps": config.DDOS_NORMAL_RPS,
+                  ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'DDOS_NORMAL_RPS'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 538, in get_malware_config
+    "file_encryption_rate": config.MALWARE_FILE_ENCRYPTION_RATE,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'MALWARE_FILE_ENCRYPTION_RATE'
+INFO:     172.20.0.1:48424 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:48432 - "GET /simulator/zones HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:48448 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:48458 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:48458 - "POST /simulator/start HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:48458 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:48448 - "GET /config/malware HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 538, in get_malware_config
+    "file_encryption_rate": config.MALWARE_FILE_ENCRYPTION_RATE,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'MALWARE_FILE_ENCRYPTION_RATE'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+INFO:     172.20.0.1:48458 - "GET /config/ddos HTTP/1.1" 500 Internal Server Error
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+INFO:     172.20.0.1:48432 - "GET /status/agents HTTP/1.1" 200 OK
+INFO:     172.20.0.1:48424 - "GET /simulator/status HTTP/1.1" 404 Not Found
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 521, in get_ddos_config
+    "normal_rps": config.DDOS_NORMAL_RPS,
+                  ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'DDOS_NORMAL_RPS'
+INFO:     172.20.0.1:57998 - "GET /simulator/zones HTTP/1.1" 404 Not Found
+ERROR:    Exception in ASGI application
+INFO:     172.20.0.1:48468 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:48484 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:48484 - "POST /simulator/start HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:48484 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:48484 - "GET /config/ddos HTTP/1.1" 500 Internal Server Error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 521, in get_ddos_config
+    "normal_rps": config.DDOS_NORMAL_RPS,
+                  ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'DDOS_NORMAL_RPS'
+ERROR:    Exception in ASGI application
+INFO:     172.20.0.1:48468 - "GET /config/malware HTTP/1.1" 500 Internal Server Error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 538, in get_malware_config
+    "file_encryption_rate": config.MALWARE_FILE_ENCRYPTION_RATE,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'MALWARE_FILE_ENCRYPTION_RATE'
+INFO:     172.20.0.1:57998 - "GET /status/agents HTTP/1.1" 200 OK
+INFO:     172.20.0.1:48432 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:48424 - "GET /simulator/zones HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:48508 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:48498 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:48498 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:48508 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:48432 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:55994 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:56002 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:56004 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:56004 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:56002 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:55994 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43340 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43352 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43354 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43354 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43352 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43340 - "GET /simulator/status HTTP/1.1" 404 Not Found
+2026-03-22 07:56:49,414 - main - INFO - WebSocket disconnected. Total connections: 0
+INFO:     172.20.0.1:43340 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43354 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43352 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:42106 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58080 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:60610 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:60620 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:60636 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:60636 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:60620 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:60610 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:60610 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:60620 - "GET /config/malware HTTP/1.1" 500 Internal Server Error
+INFO:     connection closed
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 538, in get_malware_config
+    "file_encryption_rate": config.MALWARE_FILE_ENCRYPTION_RATE,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'MALWARE_FILE_ENCRYPTION_RATE'
+ERROR:    Exception in ASGI application
+INFO:     172.20.0.1:60610 - "GET /config/ddos HTTP/1.1" 500 Internal Server Error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 521, in get_ddos_config
+    "normal_rps": config.DDOS_NORMAL_RPS,
+                  ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'DDOS_NORMAL_RPS'
+INFO:     172.20.0.1:39512 - "WebSocket /ws" [accepted]
+2026-03-22 07:56:49,996 - main - INFO - WebSocket connected. Total connections: 1
+INFO:     connection open
+INFO:     172.20.0.1:60636 - "GET /status/agents HTTP/1.1" 200 OK
+INFO:     172.20.0.1:39472 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39482 - "GET /simulator/zones HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39490 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39498 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39498 - "POST /simulator/start HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39498 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:39498 - "GET /config/ddos HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 521, in get_ddos_config
+    "normal_rps": config.DDOS_NORMAL_RPS,
+INFO:     172.20.0.1:39490 - "GET /config/malware HTTP/1.1" 500 Internal Server Error
+                  ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'DDOS_NORMAL_RPS'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 538, in get_malware_config
+    "file_encryption_rate": config.MALWARE_FILE_ENCRYPTION_RATE,
+INFO:     172.20.0.1:39472 - "GET /simulator/status HTTP/1.1" 404 Not Found
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'MALWARE_FILE_ENCRYPTION_RATE'
+ERROR:    Exception in ASGI application
+INFO:     172.20.0.1:39482 - "GET /status/agents HTTP/1.1" 200 OK
+INFO:     172.20.0.1:60636 - "GET /simulator/zones HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50228 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50234 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50234 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:60636 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50228 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50228 - "POST /simulator/start HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50228 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:50228 - "GET /config/ddos HTTP/1.1" 500 Internal Server Error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+INFO:     172.20.0.1:50234 - "GET /config/malware HTTP/1.1" 500 Internal Server Error
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 521, in get_ddos_config
+    "normal_rps": config.DDOS_NORMAL_RPS,
+                  ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'DDOS_NORMAL_RPS'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 538, in get_malware_config
+    "file_encryption_rate": config.MALWARE_FILE_ENCRYPTION_RATE,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'MALWARE_FILE_ENCRYPTION_RATE'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+INFO:     172.20.0.1:60636 - "GET /status/agents HTTP/1.1" 200 OK
+INFO:     172.20.0.1:39482 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39472 - "GET /simulator/zones HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50238 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50252 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50252 - "POST /simulator/start HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50252 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:50252 - "GET /config/ddos HTTP/1.1" 500 Internal Server Error
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 521, in get_ddos_config
+    "normal_rps": config.DDOS_NORMAL_RPS,
+                  ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'DDOS_NORMAL_RPS'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+INFO:     172.20.0.1:50238 - "GET /config/malware HTTP/1.1" 500 Internal Server Error
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INFO:     172.20.0.1:39472 - "GET /status/agents HTTP/1.1" 200 OK
+  File "/app/src/main.py", line 538, in get_malware_config
+    "file_encryption_rate": config.MALWARE_FILE_ENCRYPTION_RATE,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'MALWARE_FILE_ENCRYPTION_RATE'
+INFO:     172.20.0.1:60636 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39482 - "GET /simulator/zones HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50254 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50262 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50262 - "POST /simulator/start HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50262 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:50262 - "GET /config/ddos HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+INFO:     172.20.0.1:50254 - "GET /config/malware HTTP/1.1" 500 Internal Server Error
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 521, in get_ddos_config
+    "normal_rps": config.DDOS_NORMAL_RPS,
+                  ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'DDOS_NORMAL_RPS'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 538, in get_malware_config
+    "file_encryption_rate": config.MALWARE_FILE_ENCRYPTION_RATE,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'MALWARE_FILE_ENCRYPTION_RATE'
+INFO:     172.20.0.1:39472 - "GET /status/agents HTTP/1.1" 200 OK
+INFO:     172.20.0.1:60636 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39482 - "GET /simulator/zones HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50270 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50278 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50278 - "POST /simulator/start HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50278 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:50270 - "GET /config/malware HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 538, in get_malware_config
+    "file_encryption_rate": config.MALWARE_FILE_ENCRYPTION_RATE,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'MALWARE_FILE_ENCRYPTION_RATE'
+INFO:     172.20.0.1:50278 - "GET /config/ddos HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 521, in get_ddos_config
+    "normal_rps": config.DDOS_NORMAL_RPS,
+INFO:     172.20.0.1:39482 - "GET /status/agents HTTP/1.1" 200 OK
+                  ^^^^^^^^^^^^^^^^^^^^^^
+INFO:     172.20.0.1:60636 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39472 - "GET /simulator/zones HTTP/1.1" 404 Not Found
+AttributeError: 'CybersecurityConfig' object has no attribute 'DDOS_NORMAL_RPS'
+INFO:     172.20.0.1:50284 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+ERROR:    Exception in ASGI application
+INFO:     172.20.0.1:50294 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+Traceback (most recent call last):
+INFO:     172.20.0.1:50294 - "POST /simulator/start HTTP/1.1" 404 Not Found
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+INFO:     172.20.0.1:50294 - "GET /health HTTP/1.1" 200 OK
+    result = await app(  # type: ignore[func-returns-value]
+INFO:     172.20.0.1:50294 - "GET /config/ddos HTTP/1.1" 500 Internal Server Error
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INFO:     172.20.0.1:50284 - "GET /config/malware HTTP/1.1" 500 Internal Server Error
+  File "/app/src/main.py", line 521, in get_ddos_config
+    "normal_rps": config.DDOS_NORMAL_RPS,
+                  ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'DDOS_NORMAL_RPS'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 538, in get_malware_config
+    "file_encryption_rate": config.MALWARE_FILE_ENCRYPTION_RATE,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'MALWARE_FILE_ENCRYPTION_RATE'
+INFO:     172.20.0.1:60636 - "GET /status/agents HTTP/1.1" 200 OK
+INFO:     172.20.0.1:39472 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39482 - "GET /simulator/zones HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50304 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50320 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50320 - "POST /simulator/start HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50320 - "GET /health HTTP/1.1" 200 OK
+ERROR:    Exception in ASGI application
+INFO:     172.20.0.1:50320 - "GET /config/ddos HTTP/1.1" 500 Internal Server Error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+INFO:     172.20.0.1:50304 - "GET /config/malware HTTP/1.1" 500 Internal Server Error
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 521, in get_ddos_config
+    "normal_rps": config.DDOS_NORMAL_RPS,
+                  ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'DDOS_NORMAL_RPS'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 538, in get_malware_config
+    "file_encryption_rate": config.MALWARE_FILE_ENCRYPTION_RATE,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'MALWARE_FILE_ENCRYPTION_RATE'
+INFO:     172.20.0.1:60636 - "GET /status/agents HTTP/1.1" 200 OK
+INFO:     172.20.0.1:39482 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39472 - "GET /simulator/zones HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50336 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50352 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50352 - "POST /simulator/start HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50352 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:50352 - "GET /config/ddos HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 521, in get_ddos_config
+    "normal_rps": config.DDOS_NORMAL_RPS,
+INFO:     172.20.0.1:50336 - "GET /config/malware HTTP/1.1" 500 Internal Server Error
+                  ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'DDOS_NORMAL_RPS'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INFO:     172.20.0.1:39472 - "GET /simulator/status HTTP/1.1" 404 Not Found
+  File "/app/src/main.py", line 538, in get_malware_config
+    "file_encryption_rate": config.MALWARE_FILE_ENCRYPTION_RATE,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'MALWARE_FILE_ENCRYPTION_RATE'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+INFO:     172.20.0.1:60636 - "GET /status/agents HTTP/1.1" 200 OK
+INFO:     172.20.0.1:39482 - "GET /simulator/zones HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50358 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50362 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50362 - "POST /simulator/start HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50362 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:50362 - "GET /config/ddos HTTP/1.1" 500 Internal Server Error
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+INFO:     172.20.0.1:50358 - "GET /config/malware HTTP/1.1" 500 Internal Server Error
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 521, in get_ddos_config
+    "normal_rps": config.DDOS_NORMAL_RPS,
+                  ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'DDOS_NORMAL_RPS'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 538, in get_malware_config
+    "file_encryption_rate": config.MALWARE_FILE_ENCRYPTION_RATE,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'MALWARE_FILE_ENCRYPTION_RATE'
+INFO:     172.20.0.1:39472 - "GET /status/agents HTTP/1.1" 200 OK
+INFO:     172.20.0.1:39482 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:60636 - "GET /simulator/zones HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50368 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50382 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50382 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50368 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39472 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:53124 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:53126 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:53128 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:34738 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52124 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:53126 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:53128 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:53124 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41620 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41636 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41640 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41640 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41636 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41620 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:55410 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:55414 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:55416 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:55416 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:55414 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:55410 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:55410 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:55414 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:55416 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:55318 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45620 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:36420 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36424 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36434 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36280 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36284 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36286 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36286 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36284 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36280 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:46444 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:46454 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:46458 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:46458 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:46454 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:46444 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:46444 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:46454 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:46458 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:48012 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49274 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:32842 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:32848 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:32858 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:32858 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:32848 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:32842 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:53934 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:53938 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:53946 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36406 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36416 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36426 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36426 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36416 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36406 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39540 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39552 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39568 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:42300 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38988 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:39572 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39586 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39598 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36028 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36032 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36048 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36032 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36048 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36028 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36048 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36028 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36032 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36028 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36048 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36032 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39910 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39910 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39924 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:35302 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40950 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:39910 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39924 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39928 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39924 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39928 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47260 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39924 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47260 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39928 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:56988 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50168 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.6:59084 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41092 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:47670 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47654 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47676 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47686 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47694 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47700 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47700 - "POST /simulator/start HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47700 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:47700 - "GET /config/ddos HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INFO:     172.20.0.1:47694 - "GET /config/malware HTTP/1.1" 500 Internal Server Error
+  File "/app/src/main.py", line 521, in get_ddos_config
+    "normal_rps": config.DDOS_NORMAL_RPS,
+                  ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'DDOS_NORMAL_RPS'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 538, in get_malware_config
+    "file_encryption_rate": config.MALWARE_FILE_ENCRYPTION_RATE,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'MALWARE_FILE_ENCRYPTION_RATE'
+INFO:     172.20.0.1:47686 - "GET /status/agents HTTP/1.1" 200 OK
+INFO:     172.20.0.1:32798 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:32804 - "GET /simulator/zones HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:32812 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:32814 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:32814 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+ERROR:    Exception in ASGI application
+INFO:     172.20.0.1:32812 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:32804 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:32804 - "POST /simulator/start HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:32804 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:32812 - "GET /config/malware HTTP/1.1" 500 Internal Server Error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 538, in get_malware_config
+    "file_encryption_rate": config.MALWARE_FILE_ENCRYPTION_RATE,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'MALWARE_FILE_ENCRYPTION_RATE'
+INFO:     172.20.0.1:32804 - "GET /config/ddos HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 521, in get_ddos_config
+    "normal_rps": config.DDOS_NORMAL_RPS,
+                  ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'DDOS_NORMAL_RPS'
+INFO:     172.20.0.1:32814 - "GET /status/agents HTTP/1.1" 200 OK
+INFO:     172.20.0.1:47686 - "GET /simulator/zones HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:32798 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:32818 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:32826 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:32826 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:32818 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47686 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57164 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57158 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57170 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:46976 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41380 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:57170 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57158 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57164 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57158 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57164 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57170 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57170 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:58746 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:58750 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:58746 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57170 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:58750 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:58746 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:58750 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57170 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:58750 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57170 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:58746 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:53694 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60148 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:58750 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:58746 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57170 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43016 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43024 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43034 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43034 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43024 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43016 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43016 - "POST /simulator/start HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43016 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:43016 - "GET /config/ddos HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/main.py", line 521, in get_ddos_config
+    "normal_rps": config.DDOS_NORMAL_RPS,
+                  ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'DDOS_NORMAL_RPS'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INFO:     172.20.0.1:43024 - "GET /config/malware HTTP/1.1" 500 Internal Server Error
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 177, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/prometheus_fastapi_instrumentator/middleware.py", line 175, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 424, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 312, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INFO:     172.20.0.1:43034 - "GET /status/agents HTTP/1.1" 200 OK
+INFO:     172.20.0.1:43042 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43056 - "GET /simulator/zones HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43058 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43066 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43066 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43058 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43056 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:56816 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:56830 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:56844 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:59860 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+  File "/app/src/main.py", line 538, in get_malware_config
+    "file_encryption_rate": config.MALWARE_FILE_ENCRYPTION_RATE,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CybersecurityConfig' object has no attribute 'MALWARE_FILE_ENCRYPTION_RATE'
+INFO:     172.20.0.1:59862 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:59866 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:52796 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54044 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:59866 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:59862 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:59860 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47726 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47736 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47742 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47742 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47736 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47726 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47726 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47736 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47742 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47736 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47742 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:47726 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:45898 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:45902 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:45904 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:36698 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34910 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:45904 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:45902 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:45898 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:45902 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:45898 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:45904 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:40254 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:40268 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:40282 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41050 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41060 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41062 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41060 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41062 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41050 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41050 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41062 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41060 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:49234 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47972 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:41062 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41060 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:41050 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:52358 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:52364 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:52378 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:52384 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:52398 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:52410 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43046 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43056 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:43068 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36128 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36112 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36104 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36104 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36112 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36128 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:43988 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36640 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:36138 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36160 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36148 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36148 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36148 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36148 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36148 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36148 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:37678 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:60830 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:60832 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:60836 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:60830 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:60832 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:60836 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:60830 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:60836 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:60832 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:45912 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     172.20.0.1:37508 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:42634 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:37518 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:37534 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:56892 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:56892 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:56892 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:55554 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55812 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:36208 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36218 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:36234 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:39636 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59010 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.6:56698 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41796 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:51654 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:51664 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:51668 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:59220 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43642 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.6:36048 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45628 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:54766 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:54772 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:54774 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:41760 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46134 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.6:54730 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58332 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:54404 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:54402 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:54420 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:56710 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43534 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.6:33554 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48168 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:57064 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57072 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:57088 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:44822 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38188 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.6:39920 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58760 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:38990 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:38998 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:39010 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:36370 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40468 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.6:38064 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59324 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:50396 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50402 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:50404 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.6:56898 - "GET /metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53000 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.20.0.1:37110 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:37124 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:37130 - "GET /simulator/status HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:37130 - "GET /metrics/timeline?window=300&bucket=10 HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:37124 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     172.20.0.1:37124 - "GET /simulator/status HTTP/1.1" 404 Not Found
