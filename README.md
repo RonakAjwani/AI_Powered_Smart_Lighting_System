@@ -1,212 +1,153 @@
-# AI-Powered Smart Lighting System
+# AI-Powered Smart Lighting System - Cybersecurity Focus
 
-A comprehensive multi-agent AI system for intelligent lighting management with cybersecurity, weather intelligence, and power grid optimization.
+## Introduction
+This project secures smart-lighting infrastructure using an AI-driven cybersecurity microservice. The system detects DDoS and malware threats from live telemetry, scores severity, and produces response actions that can be consumed by dashboards or downstream controllers.
 
-## 🌟 System Overview
+The cybersecurity service is implemented with FastAPI, LangGraph, LangChain, Kafka, and Groq LLMs. It also includes a built-in network/device event simulator to support demonstration and evaluation workflows.
 
-This smart lighting ecosystem consists of three specialized AI agent services that work together to provide secure, weather-adaptive, and energy-efficient lighting management for smart cities, buildings, and infrastructure.
+## Problem Statement
+Smart-lighting deployments operate as distributed cyber-physical systems with many edge devices, zones, and network paths. These environments face two major threat classes:
 
-## 🏗️ Architecture
+1. DDoS-style network abuse that degrades availability.
+2. Malware behavior on edge devices that affects integrity and control.
 
-```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│  Cybersecurity  │    │    Weather      │    │   Power Grid    │
-│     Service     │    │  Intelligence   │    │   Management    │
-│    (Port 8003)  │    │   (Port 8001)   │    │   (Port 8002)   │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-         │                       │                       │
-         └───────────────────────┼───────────────────────┘
-                                 │
-                    ┌─────────────────────────┐
-                    │   Shared Infrastructure │
-                    │  Kafka • Redis • DB     │
-                    │ Prometheus • Grafana    │
-                    └─────────────────────────┘
-```
+Traditional static monitoring is often too slow for correlated, real-time incident triage. The project needs an approach that can ingest streaming telemetry, identify attack patterns quickly, and surface actionable response guidance.
 
-## 🚀 Services
+## Our Solution
+The cybersecurity component provides a dual-agent detection pipeline:
 
-### 🛡️ Cybersecurity Service
-**Protects your lighting infrastructure from cyber threats**
+1. A DDoS detection agent that analyzes traffic-rate, protocol, IP-distribution, and connection-level anomalies.
+2. A malware detection agent that analyzes file-system, process, network, and firmware-integrity behavior.
+3. A LangGraph orchestrator that runs both agents in parallel and uses LLM-assisted aggregation to produce a combined risk posture and top priority actions.
 
-- **Real-time threat detection** and automated response
-- **Vulnerability assessment** and security monitoring  
-- **Incident response** with immediate threat mitigation
-- **Security reporting** and compliance documentation
+Operational outputs include:
 
-**Key Capabilities**: Network monitoring, intrusion detection, automated security responses, vulnerability scanning
+1. REST endpoints for full and per-domain analysis.
+2. Real-time event streaming support for dashboard clients.
+3. Metrics and timeline summaries for SOC-style monitoring.
+4. Configurable thresholds/signatures for runtime tuning.
 
----
+## Methodology
+The methodology follows a streaming, agentic detection workflow:
 
-### 🌤️ Weather Intelligence Service  
-**Optimizes lighting based on weather and environmental conditions**
+1. Telemetry Ingestion
+    Events are consumed from Kafka topics and simulator streams (network + device behavior) inside rolling time windows.
 
-- **Weather-based automation** for optimal lighting control
-- **Daylight analysis** and seasonal adjustments
-- **Energy optimization** through weather prediction
-- **Environmental impact** assessment and reporting
+2. Domain-Specific Feature Extraction
+    DDoS features: requests/sec, unique IPs, per-IP concentration, response latency, failed request rate, SYN-heavy patterns, packet-size anomalies.
+    Malware features: encryption behavior, suspicious extensions/processes, C2-like ports, outbound transfer volume, firmware integrity signals.
 
-**Key Capabilities**: Real-time weather integration, smart dimming, seasonal scheduling, energy savings
+3. Agent-Level Reasoning
+    Each agent runs a LangGraph pipeline to collect data, compute metrics, detect threat signals, assess severity, and propose mitigation/remediation steps.
 
----
+4. Cross-Agent Aggregation
+    A parent cybersecurity graph executes both agents in parallel and uses LLM-based aggregation to determine overall risk level and top 3 priority actions.
 
-### ⚡ Power Grid Management Service
-**Manages energy consumption and grid reliability**
+5. Exposure and Monitoring
+    Findings are exposed through FastAPI endpoints, WebSocket feeds, and Prometheus metrics for operational dashboards.
 
-- **Load forecasting** and demand prediction
-- **Outage detection** and automated rerouting
-- **Energy optimization** and cost reduction
-- **Grid reliability** monitoring and reporting
+## Agents and their roles in tabular format
+| Agent | Primary Role | Input Signals | Main Outputs |
+|---|---|---|---|
+| DDoS Detection Agent | Detect network-layer and application-layer flooding attacks | `network_events`, `cyber_alerts`, traffic telemetry (IP, protocol, packet size, status, latency) | `attack_detected`, `attack_type`, severity, attacker IPs, mitigation actions |
+| Malware Detection Agent | Detect malware/ransomware behavior on smart-lighting devices | `sensor_data`, `device_events`, `cyber_alerts`, process/file/network/firmware events | `malware_detected`, family/type, indicators of compromise, affected devices, remediation steps |
+| Cybersecurity Graph Aggregator | Correlate DDoS + malware outputs into one operational posture | Agent results, confidence/severity summaries | Overall risk level, combined summary, top priority actions |
 
-**Key Capabilities**: Predictive analytics, backup power management, energy efficiency, grid stability
+## Dataset details
+The cybersecurity benchmark dataset is in [datasets/](datasets) and is organized as:
 
-## 🔄 Integration Features
+1. [datasets/ddos/](datasets/ddos): normal traffic + 6 attack families.
+2. [datasets/malware/](datasets/malware): normal behavior + 5 malware families.
 
-- **Cross-Service Communication**: Kafka-based real-time messaging
-- **Unified Monitoring**: Prometheus metrics and Grafana dashboards
-- **Shared Data Layer**: PostgreSQL database and Redis caching
-- **Coordinated Operations**: Services work together for optimal performance
+Current snapshot summary:
 
-## 📊 Monitoring & Observability
+1. Total rows: 1012
+2. Attack rows: 783
+3. Normal rows: 229
+4. Binary split: ~77.4% attack / ~22.6% normal
 
-| Service | API Docs | Monitoring Dashboard |
-|---------|----------|---------------------|
-| **Cybersecurity** | http://localhost:8003/docs | http://localhost:3000 |
-| **Weather Intelligence** | http://localhost:8001/docs | http://localhost:3001 |
-| **Power Grid Management** | http://localhost:8002/docs | http://localhost:3002 |
+DDoS files include:
 
-## 🚀 Quick Start
+1. `normal_traffic.csv`
+2. `http_flood_sample.csv`
+3. `syn_flood_sample.csv`
+4. `upd_flood.csv` (label taxonomy uses `udp_flood`)
+5. `slowloris.csv`
+6. `dns_amplification.csv`
+7. `volumetric.csv`
 
+Malware files include:
+
+1. `normal_behavior_sample.csv`
+2. `ransomware_sample.csv`
+3. `trojan_sample.csv`
+4. `botnet.csv`
+5. `spyware.csv`
+6. `rootkit.csv`
+
+Ground-truth labels are available in all files through `is_attack`, `attack_type`, and `severity`.
+
+## Project setup guide
 ### Prerequisites
-- Docker and Docker Compose
-- Groq API key
-- OpenWeather API key (for weather service)
+1. Docker Desktop (or Docker Engine + Compose)
+2. Groq API key
+3. Git
 
-### 1. Environment Setup
+### 1) Clone and enter project
 ```bash
-# Create .env file
-GROQ_API_KEY=your_groq_api_key
-OPENWEATHER_API_KEY=your_openweather_key
+git clone <your-repo-url>
+cd AI_Powered_Smart_Lighting_System
 ```
 
-### 2. Deploy All Services
-```bash
-# Start the complete ecosystem
-docker-compose up -d
+### 2) Create environment file
+Create a root `.env` file:
 
-# Verify all services are running
-docker-compose ps
+```env
+GROQ_API_KEY=your_groq_api_key_here
+WEATHERAPI_API_KEY=optional_for_weather_service
 ```
 
-### 3. Access Services
+For cybersecurity-only usage, `GROQ_API_KEY` is the required key.
+
+### 3) Build and start containers
 ```bash
-# Check system health
-curl http://localhost:8003/health  # Cybersecurity
-curl http://localhost:8001/health  # Weather
-curl http://localhost:8002/health  # Power Grid
-
-# View API documentation
-open http://localhost:8003/docs    # Cybersecurity API
-open http://localhost:8001/docs    # Weather API  
-open http://localhost:8002/docs    # Power Grid API
-```
-
-## 🎯 Use Cases
-
-### Smart City Deployment
-- **Municipal lighting** with weather adaptation
-- **Security monitoring** for public infrastructure
-- **Energy optimization** for cost savings
-- **Emergency response** coordination
-
-### Commercial Buildings
-- **Automated lighting** based on occupancy and weather
-- **Security threat** detection and response
-- **Energy cost** reduction and efficiency
-- **Compliance reporting** and analytics
-
-### Industrial Facilities
-- **Critical infrastructure** protection
-- **Weather-resilient** operations
-- **Power grid** reliability and backup management
-- **Operational efficiency** optimization
-
-## 🔧 Management
-
-### Service Control
-```bash
-
-#initially to build the images in the container
 docker-compose build
+docker-compose up -d
+```
 
-docker-compose up
-# Start specific services
-docker-compose up cybersecurity-agent weather-agent power-agent
+### 4) Verify cybersecurity service
+```bash
+curl http://localhost:8000/health
+curl http://localhost:8000/status/agents
+```
 
-# Scale services
-docker-compose up --scale power-agent=2
+### 5) Open useful interfaces
+1. Cybersecurity API docs: http://localhost:8000/docs
+2. Prometheus: http://localhost:9090
+3. Grafana: http://localhost:3000
+4. Kafka UI: http://localhost:8080
 
-# View logs
-docker-compose logs -f cybersecurity-agent
-docker-compose logs -f weather-agent
-docker-compose logs -f power-agent
+### 6) Run analysis endpoints
+Full analysis:
+```bash
+curl -X POST "http://localhost:8000/analyze/security" \
+  -H "Content-Type: application/json" \
+  -d '{"analysis_type":"full","time_window":300,"priority":"high"}'
+```
 
-# Stop services
+DDoS only:
+```bash
+curl -X POST "http://localhost:8000/analyze/ddos"
+```
+
+Malware only:
+```bash
+curl -X POST "http://localhost:8000/analyze/malware"
+```
+
+### 7) Stop services
+```bash
 docker-compose down
 ```
 
-### System Status
-```bash
-# Check all service health
-curl http://localhost:8003/system/status
-curl http://localhost:8001/system/status  
-curl http://localhost:8002/system/status
-
-# Monitor Kafka topics
-open http://localhost:8080  # Kafka UI
-
-# View metrics
-open http://localhost:9090  # Prometheus
-```
-
-## 📈 Key Benefits
-
-- **🛡️ Enhanced Security**: Automated threat detection and response
-- **🌤️ Weather Adaptation**: Intelligent lighting based on conditions
-- **⚡ Energy Efficiency**: Optimized power consumption and cost reduction
-- **🔄 Unified Management**: Single platform for all lighting operations
-- **📊 Complete Visibility**: Real-time monitoring and analytics
-- **🚀 Scalable Architecture**: Microservices-based for easy scaling
-
-## 🛠️ Technology Stack
-
-- **AI Framework**: LangChain + LangGraph with Groq LLMs
-- **API Framework**: FastAPI with async support
-- **Message Broker**: Apache Kafka for real-time communication
-- **Databases**: PostgreSQL + Redis for data and caching
-- **Monitoring**: Prometheus + Grafana for observability
-- **Containerization**: Docker + Docker Compose
-
-## 📚 Documentation
-
-Each service includes comprehensive documentation:
-
-- **[Cybersecurity Service](./backend/cybersecurity/README.md)** - Security agent details
-- **[Weather Intelligence Service](./backend/weather/README.md)** - Weather agent details  
-- **[Power Grid Management Service](./backend/power/README.md)** - Power agent details
-
-## 🔗 API Integration
-
-All services provide RESTful APIs and can be integrated with existing systems:
-
-- **Building Management Systems** (BMS)
-- **SCADA Systems** for industrial control
-- **Smart City Platforms**
-- **IoT Sensor Networks**
-- **Mobile Applications**
-
----
-
-**Ready to transform your lighting infrastructure with AI-powered intelligence! 🌟🤖**
-
-*For detailed service documentation, API references, and advanced configuration, please refer to the individual service README files.*
+For implementation-level details of the cybersecurity microservice, see [backend/cybersecurity/README.md](backend/cybersecurity/README.md).
