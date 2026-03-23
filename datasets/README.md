@@ -56,10 +56,7 @@ datasets/
 - Full PCAP or long-duration packet flow reconstructions.
 
 ---
-## 3) System Architecture
-<img width="1024" height="575" alt="image" src="https://github.com/user-attachments/assets/62e0ceb7-cdcc-4d33-bb7b-7e273b35a8b9" />
-
-## 4) File-by-File Detail
+## 3) File-by-File Detail
 
 ### DDoS datasets (`ddos/`)
 
@@ -94,7 +91,7 @@ Note: counts are for the current committed CSV snapshot and may change if files 
 
 ---
 
-## 5) What Each Attack Signature Represents
+## 4) What Each Attack Signature Represents
 
 ### DDoS signature logic
 - **HTTP Flood**: very high request burst behavior + elevated application error responses (e.g., 429/503) + latency degradation.
@@ -113,7 +110,7 @@ Note: counts are for the current committed CSV snapshot and may change if files 
 
 ---
 
-## 6) Dataset Schemas and Semantics
+## 5) Dataset Schemas and Semantics
 
 ### DDoS CSV schema (16 columns)
 
@@ -162,7 +159,7 @@ Note: counts are for the current committed CSV snapshot and may change if files 
 
 ---
 
-## 7) Labeling Policy
+## 6) Labeling Policy
 
 - **Benign rows**: `is_attack=false`, `attack_type=none`, `severity=none`.
 - **Malicious rows**: `is_attack=true` with explicit family and severity.
@@ -174,7 +171,7 @@ Note: counts are for the current committed CSV snapshot and may change if files 
 
 ---
 
-## 8) Benchmarking Scenarios You Can Report in a Paper
+## 7) Benchmarking Scenarios You Can Report in a Paper
 
 1. **False-positive stress test**
    - Input only normal files, report FPR and precision.
@@ -195,7 +192,7 @@ Suggested metrics: Accuracy, Precision, Recall, F1, FPR, ROC-AUC (binary), MCC, 
 
 ---
 
-## 9) Data Quality and Reproducibility Notes
+## 8) Data Quality and Reproducibility Notes
 
 - Stable schema per folder (validated headers across all files).
 - Ground-truth labels present in every dataset.
@@ -207,7 +204,7 @@ Suggested metrics: Accuracy, Precision, Recall, F1, FPR, ROC-AUC (binary), MCC, 
 
 ---
 
-## 10) Reference-to-Dataset Traceability (What We Took From Each Source)
+## 9) Reference-to-Dataset Traceability (What We Took From Each Source)
 
 This section explicitly documents what was extracted from each cited source and how it influenced the dataset design.
 
@@ -229,7 +226,7 @@ This section explicitly documents what was extracted from each cited source and 
 
 ---
 
-## 11) Complete Reference List
+## 10) Complete Reference List
 
 1. MITRE ATT&CK for ICS. https://attack.mitre.org/matrices/ics/
 2. NIST SP 800-61 Rev.2, *Computer Security Incident Handling Guide*. https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
@@ -247,7 +244,7 @@ This section explicitly documents what was extracted from each cited source and 
 
 ---
 
-## 12) Practical Usage Notes
+## 11) Practical Usage Notes
 
 - For binary detection training: target = `is_attack`.
 - For multi-class attack-family testing: target = `attack_type` (filter `is_attack=true` rows if needed).
@@ -259,7 +256,7 @@ This section explicitly documents what was extracted from each cited source and 
 
 ---
 
-## 13) Naming Clarification
+## 12) Naming Clarification
 
 - File name is **`upd_flood.csv`** exactly as requested.
 - Attack label inside rows is **`udp_flood`** (standard taxonomy-aligned naming).
