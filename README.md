@@ -46,6 +46,9 @@ The methodology follows a streaming, agentic detection workflow:
 5. Exposure and Monitoring
     Findings are exposed through FastAPI endpoints, WebSocket feeds, and Prometheus metrics for operational dashboards.
 
+## System Architecture
+<img width="1024" height="575" alt="image" src="https://github.com/user-attachments/assets/988c9203-b88b-40e0-b07e-09fd5b39ab53" />
+
 ## Agents and their roles in tabular format
 | Agent | Primary Role | Input Signals | Main Outputs |
 |---|---|---|---|
